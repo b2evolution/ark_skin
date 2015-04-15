@@ -1,8 +1,4 @@
-# Starter Skin for b2evolution CMS v6
-
-Fork this repository and rename it when you start a new skin for b2evolution.
-
-We will keep this up to date to have the correct minimal files as well as up to date features for a b2evolution skin package.
+# Ark Skin for b2evolution CMS v6
 
 ## Some tips:
 
