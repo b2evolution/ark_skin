@@ -34,6 +34,7 @@ skin_include( '_html_header.inc.php', array(
 // Note: You can customize the default HTML header by copying the generic
 // /skins/_html_header.inc.php file into the current skin folder.
 // -------------------------------- END OF HEADER --------------------------------
+
 ?>
 
 <div class='headpicture'>
@@ -41,14 +42,16 @@ skin_include( '_html_header.inc.php', array(
 </div>
 
 <div class="container">
-	<?php
-	
+
+<?php
+
 // ---------------------------- SITE HEADER INCLUDED HERE ----------------------------
 // If site headers are enabled, they will be included here:
 siteskin_include( '_site_body_header.inc.php' );
 // ------------------------------- END OF SITE HEADER --------------------------------
+?>
 
-	?>
+	<!--
 	<div class="row">
 		<div class="coll-xs-12 coll-sm-12 col-md-4 col-md-push-8">
 			<div class="PageTop">
@@ -113,10 +116,10 @@ siteskin_include( '_site_body_header.inc.php' );
 			</ul>
 		</div>
 	</div>
-
+	-->
 <!-- =================================== START OF MAIN AREA =================================== -->
 	<div class="row">
-		<div class="<?php echo ( $Skin->get_setting( 'layout' ) == 'single_column' ? 'col-md-12' : 'col-md-9' ); ?>"<?php
+		<div class="<?php echo ( $Skin->get_setting( 'layout' ) == 'single_column' ? 'col-md-12' : 'col-md-8' ); ?>"<?php
 				echo ( $Skin->get_setting( 'layout' ) == 'left_sidebar' ? ' style="float:right;"' : '' ); ?>>
 
 	<?php
@@ -132,23 +135,10 @@ siteskin_include( '_site_body_header.inc.php' );
 	?>
 
 	<?php
-		// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
-		item_prevnext_links( array(
-				'block_start' => '<ul class="pager">',
-				'prev_start'  => '<li class="previous">',
-				'prev_end'    => '</li>',
-				'next_start'  => '<li class="next">',
-				'next_end'    => '</li>',
-				'block_end'   => '</ul>',
-			) );
-		// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
-	?>
-
-	<?php
 		// ------------------------ TITLE FOR THE CURRENT REQUEST ------------------------
 		request_title( array(
-				'title_before'      => '<h2>',
-				'title_after'       => '</h2>',
+				'title_before'      => '<h1>',
+				'title_after'       => '</h1>',
 				'title_none'        => '',
 				'glue'              => ' - ',
 				'title_single_disp' => true,
@@ -179,6 +169,7 @@ siteskin_include( '_site_body_header.inc.php' );
 	}
 	?>
 
+
 	<?php
 	if( $disp != 'front' && $disp != 'download' && $disp != 'search' )
 	{
@@ -194,6 +185,18 @@ siteskin_include( '_site_body_header.inc.php' );
 	?>
 
 
+	<?php
+		// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
+		item_prevnext_links( array(
+				'block_start' => '<ul class="pager">',
+				'prev_start'  => '<li class="previous">',
+				'prev_end'    => '</li>',
+				'next_start'  => '<li class="next">',
+				'next_end'    => '</li>',
+				'block_end'   => '</ul>',
+			) );
+		// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
+	?>
 	<?php
 		// --------------------------------- START OF POSTS -------------------------------------
 		// Display message if no post:
@@ -354,7 +357,7 @@ siteskin_include( '_site_body_header.inc.php' );
 	if( $Skin->get_setting( 'layout' ) != 'single_column' )
 	{
 	?>
-		<div class="col-md-3"<?php echo ( $Skin->get_setting( 'layout' ) == 'left_sidebar' ? ' style="float:left;"' : '' ); ?>>
+		<div class="col-md-4"<?php echo ( $Skin->get_setting( 'layout' ) == 'left_sidebar' ? ' style="float:left;"' : '' ); ?>>
 	<?php
 		// ------------------------- "Sidebar" CONTAINER EMBEDDED HERE --------------------------
 		// Display container contents:
@@ -393,7 +396,6 @@ siteskin_include( '_site_body_header.inc.php' );
 		</div>
 	<?php } ?>
 	</div>
-
 </div>
 
 <!-- =================================== START OF FOOTER =================================== -->
@@ -461,6 +463,7 @@ siteskin_include( '_site_body_header.inc.php' );
 </footer>
 
 <?php
+
 // ---------------------------- SITE FOOTER INCLUDED HERE ----------------------------
 // If site footers are enabled, they will be included here:
 siteskin_include( '_site_body_footer.inc.php' );
