@@ -1,3 +1,18 @@
+// Fonts
+body{
+	font-family: "Open Sans",sans-serif;
+	font-size:16px;
+}
+a,a:hover{
+	color:#5cbde0;
+}
+
+// Forms
+.form-control:focus{
+	box-shadow:none;
+	border:1px solid #ccc;
+}
+
 // Header
 .pageHeader {
 	margin-bottom: 20px;
@@ -10,6 +25,49 @@
 }
 .nav.nav-tabs {
 	margin-top: 0;
+}
+
+.headpicture{
+	height:300px;
+	overflow:hidden;
+	img{
+		width:100%;
+		position:relative;
+		top:-150px;
+	}
+}
+
+h1{
+	font-family: Raleway,sans-serif;
+	font-size: 32px;
+	font-weight: normal;
+}
+
+// Widgets
+
+.panel{
+	border: 0;
+	box-shadow:none;
+	font-size:90%;
+	.panel-heading{
+		background-color: #fff;
+		border-color: #fff;
+		color: #333;
+		padding:0;
+		h4{
+			font-size: 22px;
+			margin: 0 0 10px;
+		}
+	}
+	.panel-body{
+		ul{
+			margin:0;
+			padding:0 0 0 40px;
+		}
+		a{
+			
+		}
+	}
 }
 
 // Login widget form
@@ -285,7 +343,9 @@ form.bComment {
 	.small.text-muted {
 		margin: 4px 0 10px;
 		a, a .glyphicon {
-			color: inherit;
+			font-family: "Open Sans",sans-serif;
+			font-size: 13px;
+			font-weight: normal;
 		}
 	}
 }
@@ -424,11 +484,32 @@ div.action_messages, div.log_container {
 	h2 {
 		display: table-cell;
 		margin: 0;
-		padding: 20px 0 10px;
+		padding: 50px 0 10px;
 	}
 	.btn-group {
 		display: table-cell;
 		padding: 20px 0 10px 30px;
 		vertical-align: middle;
+	}
+}
+
+footer{
+	color:#7b7b7b;
+	background:#222;
+	padding:20px 0;
+	h4.panel-title{
+		color:#fff;
+		text-transform:uppercase;
+		font-size:16px;
+	}
+	a,a:hover{
+		color:#7b7b7b;
+	}
+	.panel-body{
+		font-size:14px;
+		ul,li{
+			list-style:none;
+			margin-left:0;
+		}
 	}
 }
