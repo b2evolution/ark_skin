@@ -1,4 +1,16 @@
 // Fonts
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Raleway'), url(http://fonts.gstatic.com/s/raleway/v9/0dTEPzkLWceF7z0koJaX1A.woff2) format('woff2'), url(http://fonts.gstatic.com/s/raleway/v9/IczWvq5y_Cwwv_rBjOtT0w.woff) format('woff');
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family: Raleway,sans-serif;
+}
+
 body{
 	font-family: "Open Sans",sans-serif;
 	font-size:16px;
@@ -33,7 +45,22 @@ a,a:hover{
 	img{
 		width:100%;
 		position:relative;
-		top:-150px;
+		top:-260px;
+	}
+}
+
+.sitewide_header{
+	box-shadow:none!important;
+	background:#101010!important;
+	text-shadow:0 0 0px #000!important;
+	a:hover{
+		text-shadow:0 0 0px #000!important;
+		background:transparent!important;
+	}
+	a.swhead_item_selected{
+		background:#090909!important;
+		color:#fff!important;
+		text-shadow:0 0 0px #000!important;
 	}
 }
 

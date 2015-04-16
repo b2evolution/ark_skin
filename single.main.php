@@ -35,11 +35,6 @@ skin_include( '_html_header.inc.php', array(
 // /skins/_html_header.inc.php file into the current skin folder.
 // -------------------------------- END OF HEADER --------------------------------
 
-
-// ---------------------------- SITE HEADER INCLUDED HERE ----------------------------
-// If site headers are enabled, they will be included here:
-siteskin_include( '_site_body_header.inc.php' );
-// ------------------------------- END OF SITE HEADER --------------------------------
 ?>
 
 <div class='headpicture'>
@@ -47,6 +42,14 @@ siteskin_include( '_site_body_header.inc.php' );
 </div>
 
 <div class="container">
+
+<?php
+
+// ---------------------------- SITE HEADER INCLUDED HERE ----------------------------
+// If site headers are enabled, they will be included here:
+siteskin_include( '_site_body_header.inc.php' );
+// ------------------------------- END OF SITE HEADER --------------------------------
+?>
 
 	<!--
 	<div class="row">
@@ -453,18 +456,6 @@ siteskin_include( '_site_body_header.inc.php' );
 					) );
 			?>
 		</p>
-
-		<?php
-			// Please help us promote b2evolution and leave this logo on your blog:
-			powered_by( array(
-					'block_start' => '<div class="powered_by">',
-					'block_end'   => '</div>',
-					// Check /rsc/img/ for other possible images -- Don't forget to change or remove width & height too
-					'img_url'     => '$rsc$img/powered-by-b2evolution-120t.gif',
-					'img_width'   => 120,
-					'img_height'  => 32,
-				) );
-		?>
 
 			</div>
 		</div>

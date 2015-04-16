@@ -34,15 +34,21 @@ skin_include( '_html_header.inc.php', array(
 // Note: You can customize the default HTML header by copying the generic
 // /skins/_html_header.inc.php file into the current skin folder.
 // -------------------------------- END OF HEADER --------------------------------
+?>
 
+<div class='headpicture'>
+	<img src='/media/shared/global/sunset/sunset.jpg'>
+</div>
 
+<div class="container">
+	<?php
+	
 // ---------------------------- SITE HEADER INCLUDED HERE ----------------------------
 // If site headers are enabled, they will be included here:
 siteskin_include( '_site_body_header.inc.php' );
 // ------------------------------- END OF SITE HEADER --------------------------------
-?>
 
-<div class="container">
+	?>
 	<div class="row">
 		<div class="coll-xs-12 coll-sm-12 col-md-4 col-md-push-8">
 			<div class="PageTop">
@@ -388,73 +394,71 @@ siteskin_include( '_site_body_header.inc.php' );
 	<?php } ?>
 	</div>
 
+</div>
 
 <!-- =================================== START OF FOOTER =================================== -->
-	<div class="row">
+<footer class="footer">
+	<div class='container'>
+		<div class='row'>
+		<?php
+			// Display container and contents:
+			skin_container( NT_("Footer"), array(
+					// The following params will be used as defaults for widgets included in this container:
+					'block_start' => '<div class="col-md-4 widget $wi_class$">',
+					'block_end' => '</div>',
+					'block_title_start' => '<div class="panel-heading"><h4 class="panel-title">',
+					'block_title_end' => '</h4></div>',
+					'block_body_start' => '<div class="panel-body">',
+					'block_body_end' => '</div>',
+				) );
+			// Note: Double quotes have been used around "Footer" only for test purposes.
+		?>
 		<div class="col-md-12 center">
-	<?php
-		// Display container and contents:
-		skin_container( NT_("Footer"), array(
-				// The following params will be used as defaults for widgets included in this container:
-			) );
-		// Note: Double quotes have been used around "Footer" only for test purposes.
-	?>
-	<p>
-		<?php
-			// Display footer text (text can be edited in Blog Settings):
-			$Blog->footer_text( array(
-					'before'      => '',
-					'after'       => ' &bull; ',
-				) );
+		<p style='clear:both;'>
+			<?php
+				// Display footer text (text can be edited in Blog Settings):
+				$Blog->footer_text( array(
+						'before'      => '',
+						'after'       => ' &bull; ',
+					) );
 
-		// TODO: dh> provide a default class for pTyp, too. Should be a name and not the ityp_ID though..?!
-		?>
+			// TODO: dh> provide a default class for pTyp, too. Should be a name and not the ityp_ID though..?!
+			?>
 
-		<?php
-			// Display a link to contact the owner of this blog (if owner accepts messages):
-			$Blog->contact_link( array(
-					'before'      => '',
-					'after'       => ' &bull; ',
-					'text'   => T_('Contact'),
-					'title'  => T_('Send a message to the owner of this blog...'),
-				) );
-			// Display a link to help page:
-			$Blog->help_link( array(
-					'before'      => ' ',
-					'after'       => ' ',
-					'text'        => T_('Help'),
-				) );
-		?>
+			<?php
+				// Display a link to contact the owner of this blog (if owner accepts messages):
+				$Blog->contact_link( array(
+						'before'      => '',
+						'after'       => ' &bull; ',
+						'text'   => T_('Contact'),
+						'title'  => T_('Send a message to the owner of this blog...'),
+					) );
+				// Display a link to help page:
+				$Blog->help_link( array(
+						'before'      => ' ',
+						'after'       => ' ',
+						'text'        => T_('Help'),
+					) );
+			?>
 
-		<?php
-			// Display additional credits:
-			// If you can add your own credits without removing the defaults, you'll be very cool :))
-			// Please leave this at the bottom of the page to make sure your blog gets listed on b2evolution.net
-			credits( array(
-					'list_start'  => '&bull;',
-					'list_end'    => ' ',
-					'separator'   => '&bull;',
-					'item_start'  => ' ',
-					'item_end'    => ' ',
-				) );
-		?>
-	</p>
+			<?php
+				// Display additional credits:
+				// If you can add your own credits without removing the defaults, you'll be very cool :))
+				// Please leave this at the bottom of the page to make sure your blog gets listed on b2evolution.net
+				credits( array(
+						'list_start'  => '&bull;',
+						'list_end'    => ' ',
+						'separator'   => '&bull;',
+						'item_start'  => ' ',
+						'item_end'    => ' ',
+					) );
+			?>
+		</p>
 
-	<?php
-		// Please help us promote b2evolution and leave this logo on your blog:
-		powered_by( array(
-				'block_start' => '<div class="powered_by">',
-				'block_end'   => '</div>',
-				// Check /rsc/img/ for other possible images -- Don't forget to change or remove width & height too
-				'img_url'     => '$rsc$img/powered-by-b2evolution-120t.gif',
-				'img_width'   => 120,
-				'img_height'  => 32,
-			) );
-	?>
-
+			</div>
 		</div>
 	</div>
-</div>
+</footer>
 
 <?php
 // ---------------------------- SITE FOOTER INCLUDED HERE ----------------------------
