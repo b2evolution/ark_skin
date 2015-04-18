@@ -40,19 +40,41 @@ a,a:hover{
 }
 
 .headpicture{
-	height:300px;
+	position:relative;
+	height:300px!important;
 	overflow:hidden;
+	vertical-align:center;
+	text-align:center;
+	width:100%;
+	.subcentered{
+		display:table;
+		position:absolute;
+		left:0;
+		top:0;
+		height:300px;
+		z-index:1000;
+		width:100%;
+		.centered{
+			display:table-cell;
+			vertical-align:middle;
+			text-align:center;
+			margin:0 auto;
+		}
+	}
 	img{
 		width:100%;
-		position:relative;
-		top:-260px;
+		top:-240px;
+		position:absolute;
+		left:0;
 	}
 }
 
 .sitewide_header{
 	margin:0!important;
 }
-
+.widget--social-media-links a{
+    background: #666 none repeat scroll 0 0!important;
+}
 ul.pager{
 	li.next,li.previous{
 		a,a:hover{
@@ -91,7 +113,10 @@ ul.pager{
 			}
 		}
 		li.active{
-			background:#000;
+				background:#000;
+		}
+		a.selected{
+			font-weight:400;
 		}
 	}
 }

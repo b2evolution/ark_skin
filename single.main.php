@@ -40,14 +40,20 @@ skin_include( '_html_header.inc.php', array(
 siteskin_include( '_site_body_header.inc.php' );
 // ------------------------------- END OF SITE HEADER --------------------------------
 
-	global $media_path, $media_url;
-	$bg_image = $Skin->get_setting( 'front_bg_image' );
-	echo '<div class="headpicture">';
-	if( ! empty( $bg_image ) && file_exists( $media_path.$bg_image ) )
-	{ // If it exists in media folder
-		echo '<img src="'.$media_url.$bg_image.'" />';
-	}
-	echo '</div>';
+global $media_path, $media_url;
+$bg_image = $Skin->get_setting( 'front_bg_image' );
+echo '<div class="headpicture" style="height:300px;">';
+echo '<div class="subcentered"><div class="centered">';
+
+skin_container( NT_('Header'), array(
+	) );
+						
+echo '</div></div>';
+if( ! empty( $bg_image ) && file_exists( $media_path.$bg_image ) )
+{ // If it exists in media folder
+	echo '<img src="'.$media_url.$bg_image.'" />';
+}
+echo '</div>';
 
 ?>
 
@@ -55,7 +61,7 @@ siteskin_include( '_site_body_header.inc.php' );
 
 	<div class="container">
 		<div class="row ">
-			<div class="col-md-12">
+			<div class="col-md-8">
 				<ul>
 				<?php
 					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
@@ -74,6 +80,18 @@ siteskin_include( '_site_body_header.inc.php' );
 							'item_selected_end'   => '</li>',
 							'item_title_before'   => '',
 							'item_title_after'    => '',
+						) );
+					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
+				?>
+				</ul>
+			</div>
+			<div class="col-md-4 right">
+				<ul style='float:right;'>
+				<?php
+					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
+					// Display container and contents:
+					// Note: this container is designed to be a single <ul> list
+					skin_container( NT_('Page Top'), array(
 						) );
 					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
 				?>
