@@ -40,8 +40,6 @@ skin_include( '_html_header.inc.php', array(
 siteskin_include( '_site_body_header.inc.php' );
 // ------------------------------- END OF SITE HEADER --------------------------------
 
-if( $is_pictured_page )
-{ // Display a picture from skin setting as background image
 	global $media_path, $media_url;
 	$bg_image = $Skin->get_setting( 'front_bg_image' );
 	echo '<div class="headpicture">';
@@ -50,16 +48,44 @@ if( $is_pictured_page )
 		echo '<img src="'.$media_url.$bg_image.'" />';
 	}
 	echo '</div>';
-}
 
 ?>
 
-<div class='headpicture'>
-	<img src='/media/shared/global/sunset/sunset.jpg'>
+<div class='top-menu'>
+
+	<div class="container">
+		<div class="row ">
+			<div class="col-md-12">
+				<ul>
+				<?php
+					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
+					// Display container and contents:
+					// Note: this container is designed to be a single <ul> list
+					skin_container( NT_('Menu'), array(
+							// The following params will be used as defaults for widgets included in this container:
+							'block_start'         => '',
+							'block_end'           => '',
+							'block_display_title' => false,
+							'list_start'          => '',
+							'list_end'            => '',
+							'item_start'          => '<li>',
+							'item_end'            => '</li>',
+							'item_selected_start' => '<li class="active">',
+							'item_selected_end'   => '</li>',
+							'item_title_before'   => '',
+							'item_title_after'    => '',
+						) );
+					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
+				?>
+				</ul>
+			</div>
+		</div>
+	</div>
+
 </div>
 
 <div class="container">
-
+	
 <!-- =================================== START OF MAIN AREA =================================== -->
 	<div class="row">
 		<div class="<?php echo ( $Skin->get_setting( 'layout' ) == 'single_column' ? 'col-md-12' : 'col-md-8' ); ?>"<?php

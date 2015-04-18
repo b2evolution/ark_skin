@@ -40,10 +40,6 @@ siteskin_include( '_site_body_header.inc.php' );
 // /skins/_html_header.inc.php file into the current skin folder.
 // -------------------------------- END OF HEADER --------------------------------
 
-$is_pictured_page = in_array( $disp, array( 'front', 'login', 'register', 'lostpassword', 'activateinfo', 'access_denied' ) );
-
-if( $is_pictured_page )
-{ // Display a picture from skin setting as background image
 	global $media_path, $media_url;
 	$bg_image = $Skin->get_setting( 'front_bg_image' );
 	echo '<div class="headpicture">';
@@ -52,9 +48,41 @@ if( $is_pictured_page )
 		echo '<img src="'.$media_url.$bg_image.'" />';
 	}
 	echo '</div>';
-}
 
 ?>
+
+<div class='top-menu'>
+
+	<div class="container">
+		<div class="row ">
+			<div class="col-md-12">
+				<ul>
+				<?php
+					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
+					// Display container and contents:
+					// Note: this container is designed to be a single <ul> list
+					skin_container( NT_('Menu'), array(
+							// The following params will be used as defaults for widgets included in this container:
+							'block_start'         => '',
+							'block_end'           => '',
+							'block_display_title' => false,
+							'list_start'          => '',
+							'list_end'            => '',
+							'item_start'          => '<li>',
+							'item_end'            => '</li>',
+							'item_selected_start' => '<li class="active">',
+							'item_selected_end'   => '</li>',
+							'item_title_before'   => '',
+							'item_title_after'    => '',
+						) );
+					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
+				?>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>
 
 <div class="container">
 
@@ -126,19 +154,7 @@ if( $is_pictured_page )
 	<?php
 	if( $disp != 'front' && $disp != 'download' && $disp != 'search' )
 	{
-		// -------------------- PREV/NEXT PAGE LINKS (POST LIST MODE) --------------------
-		mainlist_page_links( array(
-				'block_start' => '<div class="center"><ul class="pagination">',
-				'block_end' => '</ul></div>',
-				'page_current_template' => '<span><b>$page_num$</b></span>',
-				'page_item_before' => '<li>',
-				'page_item_after' => '</li>',
-			) );
-		// ------------------------- END OF PREV/NEXT PAGE LINKS -------------------------
-	?>
-
-
-	<?php
+		
 		// --------------------------------- START OF POSTS -------------------------------------
 		// Display message if no post:
 		display_if_empty();
