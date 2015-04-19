@@ -45,6 +45,12 @@ class ark_Skin extends Skin
 	function get_param_definitions( $params )
 	{
 		$r = array_merge( array(
+				'front_bg_image' => array(
+					'label' => T_('Front page background image'),
+					'defaultvalue' => 'shared/global/sunset/sunset.jpg',
+					'type' => 'text',
+					'size' => '50'
+				),
 				'layout' => array(
 					'label' => T_('Layout'),
 					'note' => '',
