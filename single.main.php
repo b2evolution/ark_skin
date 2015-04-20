@@ -51,7 +51,18 @@ skin_container( NT_('Header'), array(
 echo '</div></div>';
 if( ! empty( $bg_image ) && file_exists( $media_path.$bg_image ) )
 { // If it exists in media folder
-	echo '<img src="'.$media_url.$bg_image.'" />';
+	echo '<img src="'.$media_url.$bg_image.'" />'; ?>
+				<ul class='social'>
+				<?php
+					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
+					// Display container and contents:
+					// Note: this container is designed to be a single <ul> list
+					skin_container( NT_('Page Top'), array(
+						) );
+					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
+				?>
+				</ul>
+				<?php
 }
 echo '</div>';
 
@@ -61,7 +72,7 @@ echo '</div>';
 
 	<div class="container">
 		<div class="row ">
-			<div class="col-md-8">
+			<div class="col-md-12">
 				<ul>
 				<?php
 					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
@@ -80,18 +91,6 @@ echo '</div>';
 							'item_selected_end'   => '</li>',
 							'item_title_before'   => '',
 							'item_title_after'    => '',
-						) );
-					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
-				?>
-				</ul>
-			</div>
-			<div class="col-md-4 right">
-				<ul style='float:right;'>
-				<?php
-					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
-					// Display container and contents:
-					// Note: this container is designed to be a single <ul> list
-					skin_container( NT_('Page Top'), array(
 						) );
 					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
 				?>
@@ -172,7 +171,7 @@ echo '</div>';
 		{ // For each blog post, do everything below up to the closing curly brace "}"
 
 			// ---------------------- ITEM BLOCK INCLUDED HERE ------------------------
-			skin_include( '_item_block.inc.php', array(
+			/*skin_include( '_item_block.inc.php', array(
 					'content_mode' => 'auto',		// 'auto' will auto select depending on $disp-detail
 					// Comment template
 					'comment_start'         => '<div class="panel panel-default">',
@@ -200,7 +199,39 @@ echo '</div>';
 					                           .' comment_form"><div class="panel-heading"><h3>',
 					'form_title_end'        => '</h3></div>',
 					'after_comment_form'    => '</div>',
+				) );*/
+			skin_include( '_item_block.inc.php', array(
+					'content_mode' => 'auto',		// 'auto' will auto select depending on $disp-detail
+					// Comment template
+					'comment_start'         => '<div class="evoComment panel panel-default">',
+					'comment_end'           => '</div>',
+					'comment_title_before'  => '<div class="panel-heading"><h4 class="evoComment-title panel-title">',
+					'comment_title_after'   => '</h4></div><div class="panel-body">',
+					'comment_avatar_before' => '<div class="evoComment-avatar">',
+					'comment_avatar_after'  => '</div>',
+					'comment_rating_before' => '<div class="evoComment-rating">',
+					'comment_rating_after'  => '</div>',
+					'comment_text_before'   => '<div class="evoComment-text">',
+					'comment_text_after'    => '</div>',
+					'comment_info_before'   => '<div class="evoComment-info clear text-muted"><small>',
+					'comment_info_after'    => '</small></div></div>',
+					'preview_start'         => '<div class="panel panel-warning" id="comment_preview">',
+					'preview_end'           => '</div>',
+					'comment_attach_info'   => get_icon( 'help', 'imgtag', array(
+							'data-toggle'    => 'tooltip',
+							'data-placement' => 'bottom',
+							'data-html'      => 'true',
+							'title'          => htmlspecialchars( get_upload_restriction( array(
+									'block_after'     => '',
+									'block_separator' => '<br /><br />' ) ) )
+						) ),
+					// Comment form
+					'form_title_start'      => '<div class="panel '.( $Session->get('core.preview_Comment') ? 'panel-danger' : 'panel-default' )
+					                           .' comment_form"><div class="panel-heading"><h3>',
+					'form_title_end'        => '</h3></div>',
+					'after_comment_form'    => '</div>',
 				) );
+			// new comments
 			// ----------------------------END ITEM BLOCK  ----------------------------
 
 		} // ---------------------------------- END OF POSTS ------------------------------------

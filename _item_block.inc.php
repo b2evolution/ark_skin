@@ -56,9 +56,8 @@ echo '<div id="styled_content_block">'; // Beginning of post display
 					'link_type' => 'permalink'
 				) );
 		}
-	?>
 
-	<?php
+		
 	if( ! $Item->is_intro() )
 	{ // Don't display these data for intro posts
 	?>
@@ -106,17 +105,26 @@ echo '<div id="styled_content_block">'; // Beginning of post display
 	</div>
 	<?php
 	}
-	?>
-
-	<?php
+	
+	
 		// ---------------------- POST CONTENT INCLUDED HERE ----------------------
 		skin_include( '_item_content.inc.php', $params );
 		// Note: You can customize the default item content by copying the generic
 		// /skins/_item_content.inc.php file into the current skin folder.
 		// -------------------------- END OF POST CONTENT -------------------------
-	?>
-
-	<?php
+		
+		
+		// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
+		item_prevnext_links( array(
+				'block_start' => '<ul class="pager">',
+				'prev_start'  => '<li class="previous">',
+				'prev_end'    => '</li>',
+				'next_start'  => '<li class="next">',
+				'next_end'    => '</li>',
+				'block_end'   => '</ul>',
+			) );
+		// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
+		
 		// List all tags attached to this post:
 		$Item->tags( array(
 				'before'    => '<div class="small">'.T_('Tags').': ',
