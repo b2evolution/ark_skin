@@ -31,15 +31,14 @@ skin_include( '_html_header.inc.php', array(
 	'html_tag' => '<!DOCTYPE html>'."\r\n"
 	             .'<html lang="'.locale_lang( false ).'">',
 ) );
-// Note: You can customize the default HTML header by copying the generic
-// /skins/_html_header.inc.php file into the current skin folder.
-// -------------------------------- END OF HEADER --------------------------------
-
 
 // ---------------------------- SITE HEADER INCLUDED HERE ----------------------------
 // If site headers are enabled, they will be included here:
 siteskin_include( '_site_body_header.inc.php' );
 // ------------------------------- END OF SITE HEADER --------------------------------
+// Note: You can customize the default HTML header by copying the generic
+// /skins/_html_header.inc.php file into the current skin folder.
+// -------------------------------- END OF HEADER --------------------------------
 
 global $media_path, $media_url;
 $bg_image = $Skin->get_setting( 'front_bg_image' );
@@ -52,18 +51,7 @@ skin_container( NT_('Header'), array(
 echo '</div></div>';
 if( ! empty( $bg_image ) && file_exists( $media_path.$bg_image ) )
 { // If it exists in media folder
-	echo '<img src="'.$media_url.$bg_image.'" />'; ?>
-				<ul class='social'>
-				<?php
-					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
-					// Display container and contents:
-					// Note: this container is designed to be a single <ul> list
-					skin_container( NT_('Page Top'), array(
-						) );
-					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
-				?>
-				</ul>
-				<?php
+	echo '<img src="'.$media_url.$bg_image.'" />';
 }
 echo '</div>';
 
@@ -73,7 +61,7 @@ echo '</div>';
 
 	<div class="container">
 		<div class="row ">
-			<div class="col-md-12">
+			<div class="col-md-8">
 				<ul>
 				<?php
 					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
@@ -92,6 +80,18 @@ echo '</div>';
 							'item_selected_end'   => '</li>',
 							'item_title_before'   => '',
 							'item_title_after'    => '',
+						) );
+					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
+				?>
+				</ul>
+			</div>
+			<div class="col-md-4 right">
+				<ul style='float:right;'>
+				<?php
+					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
+					// Display container and contents:
+					// Note: this container is designed to be a single <ul> list
+					skin_container( NT_('Page Top'), array(
 						) );
 					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
 				?>
@@ -172,21 +172,7 @@ echo '</div>';
 	<?php
 	if( $disp != 'front' && $disp != 'download' && $disp != 'search' )
 	{
-		/*
-		// -------------------- PREV/NEXT PAGE LINKS (POST LIST MODE) --------------------
-		mainlist_page_links( array(
-				'block_start' => '<div class="center"><ul class="pagination">',
-				'block_end' => '</ul></div>',
-				'page_current_template' => '<span><b>$page_num$</b></span>',
-				'page_item_before' => '<li>',
-				'page_item_after' => '</li>',
-			) );
-		// ------------------------- END OF PREV/NEXT PAGE LINKS -------------------------
-		*/
-	?>
-
-
-	<?php
+		
 		// --------------------------------- START OF POSTS -------------------------------------
 		// Display message if no post:
 		display_if_empty();
@@ -224,8 +210,11 @@ echo '</div>';
 					'form_title_end'        => '</h3></div>',
 					'after_comment_form'    => '</div>',
 				) );
+<<<<<<< HEAD
 				// new comments
 				
+=======
+>>>>>>> parent of d6247ec... changes for last version of b2evolution
 			// ----------------------------END ITEM BLOCK  ----------------------------
 
 		} // ---------------------------------- END OF POSTS ------------------------------------
@@ -233,7 +222,7 @@ echo '</div>';
 
 	<?php
 		// -------------------- PREV/NEXT PAGE LINKS (POST LIST MODE) --------------------
-		/*mainlist_page_links( array(
+		mainlist_page_links( array(
 				'block_start' => '<div class="center"><ul class="pagination">',
 				'block_end' => '</ul></div>',
 				'page_current_template' => '<span><b>$page_num$</b></span>',
@@ -243,10 +232,9 @@ echo '</div>';
 				'next_text' => '&gt;&gt;',
 			) );
 		// ------------------------- END OF PREV/NEXT PAGE LINKS -------------------------
-		*/
 	}
-	?>
 
+<<<<<<< HEAD
 
 	<?php
 		// -------------- MAIN CONTENT TEMPLATE INCLUDED HERE (Based on $disp) --------------
@@ -341,6 +329,20 @@ echo '</div>';
 		// Note: you can customize any of the sub templates included here by
 		// copying the matching php file into your skin directory.
 		// ------------------------- END OF MAIN CONTENT TEMPLATE ---------------------------
+=======
+		echo '<div id="styled_content_block">'; // Beginning of posts display
+		while( $Item = & mainlist_get_item() )
+		{	// For each blog post:
+			// ---------------------- ITEM BLOCK INCLUDED HERE ------------------------
+			skin_include( '_item_block.inc.php', array(
+					'content_mode' => 'auto',		// 'auto' will auto select depending on $disp-detail
+					'image_size'	 =>	'fit-400x320',
+				) );
+			// ----------------------------END ITEM BLOCK  ----------------------------
+		}
+		echo '</div>'; // End of posts display
+		
+>>>>>>> parent of d6247ec... changes for last version of b2evolution
 	?>
 	</div>
 
@@ -389,7 +391,6 @@ echo '</div>';
 		</div>
 	<?php } ?>
 	</div>
-
 
 </div>
 

@@ -7,13 +7,6 @@
   src: local('Raleway'), url(http://fonts.gstatic.com/s/raleway/v9/0dTEPzkLWceF7z0koJaX1A.woff2) format('woff2'), url(http://fonts.gstatic.com/s/raleway/v9/IczWvq5y_Cwwv_rBjOtT0w.woff) format('woff');
 }
 
-@font-face {
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  src: local('Open Sans'), local('OpenSans'), url(http://fonts.gstatic.com/s/opensans/v10/cJZKeOuBrn4kERxqtaUH3VtXRa8TVwTICgirnJhmVJw.woff2) format('woff2'), url(http://fonts.gstatic.com/s/opensans/v10/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
-}
-
 h1,h2,h3,h4,h5,h6{
 	font-family: Raleway,sans-serif;
 }
@@ -46,8 +39,6 @@ a,a:hover{
 	margin-top: 0;
 }
 
-.fa-external-link{display:none;}
-
 .headpicture{
 	position:relative;
 	height:300px!important;
@@ -76,12 +67,6 @@ a,a:hover{
 		position:absolute;
 		left:0;
 	}
-	.social{
-		position:absolute;
-		right:0;
-		top:0;
-		z-index:1100;
-	}
 }
 
 .sitewide_header{
@@ -103,7 +88,6 @@ ul.pager{
 }
 
 .top-menu{
-	margin-bottom:15px;
 	box-shadow:none;
 	background:#282828;
 	text-shadow:0 0 0px #000;
@@ -111,9 +95,9 @@ ul.pager{
 		list-style-type:none;
 		margin:0;
 		li{
+			padding:10px;
 			float:left;
 			list-style-type:none;
-			padding:15px 10px;
 			a{
 				color:#999999;
 				text-shadow:0 0 0px #000;
@@ -160,10 +144,12 @@ h1{
 		}
 	}
 	.panel-body{
-		padding-left:0;
 		ul{
 			margin:0;
 			padding:0 0 0 40px;
+		}
+		a{
+			
 		}
 	}
 }
@@ -445,8 +431,6 @@ form.bComment {
 			font-size: 13px;
 			font-weight: normal;
 		}
-		color:	#282828;
-		font-size: 13px;
 	}
 }
 form#user_checkchanges.bComment{

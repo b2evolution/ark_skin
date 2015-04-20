@@ -51,18 +51,7 @@ skin_container( NT_('Header'), array(
 echo '</div></div>';
 if( ! empty( $bg_image ) && file_exists( $media_path.$bg_image ) )
 { // If it exists in media folder
-	echo '<img src="'.$media_url.$bg_image.'" />'; ?>
-				<ul class='social'>
-				<?php
-					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
-					// Display container and contents:
-					// Note: this container is designed to be a single <ul> list
-					skin_container( NT_('Page Top'), array(
-						) );
-					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
-				?>
-				</ul>
-				<?php
+	echo '<img src="'.$media_url.$bg_image.'" />';
 }
 echo '</div>';
 
@@ -72,7 +61,7 @@ echo '</div>';
 
 	<div class="container">
 		<div class="row ">
-			<div class="col-md-12">
+			<div class="col-md-8">
 				<ul>
 				<?php
 					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
@@ -91,6 +80,18 @@ echo '</div>';
 							'item_selected_end'   => '</li>',
 							'item_title_before'   => '',
 							'item_title_after'    => '',
+						) );
+					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
+				?>
+				</ul>
+			</div>
+			<div class="col-md-4 right">
+				<ul style='float:right;'>
+				<?php
+					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
+					// Display container and contents:
+					// Note: this container is designed to be a single <ul> list
+					skin_container( NT_('Page Top'), array(
 						) );
 					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
 				?>
