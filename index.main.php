@@ -6,7 +6,7 @@
  * It will also rely on default includes for specific dispays (like the comment form).
  *
  * For a quick explanation of b2evo 2.0 skins, please start here:
- * {@link http://b2evolution.net/man/skin-structure}
+ * {@link http://b2evolution.net/man/skin-development-primer}
  *
  * The main page template is used to display the blog when no specific page template is available
  * to handle the request (based on $disp).
@@ -27,18 +27,13 @@ skin_init( $disp );
 
 
 // -------------------------- HTML HEADER INCLUDED HERE --------------------------
-skin_include( '_html_header.inc.php', array(
-	'html_tag' => '<!DOCTYPE html>'."\r\n"
-	             .'<html lang="'.locale_lang( false ).'">',
-) );
+skin_include( '_html_header.inc.php', array() );
+// -------------------------------- END OF HEADER --------------------------------
 
 // ---------------------------- SITE HEADER INCLUDED HERE ----------------------------
 // If site headers are enabled, they will be included here:
 siteskin_include( '_site_body_header.inc.php' );
 // ------------------------------- END OF SITE HEADER --------------------------------
-// Note: You can customize the default HTML header by copying the generic
-// /skins/_html_header.inc.php file into the current skin folder.
-// -------------------------------- END OF HEADER --------------------------------
 
 global $media_path, $media_url;
 $bg_image = $Skin->get_setting( 'front_bg_image' );
