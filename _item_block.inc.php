@@ -20,13 +20,16 @@ global $Item, $Skin;
 $params = array_merge( array(
 		'feature_block'    => false,
 		'content_mode'     => 'auto',		// 'auto' will auto select depending on $disp-detail
-		'item_class'       => 'bPost',
+		'item_class'         => 'evo_post',
+		'item_type_class'    => 'evo_post__ptyp_',
+		'item_status_class'  => 'evo_post__',
+		'item_disp_class'    => NULL,
 		'image_class'      => 'img-responsive',
 		'image_size'       => 'fit-1280x720',
 		'author_link_text' => 'preferredname',
 	), $params );
 
-echo '<div id="styled_content_block">'; // Beginning of post display
+echo '<div class="styled_content_block">';
 ?>
 
 <div id="<?php $Item->anchor_id() ?>" class="<?php $Item->div_classes( $params ) ?>" lang="<?php $Item->lang() ?>">
@@ -73,19 +76,19 @@ echo '<div id="styled_content_block">'; // Beginning of post display
 				'text' => '#icon#',
 			) );
 
-		// We want to display the post time:
-		$Item->issue_time( array(
-				'before'      => ' '.T_('posted on').' ',
-				'after'       => ' ',
-				'time_format' => 'M j, Y',
-			) );
-
 		// Author
 		$Item->author( array(
 			'before'    => ' '.T_('by').' ',
 			'after'     => ' ',
 			'link_text' => $params['author_link_text'],
 		) );
+
+		// We want to display the post time:
+		$Item->issue_time( array(
+				'before'      => ' '.T_('on').' ',
+				'after'       => ' ',
+				'time_format' => 'l j, Y',
+			) );
 
 		// Categories
 		$Item->categories( array(
@@ -99,7 +102,7 @@ echo '<div id="styled_content_block">'; // Beginning of post display
 
 		// Link for editing
 		$Item->edit_link( array(
-			'before'    => ' &bull; ',
+			'before'    => '&nbsp;',
 			'after'     => '',
 		) );
 	?>
@@ -119,9 +122,9 @@ echo '<div id="styled_content_block">'; // Beginning of post display
 	<?php
 		// List all tags attached to this post:
 		$Item->tags( array(
-				'before'    => '<div class="small">'.T_('Tags').': ',
+				'before'    => '<div class="small tags"><i class="fa fa-tags"></i> '.T_('Tags').': ',
 				'after'     => '</div>',
-				'separator' => ', ',
+				'separator' => '',
 			) );
 	?>
 

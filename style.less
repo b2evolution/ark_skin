@@ -15,6 +15,10 @@ body{
 	font-family: "Open Sans",sans-serif;
 	font-size:16px;
 }
+div[class^='col-'] {
+	padding: 0px 20px;
+}
+
 a,a:hover{
 	color:#5cbde0;
 }
@@ -419,8 +423,10 @@ form.bComment {
 	}
 }
 
-.bPost {
+.evo_post {
 	margin-bottom: 2em;
+	padding-bottom: 2em;
+	border-bottom: 5px solid #eee;
 	.bTitle {
 		margin: 0;
 	}
@@ -430,6 +436,20 @@ form.bComment {
 			font-family: "Open Sans",sans-serif;
 			font-size: 13px;
 			font-weight: normal;
+		}
+	}
+	.tags {
+		margin-bottom: 5px;
+		a {
+			color: #888;
+			padding: 2px 5px;
+			border-radius: 4px;
+			border: 1px solid #ccc;
+			margin: 0px 5px 5px 0px;
+			&:hover {
+				background: #eef;
+				text-decoration: none;
+			}
 		}
 	}
 }
@@ -594,6 +614,76 @@ footer{
 		ul,li{
 			list-style:none;
 			margin-left:0;
+		}
+	}
+}
+
+// Calendar plugin
+.widget_plugin_evo_Calr {
+	.bCalendarTable {
+	width: 290px;
+		> caption {
+			font-size: 22px;
+			font-weight: normal;
+		}
+		.bCalendarRow {
+			.bCalendarEmptyCell, .bCalendarCell {
+				border-bottom: 1px solid #ddd;
+				padding: 10px 3px;
+			}
+			.bCalendarHeaderCell {
+				text-align: center;
+			}
+			#bCalendarToday {
+				background-color: transparent;
+				border-radius: 0px;
+			}
+		}
+		#prev a, #next a {
+			font-size: 15px;
+		}
+	}
+}
+
+// Comment list widget
+.widget_core_coll_comment_list {
+	ul li a {
+		font-weight: normal !important;
+		&:hover {
+			background-color: transparent !important;
+		}
+		& .user.anonymous {
+			font-weight: normal !important;
+		}
+	}
+}
+
+// Random photo
+.widget_core_coll_media_index {
+	.widget_flow_blocks .loadimg {
+		border-radius: 0px;
+	}
+}
+
+// Sidebar styles
+.sidebar {
+	.widget .panel-body {
+		padding-left: 0px; padding-right: 0px; padding-top: 0px;
+	}
+	.widget_core_coll_category_list li {
+    list-style: inherit;
+	}
+	.compact_search_form {
+		input.search_field {
+			width: 100% !important;
+			border-radius: 6px;
+			-webkit-box-shadow: none;
+			box-shadow: none;
+			-webkit-transition: none;
+			-o-transition: none;
+		}
+		input.search_submit {
+			display: none;
 		}
 	}
 }

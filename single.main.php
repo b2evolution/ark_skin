@@ -201,6 +201,20 @@ echo '</div>';
 		} // ---------------------------------- END OF POSTS ------------------------------------
 		
 	}
+	
+		// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
+		item_prevnext_links( array(
+				'block_start' => '<ul class="pager">',
+				'prev_start'  => '<li class="previous">',
+				'prev_end'    => '</li>',
+				'next_start'  => '<li class="next">',
+				'next_end'    => '</li>',
+				'block_end'   => '</ul>',
+				'prev_text'   => '&#8592;',
+				'next_text'   => '&#8594;',
+			) );
+		// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
+	
 	?>
 	</div>
 
