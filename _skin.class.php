@@ -66,6 +66,18 @@ class ark_Skin extends Skin
 	function get_param_definitions( $params )
 	{
 		$r = array_merge( array(
+		
+					'post_teaser_image' => array(
+						'label' => T_('Posts teaser image layout'),
+						'note' => 'Regular is default post teaser layout with one full width teaser image in the center.
+								   Thumbnail shows small teaser image in the left side of the post.',
+						'defaultvalue' => 'regular',
+						'options' => array(
+								'regular' => T_('Regular'),
+								'thumbnail'  => T_('Thumbnail'),
+							),
+						'type' => 'select',
+					),
 				'front_bg_image' => array(
 					'label' => T_('Front page background image'),
 					'defaultvalue' => 'shared/global/sunset/sunset.jpg',
@@ -172,6 +184,43 @@ class ark_Skin extends Skin
 			) );
 
 		// Skin specific initializations:
+		// Add custom CSS:
+		$custom_css = '';
+			
+		// Only change post teaser images for "front" and "posts" 
+		if( in_array( $disp, array( 'front', 'posts' ) ) ) 
+		{
+			$post_t_images = $this->get_setting( 'post_teaser_image' );
+			switch( $post_t_images )
+			{
+				case 'regular': // When regular layout is chosen, nothing happense, since regular is default
+				$custom_css = '';
+				break;
+				
+				case 'thumbnail':// When thumbnail layout is chosen, apply these styles
+				$custom_css = '.evo_post_images{ 
+									float: left;
+									width: 200px;
+								}
+								.evo_post_images .evo_image_block {
+									margin: 0px 15px 15px 0px;
+								}';
+				break;
+			}
+	
+		};
+		
+		
+		
+		if( ! empty( $custom_css ) )
+		{ // Function for custom_css:
+		$custom_css = '<style type="text/css">
+<!--
+'.$custom_css.'
+-->
+		</style>';
+		add_headline( $custom_css );
+		}			
 	}
 
 
