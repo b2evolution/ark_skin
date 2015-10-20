@@ -66,7 +66,72 @@ class ark_Skin extends Skin
 	function get_param_definitions( $params )
 	{
 		$r = array_merge( array(
-		
+				'general_settings_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('General settings')
+				),
+					'layout' => array(
+						'label' => T_('Page layout'),
+						'note' => '',
+						'defaultvalue' => 'right_sidebar',
+						'options' => array(
+								'single_column' => T_('Single column'),
+								'left_sidebar'  => T_('Left Sidebar'),
+								'right_sidebar' => T_('Right Sidebar'),
+							),
+						'type' => 'select',
+					),						
+					'front_bg_image' => array(
+						'label' => T_('Front page background image'),
+						'defaultvalue' => 'shared/global/sunset/sunset.jpg',
+						'type' => 'text',
+						'size' => '50'
+					),
+					'site_background_color' => array(
+						'label' => T_('Site background color'),
+						'note' => T_('Default value is #FFFFFF'),
+						'defaultvalue' => '#FFFFFF',
+						'type' => 'color',
+					),
+					'site_title_color' => array(
+						'label' => T_('Site title color'),
+						'note' => T_('Default value is #FFFFFF'),
+						'defaultvalue' => '#FFFFFF',
+						'type' => 'color',
+					),
+					'site_tagline_color' => array(
+						'label' => T_('Site tagline color'),
+						'note' => T_('Default value is #333333'),
+						'defaultvalue' => '#333333',
+						'type' => 'color',
+					),
+					'site_text_color' => array(
+						'label' => T_('Site text color'),
+						'note' => T_('Default value is #333333'),
+						'defaultvalue' => '#333333',
+						'type' => 'color',
+					),
+					'site_link_color' => array(
+						'label' => T_('Site link color'),
+						'note' => T_('Default value is #5cbde0'),
+						'defaultvalue' => '#5cbde0',
+						'type' => 'color',
+					),
+					'site_link_color_hover' => array(
+						'label' => T_('Site link color (hover)'),
+						'note' => T_('Default value is #4db6dc'),
+						'defaultvalue' => '#4db6dc',
+						'type' => 'color',
+					),
+				'general_settings_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
+				
+				'posts_layout_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Posts layout')
+				),
 					'post_teaser_image' => array(
 						'label' => T_('Posts teaser image layout'),
 						'note' => 'Regular is default post teaser layout with one full width teaser image in the center.
@@ -78,82 +143,134 @@ class ark_Skin extends Skin
 							),
 						'type' => 'select',
 					),
-				'front_bg_image' => array(
-					'label' => T_('Front page background image'),
-					'defaultvalue' => 'shared/global/sunset/sunset.jpg',
-					'type' => 'text',
-					'size' => '50'
+					'post_title_link_color' => array(
+						'label' => T_('Post title link color'),
+						'note' => T_('Default value is #333333'),
+						'defaultvalue' => '#333333',
+						'type' => 'color',
+					),
+					'post_title_link_color_hover' => array(
+						'label' => T_('Post title link color (hover)'),
+						'note' => T_('Default value is #000000'),
+						'defaultvalue' => '#000000',
+						'type' => 'color',
+					),
+					'post_tags_color_and_border_color' => array(
+						'label' => T_('Post tags color and border color'),
+						'note' => T_('Default value is #888888'),
+						'defaultvalue' => '#888888',
+						'type' => 'color',
+					),
+					'post_tags_background_color_on_hover' => array(
+						'label' => T_('Post tags background color (on hover)'),
+						'note' => T_('Default value is #EEF'),
+						'defaultvalue' => '#EEF',
+						'type' => 'color',
+					),
+				'posts_layout_end' => array(
+					'layout' => 'end_fieldset',
 				),
-				'layout' => array(
-					'label' => T_('Layout'),
-					'note' => '',
-					'defaultvalue' => 'right_sidebar',
-					'options' => array(
-							'single_column' => T_('Single column'),
-							'left_sidebar'  => T_('Left Sidebar'),
-							'right_sidebar' => T_('Right Sidebar'),
-						),
-					'type' => 'select',
+				
+				
+				'footer_layout_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Footer layout')
 				),
-				'colorbox' => array(
-					'label' => T_('Colorbox Image Zoom'),
-					'note' => T_('Check to enable javascript zooming on images (using the colorbox script)'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
+					'footer_text_color' => array(
+						'label' => T_('Footer text color'),
+						'note' => T_('Default value is #7b7b7b'),
+						'defaultvalue' => '#7b7b7b',
+						'type' => 'color',
+					),
+					'footer_background_color' => array(
+						'label' => T_('Footer background color'),
+						'note' => T_('Default value is #222222'),
+						'defaultvalue' => '#222222',
+						'type' => 'color',
+					),
+					'footer_link_color' => array(
+						'label' => T_('Footer link color'),
+						'note' => T_('Default value is #7b7b7b'),
+						'defaultvalue' => '#7b7b7b',
+						'type' => 'color',
+					),
+					'footer_link_color_hover' => array(
+						'label' => T_('Footer link color (hover)'),
+						'note' => T_('Default value is #7b7b7b'),
+						'defaultvalue' => '#7b7b7b',
+						'type' => 'color',
+					),
+				'footer_layout_end' => array(
+					'layout' => 'end_fieldset',
 				),
-				'colorbox_vote_post' => array(
-					'label' => T_('Voting on Post Images'),
-					'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
-				),
-				'colorbox_vote_post_numbers' => array(
-					'label' => T_('Display Votes'),
-					'note' => T_('Check to display number of likes and dislikes'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
-				),
-				'colorbox_vote_comment' => array(
-					'label' => T_('Voting on Comment Images'),
-					'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
-				),
-				'colorbox_vote_comment_numbers' => array(
-					'label' => T_('Display Votes'),
-					'note' => T_('Check to display number of likes and dislikes'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
-				),
-				'colorbox_vote_user' => array(
-					'label' => T_('Voting on User Images'),
-					'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
-				),
-				'colorbox_vote_user_numbers' => array(
-					'label' => T_('Display Votes'),
-					'note' => T_('Check to display number of likes and dislikes'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
-				),
-				'gender_colored' => array(
-					'label' => T_('Display gender'),
-					'note' => T_('Use colored usernames to differentiate men & women.'),
-					'defaultvalue' => 0,
-					'type' => 'checkbox',
-				),
-				'bubbletip' => array(
-					'label' => T_('Username bubble tips'),
-					'note' => T_('Check to enable bubble tips on usernames'),
-					'defaultvalue' => 0,
-					'type' => 'checkbox',
-				),
-				'autocomplete_usernames' => array(
-					'label' => T_('Autocomplete usernames'),
-					'note' => T_('Check to enable auto-completion of usernames entered after a "@" sign in the comment forms'),
-					'defaultvalue' => 1,
-					'type' => 'checkbox',
+
+
+				'custom_settings_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Custom settings')
+				),					
+					'colorbox' => array(
+						'label' => T_('Colorbox Image Zoom'),
+						'note' => T_('Check to enable javascript zooming on images (using the colorbox script)'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'colorbox_vote_post' => array(
+						'label' => T_('Voting on Post Images'),
+						'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'colorbox_vote_post_numbers' => array(
+						'label' => T_('Display Votes'),
+						'note' => T_('Check to display number of likes and dislikes'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'colorbox_vote_comment' => array(
+						'label' => T_('Voting on Comment Images'),
+						'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'colorbox_vote_comment_numbers' => array(
+						'label' => T_('Display Votes'),
+						'note' => T_('Check to display number of likes and dislikes'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'colorbox_vote_user' => array(
+						'label' => T_('Voting on User Images'),
+						'note' => T_('Check this to enable AJAX voting buttons in the colorbox zoom view'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'colorbox_vote_user_numbers' => array(
+						'label' => T_('Display Votes'),
+						'note' => T_('Check to display number of likes and dislikes'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+					'gender_colored' => array(
+						'label' => T_('Display gender'),
+						'note' => T_('Use colored usernames to differentiate men & women.'),
+						'defaultvalue' => 0,
+						'type' => 'checkbox',
+					),
+					'bubbletip' => array(
+						'label' => T_('Username bubble tips'),
+						'note' => T_('Check to enable bubble tips on usernames'),
+						'defaultvalue' => 0,
+						'type' => 'checkbox',
+					),
+					'autocomplete_usernames' => array(
+						'label' => T_('Autocomplete usernames'),
+						'note' => T_('Check to enable auto-completion of usernames entered after a "@" sign in the comment forms'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
+				'custom_settings_end' => array(
+					'layout' => 'end_fieldset',
 				),
 			), parent::get_param_definitions( $params ) );
 
@@ -183,33 +300,102 @@ class ark_Skin extends Skin
 				'disp_auto',               // Automatically include additional CSS and/or JS required by certain disps (replace with 'disp_off' to disable this)
 			) );
 
-		// Skin specific initializations:
-		// Add custom CSS:
-		$custom_css = '';
-			
-		// Only change post teaser images for "front" and "posts" 
-		if( in_array( $disp, array( 'front', 'posts' ) ) ) 
-		{
-			$post_t_images = $this->get_setting( 'post_teaser_image' );
-			switch( $post_t_images )
-			{
-				case 'regular': // When regular layout is chosen, nothing happense, since regular is default
-				$custom_css = '';
-				break;
+			// Skin specific initializations:
+			// Add custom CSS:
+			$custom_css = '';
 				
-				case 'thumbnail':// When thumbnail layout is chosen, apply these styles
-				$custom_css = '.evo_post_images{ 
-									float: left;
-									width: 200px;
-								}
-								.evo_post_images .evo_image_block {
-									margin: 0px 15px 15px 0px;
-								}';
-				break;
-			}
-	
-		};
+			// Only change post teaser image for "front" and "posts" 
+			if( in_array( $disp, array( 'front', 'posts' ) ) ) 
+			{
+				$post_t_images = $this->get_setting( 'post_teaser_image' );
+				switch( $post_t_images )
+				{
+					case 'regular': // When regular layout is chosen, nothing happense, since regular is default
+					$custom_css = '';
+					break;
+					
+					case 'thumbnail':// When thumbnail layout is chosen, apply these styles
+					$custom_css = '.evo_post_images{ float: left; width: 200px;'." }\n"; 
+					$custom_css .= '.evo_post_images .evo_image_block { margin: 0px 15px 15px 0px;'." }\n";
+					break;
+				}
 		
+			};
+		
+			// Site background color:
+			if( $color = $this->get_setting( 'site_background_color' ) )
+			{
+				$custom_css .= 'body { background-color: '.$color." }\n";
+			};
+			// Site title color:
+			if( $color = $this->get_setting( 'site_title_color' ) )
+			{
+				$custom_css .= 'body .headpicture .widget_core_coll_title h3 a { color: '.$color." }\n";
+			};	
+			// Site tagline color:
+			if( $color = $this->get_setting( 'site_tagline_color' ) )
+			{
+				$custom_css .= 'body .headpicture .widget_core_coll_tagline { color: '.$color." }\n";
+			};
+			// Post title link color:
+			if( $color = $this->get_setting( 'post_title_link_color' ) )
+			{
+				$custom_css .= '.evo_post h2 a { color: '.$color." }\n";
+			};	
+			// Post title link color (hover):
+			if( $color = $this->get_setting( 'post_title_link_color_hover' ) )
+			{
+				$custom_css .= '.evo_post h2 a:hover { color: '.$color." }\n";
+			};
+			// Post tags color and border-color:
+			if( $color = $this->get_setting( 'post_tags_color_and_border_color' ) )
+			{
+				$custom_css .= '.evo_post .tags a, .widget_core_coll_tag_cloud .tag_cloud a { color: '.$color.'; border: 1px solid '.$color." }\n";
+			};
+			// Post tags background color (on hover):
+			if( $color = $this->get_setting( 'post_tags_background_color_on_hover' ) )
+			{
+				$custom_css .= '.evo_post .tags a:hover,  .widget_core_coll_tag_cloud .tag_cloud a:hover { background-color: '.$color." }\n";
+			};
+			// Site text color:
+			if( $color = $this->get_setting( 'site_text_color' ) )
+			{
+				$custom_css .= 'body { color: '.$color." }\n";
+			};
+			// Site link color:
+			if( $color = $this->get_setting( 'site_link_color' ) )
+			{
+				$custom_css .= 'body a, #bCalendarToday { color: '.$color." }\n";
+				$custom_css .= '#bCalendarToday { border-color: '.$color." }\n";
+				
+			};
+			// Site link color hover:
+			if( $color = $this->get_setting( 'site_link_color_hover' ) )
+			{
+				$custom_css .= 'body a:hover { color: '.$color." }\n";
+			};
+
+
+			// Footer text color:
+			if( $color = $this->get_setting( 'footer_text_color' ) )
+			{
+				$custom_css .= 'footer { color: '.$color." }\n";
+			};
+			// Footer background color:
+			if( $color = $this->get_setting( 'footer_background_color' ) )
+			{
+				$custom_css .= 'footer { background-color: '.$color." }\n";
+			};
+			// Footer link color:
+			if( $color = $this->get_setting( 'footer_link_color' ) )
+			{
+				$custom_css .= 'footer a { color: '.$color." }\n";
+			};
+			// Footer link color (hover):
+			if( $color = $this->get_setting( 'footer_link_color_hover' ) )
+			{
+				$custom_css .= 'footer a:hover { color: '.$color." }\n";
+			};					
 		
 		
 		if( ! empty( $custom_css ) )
