@@ -213,13 +213,13 @@ echo '</div>';
 	<?php
 		// -------------------- PREV/NEXT PAGE LINKS (POST LIST MODE) --------------------
 		mainlist_page_links( array(
-				'block_start' => '<div class="center"><ul class="pagination">',
+				'block_start' => '<div class="center"><ul class="site_pagination">',
 				'block_end' => '</ul></div>',
 				'page_current_template' => '<span><b>$page_num$</b></span>',
 				'page_item_before' => '<li>',
 				'page_item_after' => '</li>',
-				'prev_text' => '&lt;&lt;',
-				'next_text' => '&gt;&gt;',
+				'prev_text' => '<i class="fa fa-long-arrow-left"></i>',
+				'next_text' => '<i class="fa fa-long-arrow-right"></i>',
 			) );
 		// ------------------------- END OF PREV/NEXT PAGE LINKS -------------------------
 	}
@@ -240,13 +240,13 @@ echo '</div>';
 					'block_end'           => '</ul>',
 				),
 				'pagination' => array(
-					'block_start'           => '<div class="center"><ul class="pagination">',
+					'block_start'           => '<div class="center"><ul class="site_pagination">',
 					'block_end'             => '</ul></div>',
 					'page_current_template' => '<span><b>$page_num$</b></span>',
 					'page_item_before'      => '<li>',
 					'page_item_after'       => '</li>',
-					'prev_text'             => '&lt;&lt;',
-					'next_text'             => '&gt;&gt;',
+					'prev_text'             => '<i class="fa fa-long-arrow-left"></i>',
+					'next_text'             => '<i class="fa fa-long-arrow-right"></i>',
 				),
 				// Form params for the forms below: login, register, lostpassword, activateinfo and msgform
 				'skin_form_before'      => '<div class="panel panel-default skin-form">'

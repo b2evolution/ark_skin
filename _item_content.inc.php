@@ -77,8 +77,8 @@ $params = array_merge( array(
 		'url_link_url_template'    => '$url$', // $url$ will be replaced with saved URL address
 		'url_link_target'          => '', // Link target attribute e.g. '_blank'
 
-		'before_more_link'         => '<p class="evo_post_more_link">',
-		'after_more_link'          => '</p>',
+		'before_more_link'         => '<span class="evo_post_more_link">',
+		'after_more_link'          => '</span>',
 		'more_link_text'           => 'Read more &rarr;',
 		'more_link_to'             => 'single#anchor', // Can be 'single' or 'single#anchor' which is permalink + "#more55" where 55 is item ID
 		'anchor_text'              => '<p class="evo_post_more_anchor">...</p>', // Text to display as the more anchor (once the more link has been clicked, '#' defaults to "Follow up:")

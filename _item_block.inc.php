@@ -99,6 +99,30 @@ echo '<div class="styled_content_block">';
 			'include_external'=> true,
 			'link_categories' => true,
 		) );
+		
+		echo '<span class="small comments">';
+			// Link to comments, trackbacks, etc.:
+			$Item->feedback_link( array(
+							'type' => 'comments',
+							'link_before' => '&bull; ',
+							'link_after' => '',
+							'link_text_zero' => '',
+							'link_text_one' => '1 Comment',
+							'link_text_more' => T_('%d Comments'),
+							'link_title' => '#',
+						) );
+
+			// Link to comments, trackbacks, etc.:
+			$Item->feedback_link( array(
+							'type' => 'trackbacks',
+							'link_before' => ' &bull; ',
+							'link_after' => '',
+							'link_text_zero' => '',
+							'link_text_one' => '1 Trackback',
+							'link_text_more' => T_('%d Trackbacks'),
+							'link_title' => '#',
+						) );
+		echo '</span>';
 
 		// Link for editing
 		$Item->edit_link( array(
@@ -127,32 +151,6 @@ echo '<div class="styled_content_block">';
 				'separator' => '',
 			) );
 	?>
-
-	<div class="small">
-		<?php
-			// Link to comments, trackbacks, etc.:
-			$Item->feedback_link( array(
-							'type' => 'comments',
-							'link_before' => '',
-							'link_after' => '',
-							'link_text_zero' => '#',
-							'link_text_one' => '#',
-							'link_text_more' => '#',
-							'link_title' => '#',
-						) );
-
-			// Link to comments, trackbacks, etc.:
-			$Item->feedback_link( array(
-							'type' => 'trackbacks',
-							'link_before' => ' &bull; ',
-							'link_after' => '',
-							'link_text_zero' => '#',
-							'link_text_one' => '#',
-							'link_text_more' => '#',
-							'link_title' => '#',
-						) );
-		?>
-	</div>
 
 	<?php
 		// ------------------ FEEDBACK (COMMENTS/TRACKBACKS) INCLUDED HERE ------------------

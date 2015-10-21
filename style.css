@@ -362,7 +362,6 @@ form.bComment input[type=file] {
 .evo_post {
   margin-bottom: 2em;
   padding-bottom: 2em;
-  border-bottom: 5px solid #eee;
 }
 .evo_post h2 a:hover {
   text-decoration: none;
@@ -382,6 +381,7 @@ form.bComment input[type=file] {
 }
 .evo_post .tags {
   margin-bottom: 5px;
+  margin-top: 10px;
 }
 .evo_post .tags a {
   padding: 2px 5px;
@@ -390,6 +390,13 @@ form.bComment input[type=file] {
 }
 .evo_post .tags a:hover {
   text-decoration: none;
+}
+.evo_post .evo_post__full_text p:last-of-type {
+  display: inline;
+}
+.evo_post .evo_post_more_link {
+  display: inline;
+  margin-left: 5px;
 }
 form#user_checkchanges.bComment {
   border: none;
@@ -508,8 +515,15 @@ div.bSideItem h4 {
 .form_footer_notes {
   margin-top: 0;
 }
-.pagination {
+.site_pagination {
   margin: 0;
+  list-style-type: none;
+}
+.site_pagination li {
+  display: inline;
+}
+.site_pagination li a {
+  padding: 6px 10px;
 }
 div.action_messages,
 div.log_container {

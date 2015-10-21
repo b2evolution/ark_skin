@@ -417,7 +417,7 @@ form.bComment {
 .evo_post {
 	margin-bottom: 2em;
 	padding-bottom: 2em;
-	border-bottom: 5px solid #eee;
+	
 	h2 a:hover {
 		text-decoration: none;
 		transition: 0.2s ease;
@@ -435,6 +435,7 @@ form.bComment {
 	}
 	.tags {
 		margin-bottom: 5px;
+		margin-top: 10px;
 		a {
 			padding: 2px 5px;
 			border-radius: 4px;
@@ -443,6 +444,13 @@ form.bComment {
 				text-decoration: none;
 			}
 		}
+	}
+	.evo_post__full_text p:last-of-type {
+		display: inline;
+	}
+	.evo_post_more_link {
+		display: inline;
+		margin-left: 5px;
 	}
 }
 form#user_checkchanges.bComment{
@@ -565,8 +573,15 @@ div.bSideItem {
 }
 
 // Pagination
-.pagination {
+.site_pagination {
 	margin: 0;
+	list-style-type: none;
+	li {
+		display: inline;
+		a {
+			padding: 6px 10px;
+		}
+	}
 }
 
 // Messages

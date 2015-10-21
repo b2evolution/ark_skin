@@ -113,14 +113,14 @@ class ark_Skin extends Skin
 					),
 					'site_link_color' => array(
 						'label' => T_('Site link color'),
-						'note' => T_('Default value is #5cbde0'),
-						'defaultvalue' => '#5cbde0',
+						'note' => T_('Default value is #5CBDE0'),
+						'defaultvalue' => '#5CBDE0',
 						'type' => 'color',
 					),
 					'site_link_color_hover' => array(
 						'label' => T_('Site link color (hover)'),
-						'note' => T_('Default value is #4db6dc'),
-						'defaultvalue' => '#4db6dc',
+						'note' => T_('Default value is #4DB6DC'),
+						'defaultvalue' => '#4DB6DC',
 						'type' => 'color',
 					),
 				'general_settings_end' => array(
@@ -165,6 +165,12 @@ class ark_Skin extends Skin
 						'label' => T_('Post tags background color (on hover)'),
 						'note' => T_('Default value is #EEF'),
 						'defaultvalue' => '#EEF',
+						'type' => 'color',
+					),
+					'post_bottom_border_color' => array(
+						'label' => T_('Post border bottom color'),
+						'note' => T_('Default value is #EEE'),
+						'defaultvalue' => '#EEE',
 						'type' => 'color',
 					),
 				'posts_layout_end' => array(
@@ -304,13 +310,14 @@ class ark_Skin extends Skin
 			// Add custom CSS:
 			$custom_css = '';
 				
+				
 			// Only change post teaser image for "front" and "posts" 
 			if( in_array( $disp, array( 'front', 'posts' ) ) ) 
 			{
 				$post_t_images = $this->get_setting( 'post_teaser_image' );
 				switch( $post_t_images )
 				{
-					case 'regular': // When regular layout is chosen, nothing happense, since regular is default
+					case 'regular': // When regular layout is chosen, nothing happens, since regular is default
 					$custom_css = '';
 					break;
 					
@@ -320,22 +327,6 @@ class ark_Skin extends Skin
 					break;
 				}
 		
-			};
-		
-			// Site background color:
-			if( $color = $this->get_setting( 'site_background_color' ) )
-			{
-				$custom_css .= 'body { background-color: '.$color." }\n";
-			};
-			// Site title color:
-			if( $color = $this->get_setting( 'site_title_color' ) )
-			{
-				$custom_css .= 'body .headpicture .widget_core_coll_title h3 a { color: '.$color." }\n";
-			};	
-			// Site tagline color:
-			if( $color = $this->get_setting( 'site_tagline_color' ) )
-			{
-				$custom_css .= 'body .headpicture .widget_core_coll_tagline { color: '.$color." }\n";
 			};
 			// Post title link color:
 			if( $color = $this->get_setting( 'post_title_link_color' ) )
@@ -357,6 +348,28 @@ class ark_Skin extends Skin
 			{
 				$custom_css .= '.evo_post .tags a:hover,  .widget_core_coll_tag_cloud .tag_cloud a:hover { background-color: '.$color." }\n";
 			};
+			// Post bottom border color:
+			if( $color = $this->get_setting( 'post_bottom_border_color' ) )
+			{
+				$custom_css .= '.evo_post { border-bottom: 5px solid '.$color." }\n";
+			};
+
+		
+			// Site background color:
+			if( $color = $this->get_setting( 'site_background_color' ) )
+			{
+				$custom_css .= 'body { background-color: '.$color." }\n";
+			};
+			// Site title color:
+			if( $color = $this->get_setting( 'site_title_color' ) )
+			{
+				$custom_css .= 'body .headpicture .widget_core_coll_title h3 a { color: '.$color." }\n";
+			};	
+			// Site tagline color:
+			if( $color = $this->get_setting( 'site_tagline_color' ) )
+			{
+				$custom_css .= 'body .headpicture .widget_core_coll_tagline { color: '.$color." }\n";
+			};
 			// Site text color:
 			if( $color = $this->get_setting( 'site_text_color' ) )
 			{
@@ -366,8 +379,7 @@ class ark_Skin extends Skin
 			if( $color = $this->get_setting( 'site_link_color' ) )
 			{
 				$custom_css .= 'body a, #bCalendarToday { color: '.$color." }\n";
-				$custom_css .= '#bCalendarToday { border-color: '.$color." }\n";
-				
+				$custom_css .= '#bCalendarToday { border: 1px solid '.$color." }\n";
 			};
 			// Site link color hover:
 			if( $color = $this->get_setting( 'site_link_color_hover' ) )
