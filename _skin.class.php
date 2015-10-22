@@ -111,6 +111,7 @@ class ark_Skin extends Skin
 						'defaultvalue' => '#333333',
 						'type' => 'color',
 					),
+					// General links color
 					'site_link_color' => array(
 						'label' => T_('Site link color'),
 						'note' => T_('Default value is #5CBDE0'),
@@ -124,6 +125,73 @@ class ark_Skin extends Skin
 						'type' => 'color',
 					),
 				'general_settings_end' => array(
+					'layout' => 'end_fieldset',
+				),
+
+					
+				'top_menu_settings_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Top menu settings')
+				),
+					'top_menu_hamburger' => array(
+						'label' => T_('Top menu hamburger layout'),
+						'note' => T_('Set the exact screen width in pixels (<b>NUMBERS ONLY</b>) to break menu layout to hamburger menu. For example if you write <b>768</b>, you will get hamburger menu until screen size reaches 768px width.'),
+						'defaultvalue' => '768',
+						'type' => 'text',
+						'size' => '7'
+					),
+					'top_menu_background_color' => array(
+						'label' => T_('Top menu background color'),
+						'note' => T_('Default value is #282828'),
+						'defaultvalue' => '#282828',
+						'type' => 'color',
+					),
+					'top_menu_links_color' => array(
+						'label' => T_('Top menu links color'),
+						'note' => T_('Default value is #999999'),
+						'defaultvalue' => '#999999',
+						'type' => 'color',
+					),
+					'top_menu_links_hover_color' => array(
+						'label' => T_('Top menu links hover color'),
+						'note' => T_('Default value is #FFFFFF'),
+						'defaultvalue' => '#FFFFFF',
+						'type' => 'color',
+					),
+					'top_menu_active_link_background_color' => array(
+						'label' => T_('Top menu active link background color'),
+						'note' => T_('Default value is #000'),
+						'defaultvalue' => '#000',
+						'type' => 'color',
+					),
+				'top_menu_settings_end' => array(
+					'layout' => 'end_fieldset',
+				),
+
+
+				'pagination_settings_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Site pagination settings')
+				),
+					'site_pagination_links_color' => array(
+						'label' => T_('Site pagination links color'),
+						'note' => T_('Default value is #FFFFFF'),
+						'defaultvalue' => '#FFFFFF',
+						'type' => 'color',
+					),
+					'site_pagination_links_background_color' => array(
+						'label' => T_('Site pagination links background color'),
+						'note' => T_('Default value is #DDD'),
+						'defaultvalue' => '#DDD',
+						'type' => 'color',
+					),
+					'site_pagination_active_link_background_color' => array(
+						'label' => T_('Site pagination active link background color'),
+						'note' => T_(' <b>NOTE:</b> Unactive pagination links have this background color on hover!'),
+						'defaultvalue' => '#333333',
+						'type' => 'color',
+					),
+				'pagination_settings_end' => array(
 					'layout' => 'end_fieldset',
 				),
 				
@@ -386,7 +454,48 @@ class ark_Skin extends Skin
 			{
 				$custom_css .= 'body a:hover { color: '.$color." }\n";
 			};
-
+			// Top menu hamburger layout:
+			if( $width = $this->get_setting( 'top_menu_hamburger' ) )
+			{
+				$custom_css .= '@media only screen and (max-width: '.$width."px) {
+					
+				}\n";	
+			};
+			// Top menu background color:
+			if( $color = $this->get_setting( 'top_menu_background_color' ) )
+			{
+				$custom_css .= '.top-menu { background-color: '.$color." }\n";
+			};
+			// Top menu links color:
+			if( $color = $this->get_setting( 'top_menu_links_color' ) )
+			{
+				$custom_css .= '.top-menu ul li a { color: '.$color." }\n";
+			};
+			// Top menu links hover color:
+			if( $color = $this->get_setting( 'top_menu_links_hover_color' ) )
+			{
+				$custom_css .= '.top-menu ul li a:hover { color: '.$color." }\n";
+			};			
+			// Top menu active link background color:
+			if( $color = $this->get_setting( 'top_menu_active_link_background_color' ) )
+			{
+				$custom_css .= '.top-menu ul li.active { background-color: '.$color." }\n";
+			};
+			// Site Pagination links color:
+			if( $color = $this->get_setting( 'site_pagination_links_color' ) )
+			{
+				$custom_css .= '.site_pagination li span, .site_pagination li a { color: '.$color." }\n";
+			};
+			// Site Pagination links color:
+			if( $color = $this->get_setting( 'site_pagination_links_background_color' ) )
+			{
+				$custom_css .= '.site_pagination li a { background-color: '.$color." }\n";
+			};
+			// Site Pagination active link color:
+			if( $color = $this->get_setting( 'site_pagination_active_link_background_color' ) )
+			{
+				$custom_css .= '.site_pagination li span, .site_pagination li a:hover { background-color: '.$color." }\n";
+			};
 
 			// Footer text color:
 			if( $color = $this->get_setting( 'footer_text_color' ) )

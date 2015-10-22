@@ -51,9 +51,7 @@ if( ! empty( $bg_image ) && file_exists( $media_path.$bg_image ) )
 echo '</div>';
 
 ?>
-
 <div class='top-menu'>
-
 	<div class="container">
 		<div class="row ">
 			<div class="col-md-8">
@@ -149,19 +147,17 @@ echo '</div>';
 
 	<?php
 	// Go Grab the featured post:
-	if( $Item = & get_featured_Item() )
-	{ // We have a featured/intro post to display:
-		// ---------------------- ITEM BLOCK INCLUDED HERE ------------------------
-		echo '<div class="panel panel-default"><div class="panel-body">';
-		skin_include( '_item_block.inc.php', array(
-				'feature_block' => true,
-				'content_mode' => 'auto',		// 'auto' will auto select depending on $disp-detail
-				'intro_mode'   => 'normal',	// Intro posts will be displayed in normal mode
-				'item_class'   => '',
-			) );
-		echo '</div></div>';
-		// ----------------------------END ITEM BLOCK  ----------------------------
-	}
+		if( ! in_array( $disp, array( 'single', 'page' ) ) && $Item = & get_featured_Item() )
+		{ // We have a featured/intro post to display:
+			// ---------------------- ITEM BLOCK INCLUDED HERE ------------------------
+			skin_include( '_item_block.inc.php', array(
+					'feature_block' => true,
+					'content_mode' => 'full', // We want regular "full" content, even in category browsing: i-e no excerpt or thumbnail
+					'intro_mode'   => 'normal',	// Intro posts will be displayed in normal mode
+					'item_class'   => ($Item->is_intro() ? 'well evo_intro_post' : 'well evo_featured_post'),
+				) );
+			// ----------------------------END ITEM BLOCK  ----------------------------
+		}
 	?>
 
 	<?php

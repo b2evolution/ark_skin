@@ -89,7 +89,6 @@ ul.pager{
 
 .top-menu{
 	box-shadow:none;
-	background:#282828;
 	text-shadow:0 0 0px #000;
 	ul{
 		list-style-type:none;
@@ -99,21 +98,15 @@ ul.pager{
 			float:left;
 			list-style-type:none;
 			a{
-				color:#999999;
 				text-shadow:0 0 0px #000;
 			}
 			a:hover{
 				text-decoration:none;
-				color:#fff;
 			}
 			:hover a{
-				color:#fff;
 				text-shadow:0 0 0px #000;
 				background:transparent;
 			}
-		}
-		li.active{
-				background:#000;
 		}
 		a.selected{
 			font-weight:400;
@@ -435,7 +428,7 @@ form.bComment {
 	}
 	.tags {
 		margin-bottom: 5px;
-		margin-top: 10px;
+		margin-top: 15px;
 		a {
 			padding: 2px 5px;
 			border-radius: 4px;
@@ -575,11 +568,16 @@ div.bSideItem {
 // Pagination
 .site_pagination {
 	margin: 0;
+	padding-top: 20px;
 	list-style-type: none;
 	li {
-		display: inline;
-		a {
+		display: inline-block;
+			margin-bottom: 16px;
+		a, span {
 			padding: 6px 10px;
+		}
+		a:hover {
+			text-decoration: none;
 		}
 	}
 }
@@ -630,7 +628,6 @@ footer{
 		}
 		.bCalendarRow {
 			.bCalendarEmptyCell, .bCalendarCell {
-				border-bottom: 1px solid #ddd;
 				padding: 10px 3px;
 			}
 			.bCalendarHeaderCell {
@@ -657,6 +654,13 @@ footer{
 		& .user.anonymous {
 			font-weight: normal !important;
 		}
+	}
+}
+
+// Widget title from panel-body spacing fix
+.evo_widget {
+	.panel-body {
+		padding-top: 0px;
 	}
 }
 

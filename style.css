@@ -83,7 +83,6 @@ ul.pager li.previous a:hover {
 }
 .top-menu {
   box-shadow: none;
-  background: #282828;
   text-shadow: 0 0 0px #000;
 }
 .top-menu ul {
@@ -96,20 +95,14 @@ ul.pager li.previous a:hover {
   list-style-type: none;
 }
 .top-menu ul li a {
-  color: #999999;
   text-shadow: 0 0 0px #000;
 }
 .top-menu ul li a:hover {
   text-decoration: none;
-  color: #fff;
 }
 .top-menu ul li :hover a {
-  color: #fff;
   text-shadow: 0 0 0px #000;
   background: transparent;
-}
-.top-menu ul li.active {
-  background: #000;
 }
 .top-menu ul a.selected {
   font-weight: 400;
@@ -381,7 +374,7 @@ form.bComment input[type=file] {
 }
 .evo_post .tags {
   margin-bottom: 5px;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 .evo_post .tags a {
   padding: 2px 5px;
@@ -517,13 +510,19 @@ div.bSideItem h4 {
 }
 .site_pagination {
   margin: 0;
+  padding-top: 20px;
   list-style-type: none;
 }
 .site_pagination li {
-  display: inline;
+  display: inline-block;
+  margin-bottom: 16px;
 }
-.site_pagination li a {
+.site_pagination li a,
+.site_pagination li span {
   padding: 6px 10px;
+}
+.site_pagination li a:hover {
+  text-decoration: none;
 }
 div.action_messages,
 div.log_container {
@@ -567,7 +566,6 @@ footer .panel-body li {
 }
 .widget_plugin_evo_Calr .bCalendarTable .bCalendarRow .bCalendarEmptyCell,
 .widget_plugin_evo_Calr .bCalendarTable .bCalendarRow .bCalendarCell {
-  border-bottom: 1px solid #ddd;
   padding: 10px 3px;
 }
 .widget_plugin_evo_Calr .bCalendarTable .bCalendarRow .bCalendarHeaderCell {
@@ -589,6 +587,9 @@ footer .panel-body li {
 }
 .widget_core_coll_comment_list ul li a .user.anonymous {
   font-weight: normal !important;
+}
+.evo_widget .panel-body {
+  padding-top: 0px;
 }
 .widget_core_coll_media_index .widget_flow_blocks .loadimg {
   border-radius: 0px;
