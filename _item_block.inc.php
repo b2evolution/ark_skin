@@ -65,7 +65,7 @@ echo '<div class="styled_content_block">';
 	if( ! $Item->is_intro() )
 	{ // Don't display these data for intro posts
 	?>
-	<div class="small text-muted">
+	<div class="small">
 	<?php
 		if( $Item->status != 'published' )
 		{
@@ -100,7 +100,7 @@ echo '<div class="styled_content_block">';
 			'link_categories' => true,
 		) );
 		
-		echo '<span class="small comments">';
+		echo '<span class="comments">';
 			// Link to comments, trackbacks, etc.:
 			$Item->feedback_link( array(
 							'type' => 'comments',
@@ -126,7 +126,7 @@ echo '<div class="styled_content_block">';
 
 		// Link for editing
 		$Item->edit_link( array(
-			'before'    => '&nbsp;',
+			'before'    => '&nbsp;&nbsp;',
 			'after'     => '',
 		) );
 	?>
@@ -155,8 +155,8 @@ echo '<div class="styled_content_block">';
 	<?php
 		// ------------------ FEEDBACK (COMMENTS/TRACKBACKS) INCLUDED HERE ------------------
 		skin_include( '_item_feedback.inc.php', array_merge( array(
-				'before_section_title' => '<div class="clearfix"></div><h4>',
-				'after_section_title'  => '</h4>',
+				'before_section_title' => '<div class="clearfix"></div><h3><i class="fa fa-comments"></i> ',
+				'after_section_title'  => ' for "'.$Item->title.'"</h3>',
 				'author_link_text' => $params['author_link_text'],
 			), $params ) );
 		// Note: You can customize the default item feedback by copying the generic

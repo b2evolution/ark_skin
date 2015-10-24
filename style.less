@@ -94,7 +94,7 @@ ul.pager{
 		list-style-type:none;
 		margin:0;
 		li{
-			padding:10px;
+			padding:11px;
 			float:left;
 			list-style-type:none;
 			a{
@@ -418,11 +418,10 @@ form.bComment {
 	.bTitle {
 		margin: 0;
 	}
-	.small.text-muted {
+	.small {
 		margin: 4px 0 10px;
 		a, a .glyphicon {
 			font-family: "Open Sans",sans-serif;
-			font-size: 13px;
 			font-weight: normal;
 		}
 	}
@@ -703,5 +702,62 @@ footer{
 		input.search_submit {
 			display: none;
 		}
+	}
+}
+
+// Remove background color from panel-headings
+.styled_content_block .panel-heading a:hover, #styled_content_block .panel-heading a:hover {
+	background-color:transparent;
+}
+
+// blockquote style
+blockquote {
+	border-left: 5px solid #ddd;
+	font-size: 18px;
+}
+
+// Comments display fix
+.evo_comment {
+	padding: 20px;
+	border-radius: 5px;
+	.evo_comment_avatar {
+		float: left;
+		margin: 0px 15px 15px 0px;
+	}
+	.panel-heading {
+		a span.user, a.user {
+			font-weight: normal !important;
+			font-size: 18px;
+		}
+		.text-muted.small {
+			font-style: italic;
+		}
+	}
+	& > p {
+		padding-left: 79px;
+	}
+	.action_buttons {
+		display: block;
+		padding-bottom: 15px;
+	}
+}
+
+// Comment form styles
+.evo_post .evo_form {
+	label {
+		font-weight: bold;
+		font-size: 16px;
+	}
+	.form_current_user a {
+		font-size: 16px;
+	}
+	.textcomplete-wrapper textarea {
+		border-radius: 8px;
+		box-shadow: none !important;
+		resize: vertical;
+	}
+	.help-inline {
+		float: right;
+		margin-top: -22px;
 	}
 }

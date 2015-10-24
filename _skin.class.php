@@ -223,6 +223,62 @@ class ark_Skin extends Skin
 						'defaultvalue' => '#000000',
 						'type' => 'color',
 					),
+				'posts_layout_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
+				
+				'post_preview_comment_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Post/Preview comment buttons layout')
+				),
+					// Post button
+					'post_button_border_color' => array(
+						'label' => T_('Post button border color'),
+						'note' => T_('Default value is #269ABC'),
+						'defaultvalue' => '#269ABC',
+						'type' => 'color',
+					),
+					'post_button_background_color' => array(
+						'label' => T_('Post button background color'),
+						'note' => T_('Default value is #31B0D5'),
+						'defaultvalue' => '#31B0D5',
+						'type' => 'color',
+					),
+					'post_button_text_color' => array(
+						'label' => T_('Post button text color'),
+						'note' => T_('Default value is #FFF'),
+						'defaultvalue' => '#FFF',
+						'type' => 'color',
+					),
+					// Preview button
+					'preview_button_border_color' => array(
+						'label' => T_('Post button border color'),
+						'note' => T_('Default value is #204D74'),
+						'defaultvalue' => '#204D74',
+						'type' => 'color',
+					),
+					'preview_button_background_color' => array(
+						'label' => T_('Post button background color'),
+						'note' => T_('Default value is #286090'),
+						'defaultvalue' => '#286090',
+						'type' => 'color',
+					),
+					'preview_button_text_color' => array(
+						'label' => T_('Post button text color'),
+						'note' => T_('Default value is #FFF'),
+						'defaultvalue' => '#FFF',
+						'type' => 'color',
+					),
+				'post_preview_comment_end' => array(
+					'layout' => 'end_fieldset',
+				),				
+				
+				
+				'tags_layout_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Tags layout')
+				),
 					'post_tags_color_and_border_color' => array(
 						'label' => T_('Post tags color and border color'),
 						'note' => T_('Default value is #888888'),
@@ -241,7 +297,28 @@ class ark_Skin extends Skin
 						'defaultvalue' => '#EEE',
 						'type' => 'color',
 					),
-				'posts_layout_end' => array(
+				'tags_layout_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
+				
+				'comments_layout_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Comments layout')
+				),
+					'comments_panel_background_color' => array(
+						'label' => T_('Comments panel color'),
+						'note' => T_('Default value is #EEE'),
+						'defaultvalue' => '#EEE',
+						'type' => 'color',
+					),
+					'comments_border_color' => array(
+						'label' => T_('Comments border color'),
+						'note' => T_('Default value is #DDD'),
+						'defaultvalue' => '#DDD',
+						'type' => 'color',
+					),
+				'comments_layout_end' => array(
 					'layout' => 'end_fieldset',
 				),
 				
@@ -396,37 +473,12 @@ class ark_Skin extends Skin
 				}
 		
 			};
-			// Post title link color:
-			if( $color = $this->get_setting( 'post_title_link_color' ) )
-			{
-				$custom_css .= '.evo_post h2 a { color: '.$color." }\n";
-			};	
-			// Post title link color (hover):
-			if( $color = $this->get_setting( 'post_title_link_color_hover' ) )
-			{
-				$custom_css .= '.evo_post h2 a:hover { color: '.$color." }\n";
-			};
-			// Post tags color and border-color:
-			if( $color = $this->get_setting( 'post_tags_color_and_border_color' ) )
-			{
-				$custom_css .= '.evo_post .tags a, .widget_core_coll_tag_cloud .tag_cloud a { color: '.$color.'; border: 1px solid '.$color." }\n";
-			};
-			// Post tags background color (on hover):
-			if( $color = $this->get_setting( 'post_tags_background_color_on_hover' ) )
-			{
-				$custom_css .= '.evo_post .tags a:hover,  .widget_core_coll_tag_cloud .tag_cloud a:hover { background-color: '.$color." }\n";
-			};
-			// Post bottom border color:
-			if( $color = $this->get_setting( 'post_bottom_border_color' ) )
-			{
-				$custom_css .= '.evo_post { border-bottom: 5px solid '.$color." }\n";
-			};
 
 		
 			// Site background color:
 			if( $color = $this->get_setting( 'site_background_color' ) )
 			{
-				$custom_css .= 'body { background-color: '.$color." }\n";
+				$custom_css .= 'body, .evo_container .panel .panel-heading, .evo_container .panel .panel-body, .evo_container .panel, .styled_content_block .panel, #styled_content_block .panel { background-color: '.$color." }\n";
 			};
 			// Site title color:
 			if( $color = $this->get_setting( 'site_title_color' ) )
@@ -441,7 +493,7 @@ class ark_Skin extends Skin
 			// Site text color:
 			if( $color = $this->get_setting( 'site_text_color' ) )
 			{
-				$custom_css .= 'body { color: '.$color." }\n";
+				$custom_css .= 'body, .widget .panel-heading h4, .evo_widget .panel-heading h4, .styled_content_block .panel-heading, .bCalendarRow .bCalendarHeaderCell { color: '.$color." }\n";
 			};
 			// Site link color:
 			if( $color = $this->get_setting( 'site_link_color' ) )
@@ -481,6 +533,47 @@ class ark_Skin extends Skin
 			{
 				$custom_css .= '.top-menu ul li.active { background-color: '.$color." }\n";
 			};
+			
+			
+						// Post title link color:
+			if( $color = $this->get_setting( 'post_title_link_color' ) )
+			{
+				$custom_css .= '.evo_post h2 a { color: '.$color." }\n";
+			};	
+			// Post title link color (hover):
+			if( $color = $this->get_setting( 'post_title_link_color_hover' ) )
+			{
+				$custom_css .= '.evo_post h2 a:hover { color: '.$color." }\n";
+			};
+			// Post tags color and border-color:
+			if( $color = $this->get_setting( 'post_tags_color_and_border_color' ) )
+			{
+				$custom_css .= '.evo_post .tags a, .widget_core_coll_tag_cloud .tag_cloud a { color: '.$color.'; border: 1px solid '.$color." }\n";
+			};
+			// Post tags background color (on hover):
+			if( $color = $this->get_setting( 'post_tags_background_color_on_hover' ) )
+			{
+				$custom_css .= '.evo_post .tags a:hover,  .widget_core_coll_tag_cloud .tag_cloud a:hover { background-color: '.$color." }\n";
+			};
+			// Post bottom border color:
+			if( $color = $this->get_setting( 'post_bottom_border_color' ) )
+			{
+				$custom_css .= '.evo_post { border-bottom: 5px solid '.$color." }\n";
+			};
+			
+			
+			// Comments background color:
+			if( $color = $this->get_setting( 'comments_panel_background_color' ) )
+			{
+				$custom_css .= '.evo_comment { background-color: '.$color." !important }\n";
+			};
+			// Comments border color:
+			if( $color = $this->get_setting( 'comments_border_color' ) )
+			{
+				$custom_css .= '.evo_comment { border: 10px solid '.$color." }\n";
+			};
+
+						
 			// Site Pagination links color:
 			if( $color = $this->get_setting( 'site_pagination_links_color' ) )
 			{
@@ -497,6 +590,7 @@ class ark_Skin extends Skin
 				$custom_css .= '.site_pagination li span, .site_pagination li a:hover { background-color: '.$color." }\n";
 			};
 
+			
 			// Footer text color:
 			if( $color = $this->get_setting( 'footer_text_color' ) )
 			{
@@ -516,7 +610,39 @@ class ark_Skin extends Skin
 			if( $color = $this->get_setting( 'footer_link_color_hover' ) )
 			{
 				$custom_css .= 'footer a:hover { color: '.$color." }\n";
-			};					
+			};
+
+
+			// Post button border color:
+			if( $color = $this->get_setting( 'post_button_border_color' ) )
+			{
+				$custom_css .= '.styled_content_block.comment_form .control-buttons .submit { border: 1px solid '.$color." }\n";
+			};
+			// Post button background color:
+			if( $color = $this->get_setting( 'post_button_background_color' ) )
+			{
+				$custom_css .= '.styled_content_block .comment_form .control-buttons .submit { background-color: '.$color." }\n";
+			};
+			// Post button text color:
+			if( $color = $this->get_setting( 'post_button_text_color' ) )
+			{
+				$custom_css .= '.styled_content_block .comment_form .control-buttons .submit { color: '.$color." }\n";
+			};
+			// Preview button border color:
+			if( $color = $this->get_setting( 'preview_button_border_color' ) )
+			{
+				$custom_css .= '.styled_content_block .comment_form .control-buttons .preview { border: 1px solid '.$color." }\n";
+			};
+			// Preview button background color:
+			if( $color = $this->get_setting( 'preview_button_background_color' ) )
+			{
+				$custom_css .= '.styled_content_block .comment_form .control-buttons .preview { background-color: '.$color." }\n";
+			};
+			// Preview button text color:
+			if( $color = $this->get_setting( 'preview_button_text_color' ) )
+			{
+				$custom_css .= '.styled_content_block .comment_form .control-buttons .submit { color: '.$color." }\n";
+			};			
 		
 		
 		if( ! empty( $custom_css ) )
@@ -690,15 +816,15 @@ class ark_Skin extends Skin
 					'fieldset_end'   => '</div></div></fieldset></div>'."\n",
 					'fieldstart'     => '<div class="form-group" $ID$>'."\n",
 					'fieldend'       => "</div>\n\n",
-					'labelclass'     => 'control-label col-sm-3',
+					'labelclass'     => '',
 					'labelstart'     => '',
 					'labelend'       => "\n",
-					'labelempty'     => '<label class="control-label col-sm-3"></label>',
-					'inputstart'     => '<div class="controls col-sm-9">',
-					'inputend'       => "</div>\n",
-					'infostart'      => '<div class="controls col-sm-9"><div class="form-control-static">',
-					'infoend'        => "</div></div>\n",
-					'buttonsstart'   => '<div class="form-group"><div class="control-buttons col-sm-offset-3 col-sm-9">',
+					'labelempty'     => '',
+					'inputstart'     => '',
+					'inputend'       => "\n",
+					'infostart'      => '',
+					'infoend'        => "\n",
+					'buttonsstart'   => '<div class="form-group"><div class="control-buttons">',
 					'buttonsend'     => "</div></div>\n\n",
 					'customstart'    => '<div class="custom_content">',
 					'customend'      => "</div>\n",

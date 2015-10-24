@@ -175,16 +175,16 @@ echo '</div>';
 			skin_include( '_item_block.inc.php', array(
 					'content_mode' => 'auto',		// 'auto' will auto select depending on $disp-detail
 					// Comment template
-					'comment_start'         => '<div class="panel panel-default">',
-					'comment_end'           => '</div>',
+					'comment_start'         => '<article class="evo_comment panel panel-default"><div class="panel-body">',
+					'comment_end'           => '</div></article>',
 					'comment_title_before'  => '<div class="panel-heading">',
 					'comment_title_after'   => '',
 					'comment_rating_before' => '<div class="comment_rating floatright">',
 					'comment_rating_after'  => '</div>',
-					'comment_text_before'   => '</div><div class="panel-body">',
+					'comment_text_before'   => '</div>',
 					'comment_text_after'    => '',
 					'comment_info_before'   => '<div class="bCommentSmallPrint">',
-					'comment_info_after'    => '</div></div>',
+					'comment_info_after'    => '</div>',
 					'preview_start'         => '<div class="panel panel-warning" id="comment_preview">',
 					'preview_end'           => '</div>',
 					'comment_attach_info'   => get_icon( 'help', 'imgtag', array(
@@ -413,7 +413,6 @@ echo '</div>';
 		</div>
 	<?php } ?>
 	</div>
-
 </div>
 
 <!-- =================================== START OF FOOTER =================================== -->

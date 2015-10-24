@@ -90,7 +90,7 @@ ul.pager li.previous a:hover {
   margin: 0;
 }
 .top-menu ul li {
-  padding: 10px;
+  padding: 11px;
   float: left;
   list-style-type: none;
 }
@@ -363,13 +363,12 @@ form.bComment input[type=file] {
 .evo_post .bTitle {
   margin: 0;
 }
-.evo_post .small.text-muted {
+.evo_post .small {
   margin: 4px 0 10px;
 }
-.evo_post .small.text-muted a,
-.evo_post .small.text-muted a .glyphicon {
+.evo_post .small a,
+.evo_post .small a .glyphicon {
   font-family: "Open Sans", sans-serif;
-  font-size: 13px;
   font-weight: normal;
 }
 .evo_post .tags {
@@ -620,4 +619,51 @@ footer .panel-body li {
 }
 .sidebar .compact_search_form input.search_submit {
   display: none;
+}
+.styled_content_block .panel-heading a:hover,
+#styled_content_block .panel-heading a:hover {
+  background-color: transparent;
+}
+blockquote {
+  border-left: 5px solid #ddd;
+  font-size: 18px;
+}
+.evo_comment {
+  padding: 20px;
+  border-radius: 5px;
+}
+.evo_comment .evo_comment_avatar {
+  float: left;
+  margin: 0px 15px 15px 0px;
+}
+.evo_comment .panel-heading a span.user,
+.evo_comment .panel-heading a.user {
+  font-weight: normal !important;
+  font-size: 18px;
+}
+.evo_comment .panel-heading .text-muted.small {
+  font-style: italic;
+}
+.evo_comment > p {
+  padding-left: 79px;
+}
+.evo_comment .action_buttons {
+  display: block;
+  padding-bottom: 15px;
+}
+.evo_post .evo_form label {
+  font-weight: bold;
+  font-size: 16px;
+}
+.evo_post .evo_form .form_current_user a {
+  font-size: 16px;
+}
+.evo_post .evo_form .textcomplete-wrapper textarea {
+  border-radius: 8px;
+  box-shadow: none !important;
+  resize: vertical;
+}
+.evo_post .evo_form .help-inline {
+  float: right;
+  margin-top: -22px;
 }

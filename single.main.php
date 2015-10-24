@@ -53,7 +53,6 @@ echo '</div>';
 ?>
 
 <div class='top-menu'>
-
 	<div class="container">
 		<div class="row ">
 			<div class="col-md-8">
@@ -136,28 +135,22 @@ echo '</div>';
 
 	<?php
 	// Go Grab the featured post:
-	if( $Item = & get_featured_Item() )
-	{ // We have a featured/intro post to display:
-		// ---------------------- ITEM BLOCK INCLUDED HERE ------------------------
-		echo '<div class="panel panel-default"><div class="panel-body">';
-		skin_include( '_item_block.inc.php', array(
-				'feature_block' => true,
-				'content_mode' => 'auto',		// 'auto' will auto select depending on $disp-detail
-				'intro_mode'   => 'normal',	// Intro posts will be displayed in normal mode
-				'item_class'   => '',
-			) );
-		echo '</div></div>';
-		// ----------------------------END ITEM BLOCK  ----------------------------
-	}
+		if( ! in_array( $disp, array( 'single', 'page' ) ) && $Item = & get_featured_Item() )
+		{ // We have a featured/intro post to display:
+			// ---------------------- ITEM BLOCK INCLUDED HERE ------------------------
+			skin_include( '_item_block.inc.php', array(
+					'feature_block' => true,
+					'content_mode' => 'full', // We want regular "full" content, even in category browsing: i-e no excerpt or thumbnail
+					'intro_mode'   => 'normal',	// Intro posts will be displayed in normal mode
+					'item_class'   => ($Item->is_intro() ? 'well evo_intro_post' : 'well evo_featured_post'),
+				) );
+			// ----------------------------END ITEM BLOCK  ----------------------------
+		}
 	?>
-
 
 	<?php
 	if( $disp != 'front' && $disp != 'download' && $disp != 'search' )
 	{
-		
-		
-		
 		
 		// --------------------------------- START OF POSTS -------------------------------------
 		// Display message if no post:
@@ -170,16 +163,16 @@ echo '</div>';
 			skin_include( '_item_block.inc.php', array(
 					'content_mode' => 'auto',		// 'auto' will auto select depending on $disp-detail
 					// Comment template
-					'comment_start'         => '<div class="panel panel-default">',
-					'comment_end'           => '</div>',
+					'comment_start'         => '<article class="evo_comment panel panel-default">',
+					'comment_end'           => '</article>',
 					'comment_title_before'  => '<div class="panel-heading">',
 					'comment_title_after'   => '',
 					'comment_rating_before' => '<div class="comment_rating floatright">',
 					'comment_rating_after'  => '</div>',
-					'comment_text_before'   => '</div><div class="panel-body">',
+					'comment_text_before'   => '</div>',
 					'comment_text_after'    => '',
-					'comment_info_before'   => '<div class="bCommentSmallPrint">',
-					'comment_info_after'    => '</div></div>',
+					'comment_info_before'   => '<div class="text-muted small">',
+					'comment_info_after'    => '</div>',
 					'preview_start'         => '<div class="panel panel-warning" id="comment_preview">',
 					'preview_end'           => '</div>',
 					'comment_attach_info'   => get_icon( 'help', 'imgtag', array(
@@ -201,8 +194,7 @@ echo '</div>';
 		} // ---------------------------------- END OF POSTS ------------------------------------
 		
 	}
-	
-		// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
+	// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
 		item_prevnext_links( array(
 				'block_start' => '<ul class="pager">',
 				'prev_start'  => '<li class="previous">',
@@ -214,7 +206,6 @@ echo '</div>';
 				'next_text'   => '&#8594;',
 			) );
 		// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
-	
 	?>
 	</div>
 
@@ -224,42 +215,84 @@ echo '</div>';
 	if( $Skin->get_setting( 'layout' ) != 'single_column' )
 	{
 	?>
-		<div class="col-md-4"<?php echo ( $Skin->get_setting( 'layout' ) == 'left_sidebar' ? ' style="float:left;"' : '' ); ?>>
-	<?php
-		// ------------------------- "Sidebar" CONTAINER EMBEDDED HERE --------------------------
-		// Display container contents:
-		skin_container( NT_('Sidebar'), array(
-				// The following (optional) params will be used as defaults for widgets included in this container:
-				// This will enclose each widget in a block:
-				'block_start' => '<div class="panel panel-default widget $wi_class$">',
-				'block_end' => '</div>',
-				// This will enclose the title of each widget:
-				'block_title_start' => '<div class="panel-heading"><h4 class="panel-title">',
-				'block_title_end' => '</h4></div>',
-				// This will enclose the body of each widget:
-				'block_body_start' => '<div class="panel-body">',
-				'block_body_end' => '</div>',
-				// If a widget displays a list, this will enclose that list:
-				'list_start' => '<ul>',
-				'list_end' => '</ul>',
-				// This will enclose each item in a list:
-				'item_start' => '<li>',
-				'item_end' => '</li>',
-				// This will enclose sub-lists in a list:
-				'group_start' => '<ul>',
-				'group_end' => '</ul>',
-				// This will enclose (foot)notes:
-				'notes_start' => '<div class="notes">',
-				'notes_end' => '</div>',
-				// Widget 'Search form':
-				'search_class'         => 'compact_search_form',
-				'search_input_before'  => '<div class="input-group">',
-				'search_input_after'   => '',
-				'search_submit_before' => '<span class="input-group-btn">',
-				'search_submit_after'  => '</span></div>',
-			) );
-		// ----------------------------- END OF "Sidebar" CONTAINER -----------------------------
-	?>
+	<div class="col-md-4 sidebar"<?php echo ( $Skin->get_setting( 'layout' ) == 'left_sidebar' ? ' style="float:left;"' : '' ); ?>>
+	<!-- =================================== START OF SIDEBAR =================================== -->
+		<div class="evo_container evo_container__sidebar">
+		<?php
+			// ------------------------- "Sidebar" CONTAINER EMBEDDED HERE --------------------------
+			// Display container contents:
+			skin_container( NT_('Sidebar'), array(
+					// The following (optional) params will be used as defaults for widgets included in this container:
+					// This will enclose each widget in a block:
+					'block_start' => '<div class="panel panel-default widget $wi_class$">',
+					'block_end' => '</div>',
+					// This will enclose the title of each widget:
+					'block_title_start' => '<div class="panel-heading"><h4 class="panel-title">',
+					'block_title_end' => '</h4></div>',
+					// This will enclose the body of each widget:
+					'block_body_start' => '<div class="panel-body">',
+					'block_body_end' => '</div>',
+					// If a widget displays a list, this will enclose that list:
+					'list_start' => '<ul>',
+					'list_end' => '</ul>',
+					// This will enclose each item in a list:
+					'item_start' => '<li>',
+					'item_end' => '</li>',
+					// This will enclose sub-lists in a list:
+					'group_start' => '<ul>',
+					'group_end' => '</ul>',
+					// This will enclose (foot)notes:
+					'notes_start' => '<div class="notes">',
+					'notes_end' => '</div>',
+					// Widget 'Search form':
+					'search_class'         => 'compact_search_form',
+					'search_input_before'  => '',
+					'search_input_after'   => '',
+					'search_submit_before' => '',
+					'search_submit_after'  => '',
+					'placeholder' => 'ddd',
+				) );
+			// ----------------------------- END OF "Sidebar" CONTAINER -----------------------------
+		?>
+		</div>
+		
+		<div class="evo_container evo_container__sidebar2">
+		<?php
+			// ------------------------- "Sidebar" CONTAINER EMBEDDED HERE --------------------------
+			// Display container contents:
+			skin_container( NT_('Sidebar 2'), array(
+					// The following (optional) params will be used as defaults for widgets included in this container:
+					// This will enclose each widget in a block:
+					'block_start' => '<div class="panel panel-default evo_widget $wi_class$">',
+					'block_end' => '</div>',
+					// This will enclose the title of each widget:
+					'block_title_start' => '<div class="panel-heading"><h4 class="panel-title">',
+					'block_title_end' => '</h4></div>',
+					// This will enclose the body of each widget:
+					'block_body_start' => '<div class="panel-body">',
+					'block_body_end' => '</div>',
+					// If a widget displays a list, this will enclose that list:
+					'list_start' => '<ul>',
+					'list_end' => '</ul>',
+					// This will enclose each item in a list:
+					'item_start' => '<li>',
+					'item_end' => '</li>',
+					// This will enclose sub-lists in a list:
+					'group_start' => '<ul>',
+					'group_end' => '</ul>',
+					// This will enclose (foot)notes:
+					'notes_start' => '<div class="notes">',
+					'notes_end' => '</div>',
+					// Widget 'Search form':
+					'search_class'         => 'compact_search_form',
+					'search_input_before'  => '<div class="input-group">',
+					'search_input_after'   => '',
+					'search_submit_before' => '<span class="input-group-btn">',
+					'search_submit_after'  => '</span></div>',
+				) );
+			// ----------------------------- END OF "Sidebar" CONTAINER -----------------------------
+		?>
+		</div>
 		</div>
 	<?php } ?>
 	</div>
