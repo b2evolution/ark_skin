@@ -23,6 +23,8 @@ $params = array_merge( array(
 		'comment_title_after'   => '</h4></div>',
 		'comment_avatar_before' => '<span class="evo_comment_avatar">',
 		'comment_avatar_after'  => '</span>',
+		'comment_avatar_before_comments' => '',
+		'comment_avatar_after_comments'  => '',
 		'comment_rating_before' => '<div class="evo_comment_rating">',
 		'comment_rating_after'  => '</div>',
 		'comment_text_before'   => '<div class="evo_comment_text">',
@@ -52,13 +54,13 @@ $Comment->get_Item();
 $Comment->anchor();
 echo $params['comment_start'];
 
-
-
-// Avatar:
+// Avatar position if disp is other than "comments":
+if( $disp != 'comments' ) 
+{
 echo $params['comment_avatar_before'];
 $Comment->avatar();
 echo $params['comment_avatar_after'];
-
+}
 
 // Post title
 if( $params['comment_post_display'] )
@@ -69,6 +71,14 @@ if( $params['comment_post_display'] )
 			'link_type' => 'permalink',
 		) );
 	echo $params['comment_post_after'];
+}
+
+// Avatar position if disp is "comments":
+if( $disp == 'comments' ) 
+{
+echo $params['comment_avatar_before_comments'];
+$Comment->avatar();
+echo $params['comment_avatar_after_comments'];
 }
 
 // Title

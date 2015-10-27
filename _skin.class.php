@@ -185,7 +185,7 @@ class ark_Skin extends Skin
 						'defaultvalue' => '#DDD',
 						'type' => 'color',
 					),
-					'site_pagination_active_link_background_color' => array(
+					'site_pagination_active_bg_color' => array(
 						'label' => T_('Site pagination active link background color'),
 						'note' => T_(' <b>NOTE:</b> Unactive pagination links have this background color on hover!'),
 						'defaultvalue' => '#333333',
@@ -253,19 +253,19 @@ class ark_Skin extends Skin
 					),
 					// Preview button
 					'preview_button_border_color' => array(
-						'label' => T_('Post button border color'),
+						'label' => T_('Preview button border color'),
 						'note' => T_('Default value is #204D74'),
 						'defaultvalue' => '#204D74',
 						'type' => 'color',
 					),
 					'preview_button_background_color' => array(
-						'label' => T_('Post button background color'),
+						'label' => T_('Preview button background color'),
 						'note' => T_('Default value is #286090'),
 						'defaultvalue' => '#286090',
 						'type' => 'color',
 					),
 					'preview_button_text_color' => array(
-						'label' => T_('Post button text color'),
+						'label' => T_('Preview button text color'),
 						'note' => T_('Default value is #FFF'),
 						'defaultvalue' => '#FFF',
 						'type' => 'color',
@@ -585,7 +585,7 @@ class ark_Skin extends Skin
 				$custom_css .= '.site_pagination li a { background-color: '.$color." }\n";
 			};
 			// Site Pagination active link color:
-			if( $color = $this->get_setting( 'site_pagination_active_link_background_color' ) )
+			if( $color = $this->get_setting( 'site_pagination_active_bg_color' ) )
 			{
 				$custom_css .= '.site_pagination li span, .site_pagination li a:hover { background-color: '.$color." }\n";
 			};
@@ -616,7 +616,7 @@ class ark_Skin extends Skin
 			// Post button border color:
 			if( $color = $this->get_setting( 'post_button_border_color' ) )
 			{
-				$custom_css .= '.styled_content_block.comment_form .control-buttons .submit { border: 1px solid '.$color." }\n";
+				$custom_css .= '.styled_content_block .comment_form .control-buttons .submit { border: 1px solid '.$color." }\n";
 			};
 			// Post button background color:
 			if( $color = $this->get_setting( 'post_button_background_color' ) )

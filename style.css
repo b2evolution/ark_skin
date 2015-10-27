@@ -90,11 +90,12 @@ ul.pager li.previous a:hover {
   margin: 0;
 }
 .top-menu ul li {
-  padding: 11px;
+  padding: 14px 0px;
   float: left;
   list-style-type: none;
 }
 .top-menu ul li a {
+  padding: 14px 13px;
   text-shadow: 0 0 0px #000;
 }
 .top-menu ul li a:hover {
@@ -587,6 +588,9 @@ footer .panel-body li {
 .widget_core_coll_comment_list ul li a .user.anonymous {
   font-weight: normal !important;
 }
+.widget_core_coll_category_list li {
+  list-style: inherit;
+}
 .evo_widget .panel-body {
   padding-top: 0px;
 }
@@ -632,9 +636,11 @@ blockquote {
   padding: 20px;
   border-radius: 5px;
 }
-.evo_comment .evo_comment_avatar {
+.evo_comment .evo_comment_avatar,
+.evo_comment .bCommentAvatar {
   float: left;
   margin: 0px 15px 15px 0px;
+  border-radius: 0px !important;
 }
 .evo_comment .panel-heading a span.user,
 .evo_comment .panel-heading a.user {
@@ -650,6 +656,14 @@ blockquote {
 .evo_comment .action_buttons {
   display: block;
   padding-bottom: 15px;
+}
+.evo_comment .disp_comment_title {
+  float: left;
+}
+@media only screen and (max-width: 991px) {
+  .evo_comment > p {
+    padding-left: 0px;
+  }
 }
 .evo_post .evo_form label {
   font-weight: bold;

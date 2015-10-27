@@ -52,7 +52,6 @@ echo '</div>';
 
 ?>
 <div class='top-menu'>
-	<div class="container">
 		<div class="row ">
 			<div class="col-md-8">
 				<ul>
@@ -91,8 +90,6 @@ echo '</div>';
 				</ul>
 			</div>
 		</div>
-	</div>
-
 </div>
 
 <div class="container">
@@ -163,7 +160,6 @@ echo '</div>';
 	<?php
 	if( $disp != 'front' && $disp != 'download' && $disp != 'search' )
 	{
-		
 		// --------------------------------- START OF POSTS -------------------------------------
 		// Display message if no post:
 		display_if_empty();
@@ -175,15 +171,17 @@ echo '</div>';
 			skin_include( '_item_block.inc.php', array(
 					'content_mode' => 'auto',		// 'auto' will auto select depending on $disp-detail
 					// Comment template
-					'comment_start'         => '<article class="evo_comment panel panel-default"><div class="panel-body">',
-					'comment_end'           => '</div></article>',
+					'comment_start'         => '<article class="evo_comment panel panel-default">',
+					'comment_end'           => '</article>',
 					'comment_title_before'  => '<div class="panel-heading">',
 					'comment_title_after'   => '',
 					'comment_rating_before' => '<div class="comment_rating floatright">',
 					'comment_rating_after'  => '</div>',
 					'comment_text_before'   => '</div>',
 					'comment_text_after'    => '',
-					'comment_info_before'   => '<div class="bCommentSmallPrint">',
+					'comment_avatar_before' => '<span class="evo_comment_avatar">',
+					'comment_avatar_after'  => '</span>',
+					'comment_info_before'   => '<div class="text-muted small">',
 					'comment_info_after'    => '</div>',
 					'preview_start'         => '<div class="panel panel-warning" id="comment_preview">',
 					'preview_end'           => '</div>',
@@ -289,18 +287,18 @@ echo '</div>';
 				// Comment template
 				
 				'comment_avatar_position' => 'before_text',
-				'comment_start'         => '<div class="panel panel-default">',
-				'comment_end'           => '</div>',
-				'comment_post_before'   => '<div class="panel-heading"><h4 class="bTitle floatleft">',
+				'comment_start'         => '<article class="evo_comment panel panel-default">',
+				'comment_end'           => '</article>',
+				'comment_post_before'   => '<h4>',
 				'comment_post_after'    => '</h4>',
-				'comment_title_before'  => '<div class="floatright">',
-				'comment_title_after'   => '</div><div class="clear"></div></div><div class="panel-body">',
+				'comment_title_before'  => '<div class="disp_comment_title">',
+				'comment_title_after'   => '</div><div class="clear"></div>',
 				'comment_rating_before' => '<div class="comment_rating floatright">',
 				'comment_rating_after'  => '</div>',
 				'comment_text_before'   => '',
 				'comment_text_after'    => '',
-				'comment_info_before'   => '<div class="bCommentSmallPrint">',
-				'comment_info_after'    => '</div></div>',
+				'comment_info_before'   => '<div class="text-muted small">',
+				'comment_info_after'    => '</div>',
 				'preview_start'         => '<div class="panel panel-warning" id="comment_preview">',
 				'preview_end'           => '</div>',
 				// Front page

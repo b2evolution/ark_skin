@@ -94,10 +94,11 @@ ul.pager{
 		list-style-type:none;
 		margin:0;
 		li{
-			padding:11px;
+			padding:14px 0px;
 			float:left;
 			list-style-type:none;
 			a{
+				padding:14px 13px;
 				text-shadow:0 0 0px #000;
 			}
 			a:hover{
@@ -119,8 +120,6 @@ h1{
 	font-size: 32px;
 	font-weight: normal;
 }
-
-// Widgets
 
 .panel{
 	border: 0;
@@ -656,6 +655,11 @@ footer{
 	}
 }
 
+// Catergory list widget bullets
+.widget_core_coll_category_list li {
+    list-style: inherit;
+}
+
 // Widget title from panel-body spacing fix
 .evo_widget {
 	.panel-body {
@@ -720,9 +724,10 @@ blockquote {
 .evo_comment {
 	padding: 20px;
 	border-radius: 5px;
-	.evo_comment_avatar {
+	.evo_comment_avatar, .bCommentAvatar {
 		float: left;
 		margin: 0px 15px 15px 0px;
+		border-radius: 0px !important;
 	}
 	.panel-heading {
 		a span.user, a.user {
@@ -739,6 +744,15 @@ blockquote {
 	.action_buttons {
 		display: block;
 		padding-bottom: 15px;
+	}
+	// Comments fixes
+	.disp_comment_title {
+		float: left;
+	}
+}
+@media only screen and (max-width: 991px){
+	.evo_comment > p {
+		padding-left: 0px;
 	}
 }
 
