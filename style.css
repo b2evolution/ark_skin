@@ -681,3 +681,13 @@ blockquote {
   float: right;
   margin-top: -22px;
 }
+#menu .ufld_icon_links {
+  float: right;
+}
+.slicknav_menu {
+  display: none;
+}
+.slicknav_menu .ufld_icon_links a {
+  display: inline-block;
+  line-height: 32px;
+}

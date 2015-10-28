@@ -135,8 +135,8 @@ class ark_Skin extends Skin
 				),
 					'top_menu_hamburger' => array(
 						'label' => T_('Top menu hamburger layout'),
-						'note' => T_('Set the exact screen width in pixels (<b>NUMBERS ONLY</b>) to break menu layout to hamburger menu. For example if you write <b>768</b>, you will get hamburger menu until screen size reaches 768px width.'),
-						'defaultvalue' => '768',
+						'note' => T_('Set the exact screen width in pixels (<b>NUMBERS ONLY</b>) to break menu layout to hamburger menu. For example if you write <b>815</b>, you will get hamburger menu until screen size reaches 816th pixel width.'),
+						'defaultvalue' => '815',
 						'type' => 'text',
 						'size' => '7'
 					),
@@ -450,6 +450,16 @@ class ark_Skin extends Skin
 				'bootstrap_init_tooltips', // Inline JS to init Bootstrap tooltips (E.g. on comment form for allowed file extensions)
 				'disp_auto',               // Automatically include additional CSS and/or JS required by certain disps (replace with 'disp_off' to disable this)
 			) );
+			
+			//Include script and styles for hamburger responsive menu
+			require_js( $this->get_url().'jquery.slicknav.min.js' );
+			require_css( $this->get_url().'slicknav.css' );			
+			add_js_headline
+			("
+				$(function(){
+					jQuery('#menu').slicknav();
+				});
+				");
 
 			// Skin specific initializations:
 			// Add custom CSS:
@@ -510,7 +520,8 @@ class ark_Skin extends Skin
 			if( $width = $this->get_setting( 'top_menu_hamburger' ) )
 			{
 				$custom_css .= '@media only screen and (max-width: '.$width."px) {
-					
+					#menu {	display:none !important; }	
+					.slicknav_menu { display:block !important; }
 				}\n";	
 			};
 			// Top menu background color:
