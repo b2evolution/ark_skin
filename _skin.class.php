@@ -83,7 +83,7 @@ class ark_Skin extends Skin
 					),						
 					'front_bg_image' => array(
 						'label' => T_('Front page background image'),
-						'defaultvalue' => 'shared/global/sunset/sunset.jpg',
+						'defaultvalue' => '../skins/ark_skin/images/background-image.jpg',
 						'type' => 'text',
 						'size' => '50'
 					),
@@ -139,6 +139,12 @@ class ark_Skin extends Skin
 						'defaultvalue' => '815',
 						'type' => 'text',
 						'size' => '7'
+					),
+					'top_menu_hamburger_color' => array(
+						'label' => T_('Top menu hamburger color'),
+						'note' => T_('Default value is #FFF'),
+						'defaultvalue' => '#FFF',
+						'type' => 'color',
 					),
 					'top_menu_background_color' => array(
 						'label' => T_('Top menu background color'),
@@ -456,12 +462,12 @@ class ark_Skin extends Skin
 			require_css( $this->get_url().'slicknav.css' );			
 			add_js_headline
 			("
-				$(function(){
+				jQuery(function(){
 					jQuery('#menu').slicknav();
 				});
 				");
 
-			// Skin specific initializations:
+			// Skin specific initializations:			
 			// Add custom CSS:
 			$custom_css = '';
 				
@@ -520,19 +526,27 @@ class ark_Skin extends Skin
 			if( $width = $this->get_setting( 'top_menu_hamburger' ) )
 			{
 				$custom_css .= '@media only screen and (max-width: '.$width."px) {
-					#menu {	display:none !important; }	
-					.slicknav_menu { display:block !important; }
+					#menu {	display: none !important; }	
+					.slicknav_menu { display:block !important; width: 100%; z-index: 99999; position: fixed; }
+					.headpicture img.bg-image { top: 0px !important; }
+					#evo_toolbar { position: relative !important; margin-top: 42px !important; }
+					#skin_wrapper { margin-top: 0; }
 				}\n";	
+			};
+			// Top menu hambuger color:
+			if( $color = $this->get_setting( 'top_menu_hamburger_color' ) )
+			{
+				$custom_css .= '.slicknav_menu .slicknav_icon .slicknav_icon-bar { background-color: '.$color." }\n";
 			};
 			// Top menu background color:
 			if( $color = $this->get_setting( 'top_menu_background_color' ) )
 			{
-				$custom_css .= '.top-menu { background-color: '.$color." }\n";
+				$custom_css .= '.top-menu, .slicknav_menu { background-color: '.$color." }\n";
 			};
 			// Top menu links color:
 			if( $color = $this->get_setting( 'top_menu_links_color' ) )
 			{
-				$custom_css .= '.top-menu ul li a { color: '.$color." }\n";
+				$custom_css .= '.top-menu ul li a, .slicknav_nav li a { color: '.$color." }\n";
 			};
 			// Top menu links hover color:
 			if( $color = $this->get_setting( 'top_menu_links_hover_color' ) )
@@ -542,11 +556,11 @@ class ark_Skin extends Skin
 			// Top menu active link background color:
 			if( $color = $this->get_setting( 'top_menu_active_link_background_color' ) )
 			{
-				$custom_css .= '.top-menu ul li.active { background-color: '.$color." }\n";
+				$custom_css .= '.top-menu ul li.active,.slicknav_nav li.active { background-color: '.$color." }\n";
 			};
 			
 			
-						// Post title link color:
+			// Post title link color:
 			if( $color = $this->get_setting( 'post_title_link_color' ) )
 			{
 				$custom_css .= '.evo_post h2 a { color: '.$color." }\n";
@@ -559,12 +573,12 @@ class ark_Skin extends Skin
 			// Post tags color and border-color:
 			if( $color = $this->get_setting( 'post_tags_color_and_border_color' ) )
 			{
-				$custom_css .= '.evo_post .tags a, .widget_core_coll_tag_cloud .tag_cloud a { color: '.$color.'; border: 1px solid '.$color." }\n";
+				$custom_css .= '.evo_post .tags a, .widget_core_coll_tag_cloud .tag_cloud a, .well .tags a { color: '.$color.'; border: 1px solid '.$color." }\n";
 			};
 			// Post tags background color (on hover):
 			if( $color = $this->get_setting( 'post_tags_background_color_on_hover' ) )
 			{
-				$custom_css .= '.evo_post .tags a:hover,  .widget_core_coll_tag_cloud .tag_cloud a:hover { background-color: '.$color." }\n";
+				$custom_css .= '.evo_post .tags a:hover, .widget_core_coll_tag_cloud .tag_cloud a:hover, .well .tags a:hover { background-color: '.$color." }\n";
 			};
 			// Post bottom border color:
 			if( $color = $this->get_setting( 'post_bottom_border_color' ) )

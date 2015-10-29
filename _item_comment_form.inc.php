@@ -381,7 +381,7 @@ function validateCommentForm(form)
 
 	if( ! is_logged_in( false ) )
 	{ // User is not logged in:
-		$comment_options[] = '<label><input type="checkbox" class="checkbox" name="comment_cookies" tabindex="7"'
+		$comment_options[] = '<br/><label><input type="checkbox" class="checkbox" name="comment_cookies" tabindex="7"'
 													.( $comment_cookies ? ' checked="checked"' : '' ).' value="1" /> '.T_('Remember me').'</label>'
 													.' <span class="note">('.T_('For my next comment on this site').')</span>';
 		// TODO: If we got info from cookies, Add a link called "Forget me now!" (without posting a comment).

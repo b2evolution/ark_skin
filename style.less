@@ -1,5 +1,4 @@
 // Fonts
-
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
@@ -9,6 +8,10 @@
 
 h1,h2,h3,h4,h5,h6{
 	font-family: Raleway,sans-serif;
+}
+
+a:active {
+	text-decoration: none !important;
 }
 
 body{
@@ -61,7 +64,7 @@ div[class^='col-'] {
 			margin:0 auto;
 		}
 	}
-	img{
+	img.bg-image{
 		width:100%;
 		top:-240px;
 		position:absolute;
@@ -419,7 +422,7 @@ form.bComment {
 	}
 	.small {
 		margin: 4px 0 10px;
-		a, a .glyphicon {
+		a, a .glyphicon, span {
 			font-family: "Open Sans",sans-serif;
 			font-weight: normal;
 		}
@@ -644,7 +647,7 @@ footer{
 
 // Comment list widget
 .widget_core_coll_comment_list {
-	ul li a {
+	ul li a, ul li span {
 		font-weight: normal !important;
 		&:hover {
 			background-color: transparent !important;
@@ -770,7 +773,7 @@ blockquote {
 		box-shadow: none !important;
 		resize: vertical;
 	}
-	.help-inline {
+	.help-inline span {
 		float: right;
 		margin-top: -22px;
 	}
@@ -784,5 +787,13 @@ blockquote {
 	.ufld_icon_links a {
 		display: inline-block;
 		line-height: 32px;
+		padding: 0px !important;
 	}
+}
+.slicknav_nav .ufld_icon_links {
+	margin-bottom: 14px;
+}
+
+#feedbacks h3 {
+	padding-top: 40px;
 }
