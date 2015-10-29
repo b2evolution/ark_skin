@@ -528,7 +528,7 @@ class ark_Skin extends Skin
 				$custom_css .= '@media only screen and (max-width: '.$width."px) {
 					#menu {	display: none !important; }	
 					.slicknav_menu { display:block !important; width: 100%; z-index: 99999; position: fixed; }
-					.headpicture img.bg-image { top: 0px !important; }
+					.headpicture img.bg-image { top: 0px !important; height: 300px; }
 					#evo_toolbar { position: relative !important; margin-top: 42px !important; }
 					#skin_wrapper { margin-top: 0; }
 				}\n";	

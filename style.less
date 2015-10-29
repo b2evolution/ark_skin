@@ -10,7 +10,7 @@ h1,h2,h3,h4,h5,h6{
 	font-family: Raleway,sans-serif;
 }
 
-a:active {
+a:focus {
 	text-decoration: none !important;
 }
 
@@ -422,8 +422,11 @@ form.bComment {
 	}
 	.small {
 		margin: 4px 0 10px;
-		a, a .glyphicon, span {
+		a, a .glyphicon {
 			font-family: "Open Sans",sans-serif;
+			font-weight: normal;
+		}
+		span {
 			font-weight: normal;
 		}
 	}
@@ -796,4 +799,15 @@ blockquote {
 
 #feedbacks h3 {
 	padding-top: 40px;
+}
+.evo_intro_post, .evo_featured_post {
+	.post_title {
+		h2 {
+			display: inline-block;
+		}
+		.btn-group {
+			vertical-align: baseline;
+			margin-left: 15px;
+		}
+	}
 }

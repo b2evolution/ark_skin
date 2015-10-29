@@ -1,6 +1,6 @@
 <?php
 /**
- * This is the main/default page template for the "bootstrap" skin.
+ * This is the main/default page template for the "Ark" skin.
  *
  * This skin only uses one single template which includes most of its features.
  * It will also rely on default includes for specific dispays (like the comment form).
@@ -37,7 +37,7 @@ siteskin_include( '_site_body_header.inc.php' );
 
 global $media_path, $media_url;
 $bg_image = $Skin->get_setting( 'front_bg_image' );
-echo '<div class="headpicture" style="height:300px;">';
+echo '<div class="headpicture">';
 echo '<div class="subcentered"><div class="centered">';
 
 skin_container( NT_('Header'), array(
@@ -46,17 +46,16 @@ skin_container( NT_('Header'), array(
 echo '</div></div>';
 if( ! empty( $bg_image ) && file_exists( $media_path.$bg_image ) )
 { // If it exists in media folder
-	echo '<img src="'.$media_url.$bg_image.'" />';
+	echo '<img src="'.$media_url.$bg_image.'" class="bg-image" />';
 }
 echo '</div>';
 
 ?>
 
 <div class='top-menu'>
-	<div class="container">
-		<div class="row ">
-			<div class="col-md-8">
-				<ul>
+		<div class="row">
+			<div class="col-md-12">
+				<ul id="menu">
 				<?php
 					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
 					// Display container and contents:
@@ -79,21 +78,20 @@ echo '</div>';
 				?>
 				</ul>
 			</div>
-			<div class="col-md-4 right">
-				<ul style='float:right;'>
-				<?php
-					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
-					// Display container and contents:
-					// Note: this container is designed to be a single <ul> list
-					skin_container( NT_('Page Top'), array(
-						) );
-					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
-				?>
-				</ul>
-			</div>
 		</div>
-	</div>
+</div>
 
+<div class="col-md-12">
+	<ul>
+		<?php
+			// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
+			// Display container and contents:
+			// Note: this container is designed to be a single <ul> list
+			skin_container( NT_('Page Top'), array(
+			) );
+			// ----------------------------- END OF "Menu" CONTAINER -----------------------------
+		?>
+	</ul>
 </div>
 
 <div class="container">
@@ -142,7 +140,7 @@ echo '</div>';
 					'feature_block' => true,
 					'content_mode' => 'full', // We want regular "full" content, even in category browsing: i-e no excerpt or thumbnail
 					'intro_mode'   => 'normal',	// Intro posts will be displayed in normal mode
-					'item_class'   => ($Item->is_intro() ? 'well evo_intro_post' : 'well evo_featured_post'),
+					'item_class'   => ($Item->is_intro() ? 'evo_post evo_intro_post' : 'evo_post evo_featured_post'),
 				) );
 			// ----------------------------END ITEM BLOCK  ----------------------------
 		}

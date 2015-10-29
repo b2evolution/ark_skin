@@ -12,7 +12,7 @@ h5,
 h6 {
   font-family: Raleway, sans-serif;
 }
-a:active {
+a:focus {
   text-decoration: none !important;
 }
 body {
@@ -371,9 +371,11 @@ form.bComment input[type=file] {
   margin: 4px 0 10px;
 }
 .evo_post .small a,
-.evo_post .small a .glyphicon,
-.evo_post .small span {
+.evo_post .small a .glyphicon {
   font-family: "Open Sans", sans-serif;
+  font-weight: normal;
+}
+.evo_post .small span {
   font-weight: normal;
 }
 .evo_post .tags {
@@ -704,4 +706,13 @@ blockquote {
 }
 #feedbacks h3 {
   padding-top: 40px;
+}
+.evo_intro_post .post_title h2,
+.evo_featured_post .post_title h2 {
+  display: inline-block;
+}
+.evo_intro_post .post_title .btn-group,
+.evo_featured_post .post_title .btn-group {
+  vertical-align: baseline;
+  margin-left: 15px;
 }
