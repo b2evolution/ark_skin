@@ -12,6 +12,7 @@
  */
 if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.' );
 
+global $is_logged_in;
 // Default params:
 $params = array_merge( array(
 		'comment_start'         => '<article class="evo_comment panel panel-default">',
@@ -23,8 +24,6 @@ $params = array_merge( array(
 		'comment_title_after'   => '</h4></div>',
 		'comment_avatar_before' => '<span class="evo_comment_avatar">',
 		'comment_avatar_after'  => '</span>',
-		'comment_avatar_before_comments' => '',
-		'comment_avatar_after_comments'  => '',
 		'comment_rating_before' => '<div class="evo_comment_rating">',
 		'comment_rating_after'  => '</div>',
 		'comment_text_before'   => '<div class="evo_comment_text">',
@@ -76,9 +75,9 @@ if( $params['comment_post_display'] )
 // Avatar position if disp is "comments":
 if( $disp == 'comments' ) 
 {
-echo $params['comment_avatar_before_comments'];
+echo $params['comment_avatar_before'];
 $Comment->avatar();
-echo $params['comment_avatar_after_comments'];
+echo $params['comment_avatar_after'];
 }
 
 // Title
@@ -88,7 +87,7 @@ switch( $Comment->get( 'type' ) )
 	case 'comment': // Display a comment:
 		if( empty($Comment->ID) )
 		{	// PREVIEW comment
-			echo '<span class="evo_comment_type_preview">'.T_('PREVIEW Comment from:').'</span> ';
+			echo '';
 		}
 		else
 		{	// Normal comment
@@ -163,14 +162,24 @@ $Comment->rating( array(
 		'after'  => $params['comment_rating_after'],
 	) );
 
+	if ($Comment->rating == NULL)
+	{
+		echo '<div class="clear"></div>';
+	}
 // Text:
 echo $params['comment_text_before'];
 $Comment->content( 'htmlbody', false, true, $params );
 echo $params['comment_text_after'];
 
+if( !is_logged_in() ){
+	echo '';
+} else {
+	echo '<div class="floatright">';
 $commented_Item = & $Comment->get_Item();
 $Comment->edit_link( '', '', '#', '#', 'permalink_rig', '&amp;', true, rawurlencode( $Comment->get_permanent_url() ) ); /* Link to backoffice for editing */
-$Comment->delete_link( '', '', '#', '#', 'permalink_rig', false, '&amp;', true, false, '#', rawurlencode( $commented_Item->get_permanent_url() ) ); /* Link to backoffice for deleting */
+$Comment->delete_link( ' ', '', '#', '#', 'permalink_rig', false, '&amp;', true, false, '#', rawurlencode( $commented_Item->get_permanent_url() ) ); /* Link to backoffice for deleting */
+	echo '</div>';
+}
 
 $Comment->reply_link(); /* Link for replying to the Comment */
 $Comment->vote_helpful( '', '', '&amp;', true, true );

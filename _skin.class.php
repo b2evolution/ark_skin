@@ -113,13 +113,13 @@ class ark_Skin extends Skin
 					),
 					// General links color
 					'site_link_color' => array(
-						'label' => T_('Site link color'),
+						'label' => T_('Site links color'),
 						'note' => T_('Default value is #5CBDE0'),
 						'defaultvalue' => '#5CBDE0',
 						'type' => 'color',
 					),
 					'site_link_color_hover' => array(
-						'label' => T_('Site link color (hover)'),
+						'label' => T_('Site links color (hover)'),
 						'note' => T_('Default value is #4DB6DC'),
 						'defaultvalue' => '#4DB6DC',
 						'type' => 'color',
@@ -333,6 +333,12 @@ class ark_Skin extends Skin
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Footer layout')
 				),
+					'footer_title_color' => array(
+						'label' => T_('Footer title color'),
+						'note' => T_('Default value is #FFF'),
+						'defaultvalue' => '#FFF',
+						'type' => 'color',
+					),
 					'footer_text_color' => array(
 						'label' => T_('Footer text color'),
 						'note' => T_('Default value is #7b7b7b'),
@@ -514,13 +520,13 @@ class ark_Skin extends Skin
 			// Site link color:
 			if( $color = $this->get_setting( 'site_link_color' ) )
 			{
-				$custom_css .= 'body a, #bCalendarToday { color: '.$color." }\n";
+				$custom_css .= 'body a, #bCalendarToday, .search_title a { color: '.$color." }\n";
 				$custom_css .= '#bCalendarToday { border: 1px solid '.$color." }\n";
 			};
 			// Site link color hover:
 			if( $color = $this->get_setting( 'site_link_color_hover' ) )
 			{
-				$custom_css .= 'body a:hover { color: '.$color." }\n";
+				$custom_css .= 'body a:hover, .search_title a:hover { color: '.$color." }\n";
 			};
 			// Top menu hamburger layout:
 			if( $width = $this->get_setting( 'top_menu_hamburger' ) )
@@ -551,7 +557,7 @@ class ark_Skin extends Skin
 			// Top menu links hover color:
 			if( $color = $this->get_setting( 'top_menu_links_hover_color' ) )
 			{
-				$custom_css .= '.top-menu ul li a:hover { color: '.$color." }\n";
+				$custom_css .= '.top-menu ul li a:hover, .slicknav_menu ul li a:hover { color: '.$color." }\n";
 			};			
 			// Top menu active link background color:
 			if( $color = $this->get_setting( 'top_menu_active_link_background_color' ) )
@@ -583,7 +589,11 @@ class ark_Skin extends Skin
 			// Post bottom border color:
 			if( $color = $this->get_setting( 'post_bottom_border_color' ) )
 			{
-				$custom_css .= '.evo_post { border-bottom: 5px solid '.$color." }\n";
+				if( $disp != 'single' ) {
+				$custom_css .= '.evo_post, .search_result { border-bottom: 5px solid '.$color." }\n";
+				} else {
+					$custom_css .= '.pager { border-top: 5px solid '.$color." }\n";
+				}
 			};
 			
 			
@@ -615,7 +625,12 @@ class ark_Skin extends Skin
 				$custom_css .= '.site_pagination li span, .site_pagination li a:hover { background-color: '.$color." }\n";
 			};
 
-			
+
+			// Footer title color:
+			if( $color = $this->get_setting( 'footer_title_color' ) )
+			{
+				$custom_css .= 'footer .container .panel-heading, footer .container .panel-title { color: '.$color." }\n";
+			};
 			// Footer text color:
 			if( $color = $this->get_setting( 'footer_text_color' ) )
 			{
@@ -669,7 +684,15 @@ class ark_Skin extends Skin
 				$custom_css .= '.styled_content_block .comment_form .control-buttons .submit { color: '.$color." }\n";
 			};			
 		
-		
+		// Custom disps styles
+		if ( $disp == 'search' ) {
+				$custom_css .='.site_pagination li { margin-right: 4px'." }\n";
+		}
+		if ( $disp == 'page' ) {
+				$custom_css .='#feedbacks h3 { padding-top: 40px;'." }\n";
+		} else {
+			$custom_css .='#feedbacks h3 { padding-top: 10px;'." }\n";
+		}
 		if( ! empty( $custom_css ) )
 		{ // Function for custom_css:
 		$custom_css = '<style type="text/css">

@@ -79,7 +79,12 @@ div[class^='col-'] {
     background: #666 none repeat scroll 0 0!important;
 }
 ul.pager{
+	padding-top: 20px;
+	margin-top: 32px;
 	li.next,li.previous{
+		a {
+			padding: 5px 0px;
+		}
 		a,a:hover{
 			border:0;
 			background:transparent;
@@ -277,13 +282,27 @@ div.compact_search_form {
 div.extended_search_form {
 	text-align: center;
 	margin: 0 auto 2em auto;
-	max-width: 530px;
 	.search_options {
 		text-align: center;
 		.search_option {
 			display: inline-block;
 			margin-right: 10px;
 		}
+	}
+	// Search disp form
+	.input-group {
+		width: 100%;
+	}
+	input.search_field {
+		width: 100% !important;
+		border-radius: 6px !important;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		-webkit-transition: none;
+		-o-transition: none;
+	}
+	input.search_submit {
+		display: none;
 	}
 }
 
@@ -384,8 +403,11 @@ form.bComment {
 .ratings_table {
 	margin-bottom: 10px;
 	.rating_summary {
-		border-spacing: 1px;
-		border-collapse: separate;
+		display: none;
+	}
+	.rating_summary_total {
+		padding-left: 0px;
+		padding-bottom: 20px;
 	}
 	.progress {
 		border-radius: 0;
@@ -409,11 +431,11 @@ form.bComment {
 	}
 }
 
-.evo_post {
+.evo_post, .search_result {
 	margin-bottom: 2em;
 	padding-bottom: 2em;
 	
-	h2 a:hover {
+	h2 a:hover, .search_title a {
 		text-decoration: none;
 		transition: 0.2s ease;
 	}
@@ -421,7 +443,6 @@ form.bComment {
 		margin: 0;
 	}
 	.small {
-		margin: 4px 0 10px;
 		a, a .glyphicon {
 			font-family: "Open Sans",sans-serif;
 			font-weight: normal;
@@ -442,12 +463,39 @@ form.bComment {
 			}
 		}
 	}
+	.evo_post__full {
+		margin-top: 30px;
+	}
 	.evo_post__full_text p:last-of-type {
 		display: inline;
 	}
 	.evo_post_more_link {
 		display: inline;
 		margin-left: 5px;
+	}
+}
+.search_result {
+	padding-top: 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	.result_content {
+		margin-top: 15px;
+	}
+	.search_title a:hover {
+		text-decoration: underline;
+	}
+	.search_info.dimmed {
+		margin-top: 15px;
+		font-style: italic;
+		img {
+			display: none;
+		}
+		a, span {
+			font-weight: 400;
+		}
+	}
+	&:first-of-type {
+		margin-top: 2em !important;
 	}
 }
 form#user_checkchanges.bComment{
@@ -574,9 +622,10 @@ div.bSideItem {
 	margin: 0;
 	padding-top: 20px;
 	list-style-type: none;
+	padding-bottom: 30px;
 	li {
 		display: inline-block;
-			margin-bottom: 16px;
+		margin-bottom: 16px;
 		a, span {
 			padding: 6px 10px;
 		}
@@ -606,18 +655,16 @@ div.action_messages, div.log_container {
 	}
 }
 
-footer{
-	padding:20px 0;
-	h4.panel-title{
-		color:#fff;
-		text-transform:uppercase;
-		font-size:16px;
+footer {
+	padding: 20px 0;
+	h4.panel-title {
+		text-transform: uppercase;
+		font-size: 16px;
 	}
-	.panel-body{
-		font-size:14px;
-		ul,li{
-			list-style:none;
-			margin-left:0;
+	.panel-body {
+		ul,li {
+			list-style: none;
+			margin-left: 0;
 		}
 	}
 }
@@ -730,13 +777,13 @@ blockquote {
 .evo_comment {
 	padding: 20px;
 	border-radius: 5px;
-	.evo_comment_avatar, .bCommentAvatar {
+	.evo_comment_avatar img {
 		float: left;
-		margin: 0px 15px 15px 0px;
+		margin: 0px 15px 15px 0px !important;
 		border-radius: 0px !important;
 	}
 	.panel-heading {
-		a span.user, a.user {
+		a span.user, a.user, > span {
 			font-weight: normal !important;
 			font-size: 18px;
 		}
@@ -744,16 +791,16 @@ blockquote {
 			font-style: italic;
 		}
 	}
+	.comment_rating {		
+		margin: 4px 0 20px;
+	}
 	& > p {
 		padding-left: 79px;
+		margin-bottom: 0px;
 	}
 	.action_buttons {
 		display: block;
 		padding-bottom: 15px;
-	}
-	// Comments fixes
-	.disp_comment_title {
-		float: left;
 	}
 }
 @media only screen and (max-width: 991px){
@@ -778,7 +825,10 @@ blockquote {
 	}
 	.help-inline span {
 		float: right;
-		margin-top: -22px;
+		//margin-top: -22px;
+	}
+	.control-buttons input {
+		margin-bottom: 5px;
 	}
 }
 
@@ -794,12 +844,9 @@ blockquote {
 	}
 }
 .slicknav_nav .ufld_icon_links {
-	margin-bottom: 14px;
+	margin: 7px 0px;
 }
 
-#feedbacks h3 {
-	padding-top: 40px;
-}
 .evo_intro_post, .evo_featured_post {
 	.post_title {
 		h2 {
@@ -809,5 +856,14 @@ blockquote {
 			vertical-align: baseline;
 			margin-left: 15px;
 		}
+	}
+}
+
+// Other disps fixes
+.evo_image_index div {
+	background: transparent !important;
+	border: none !important;
+	&:hover {
+		background: transparent !important;
 	}
 }

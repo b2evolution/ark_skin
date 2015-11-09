@@ -25,7 +25,6 @@ if( version_compare( $app_version, '5.0' ) < 0 )
 // Do inits depending on current $disp:
 skin_init( $disp );
 
-
 // -------------------------- HTML HEADER INCLUDED HERE --------------------------
 skin_include( '_html_header.inc.php', array() );
 // -------------------------------- END OF HEADER --------------------------------
@@ -52,9 +51,9 @@ echo '</div>';
 
 ?>
 <div class='top-menu'>
-		<div class="row">
-			<div class="col-md-12">
-				<ul id="menu">
+	<div class="row">
+		<div class="col-md-12">
+			<ul id="menu">
 				<?php
 					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
 					// Display container and contents:
@@ -75,14 +74,15 @@ echo '</div>';
 						) );
 					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
 				?>
-				</ul>
-			</div>
+			</ul>
 		</div>
+	</div>
 </div>
 
-
-			<div class="col-md-12">
-				<ul>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<ul>
 				<?php
 					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
 					// Display container and contents:
@@ -90,9 +90,11 @@ echo '</div>';
 					skin_container( NT_('Page Top'), array(
 						) );
 					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
-				?>
-				</ul>
-			</div>
+					?>
+			</ul>
+		</div>
+	</div>
+</div>
 
 <div class="container">
 
@@ -111,19 +113,6 @@ echo '</div>';
 			) );
 		// --------------------------------- END OF MESSAGES ---------------------------------
 	}
-	?>
-
-	<?php
-		// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
-		item_prevnext_links( array(
-				'block_start' => '<ul class="pager">',
-				'prev_start'  => '<li class="previous">',
-				'prev_end'    => '</li>',
-				'next_start'  => '<li class="next">',
-				'next_end'    => '</li>',
-				'block_end'   => '</ul>',
-			) );
-		// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
 	?>
 
 	<?php
@@ -177,7 +166,7 @@ echo '</div>';
 					'comment_end'           => '</article>',
 					'comment_title_before'  => '<div class="panel-heading">',
 					'comment_title_after'   => '',
-					'comment_rating_before' => '<div class="comment_rating floatright">',
+					'comment_rating_before' => '<div class="comment_rating">',
 					'comment_rating_after'  => '</div>',
 					'comment_text_before'   => '</div>',
 					'comment_text_after'    => '',
@@ -286,16 +275,16 @@ echo '</div>';
 				'search_input_after'   => '',
 				'search_submit_before' => '<span class="input-group-btn">',
 				'search_submit_after'  => '</span></div>',
-				// Comment template
-				
-				'comment_avatar_position' => 'before_text',
+				// Comment template				
+				'comment_avatar_before' => '<span class="evo_comment_avatar">',
+				'comment_avatar_after'  => '</span>',
 				'comment_start'         => '<article class="evo_comment panel panel-default">',
 				'comment_end'           => '</article>',
 				'comment_post_before'   => '<h4>',
 				'comment_post_after'    => '</h4>',
-				'comment_title_before'  => '<div class="disp_comment_title">',
-				'comment_title_after'   => '</div><div class="clear"></div>',
-				'comment_rating_before' => '<div class="comment_rating floatright">',
+				'comment_title_before'  => '<div class="panel-heading">',
+				'comment_title_after'   => '</div>',
+				'comment_rating_before' => '<div class="comment_rating">',
 				'comment_rating_after'  => '</div>',
 				'comment_text_before'   => '',
 				'comment_text_after'    => '',
@@ -325,7 +314,6 @@ echo '</div>';
 		echo '</div>'; // End of posts display
 	?>
 	</div>
-
 
 <!-- =================================== START OF SIDEBAR =================================== -->
 	<?php
@@ -367,7 +355,6 @@ echo '</div>';
 					'search_input_after'   => '',
 					'search_submit_before' => '',
 					'search_submit_after'  => '',
-					'placeholder' => 'ddd',
 				) );
 			// ----------------------------- END OF "Sidebar" CONTAINER -----------------------------
 		?>
@@ -423,7 +410,7 @@ echo '</div>';
 			// Display container and contents:
 			skin_container( NT_("Footer"), array(
 					// The following params will be used as defaults for widgets included in this container:
-					'block_start' => '<div class="col-md-4 widget $wi_class$">',
+					'block_start' => '<div class="widget $wi_class$">',
 					'block_end' => '</div>',
 					'block_title_start' => '<div class="panel-heading"><h4 class="panel-title">',
 					'block_title_end' => '</h4></div>',

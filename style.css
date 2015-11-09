@@ -73,6 +73,14 @@ div[class^='col-'] {
 .widget--social-media-links a {
   background: #666 none repeat scroll 0 0!important;
 }
+ul.pager {
+  padding-top: 20px;
+  margin-top: 32px;
+}
+ul.pager li.next a,
+ul.pager li.previous a {
+  padding: 5px 0px;
+}
 ul.pager li.next a,
 ul.pager li.previous a,
 ul.pager li.next a:hover,
@@ -241,7 +249,6 @@ div.compact_search_form input.search_field {
 div.extended_search_form {
   text-align: center;
   margin: 0 auto 2em auto;
-  max-width: 530px;
 }
 div.extended_search_form .search_options {
   text-align: center;
@@ -249,6 +256,20 @@ div.extended_search_form .search_options {
 div.extended_search_form .search_options .search_option {
   display: inline-block;
   margin-right: 10px;
+}
+div.extended_search_form .input-group {
+  width: 100%;
+}
+div.extended_search_form input.search_field {
+  width: 100% !important;
+  border-radius: 6px !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  -o-transition: none;
+}
+div.extended_search_form input.search_submit {
+  display: none;
 }
 table.catselect input#new_category_name {
   width: 98% !important;
@@ -333,8 +354,11 @@ form.bComment input[type=file] {
   margin-bottom: 10px;
 }
 .ratings_table .rating_summary {
-  border-spacing: 1px;
-  border-collapse: separate;
+  display: none;
+}
+.ratings_table .rating_summary_total {
+  padding-left: 0px;
+  padding-bottom: 20px;
 }
 .ratings_table .progress {
   border-radius: 0;
@@ -356,46 +380,85 @@ form.bComment input[type=file] {
   padding-left: 15px;
   margin-bottom: 0;
 }
-.evo_post {
+.evo_post,
+.search_result {
   margin-bottom: 2em;
   padding-bottom: 2em;
 }
-.evo_post h2 a:hover {
+.evo_post h2 a:hover,
+.search_result h2 a:hover,
+.evo_post .search_title a,
+.search_result .search_title a {
   text-decoration: none;
   transition: 0.2s ease;
 }
-.evo_post .bTitle {
+.evo_post .bTitle,
+.search_result .bTitle {
   margin: 0;
 }
-.evo_post .small {
-  margin: 4px 0 10px;
-}
 .evo_post .small a,
-.evo_post .small a .glyphicon {
+.search_result .small a,
+.evo_post .small a .glyphicon,
+.search_result .small a .glyphicon {
   font-family: "Open Sans", sans-serif;
   font-weight: normal;
 }
-.evo_post .small span {
+.evo_post .small span,
+.search_result .small span {
   font-weight: normal;
 }
-.evo_post .tags {
+.evo_post .tags,
+.search_result .tags {
   margin-bottom: 5px;
   margin-top: 15px;
 }
-.evo_post .tags a {
+.evo_post .tags a,
+.search_result .tags a {
   padding: 2px 5px;
   border-radius: 4px;
   margin: 0px 5px 5px 0px;
 }
-.evo_post .tags a:hover {
+.evo_post .tags a:hover,
+.search_result .tags a:hover {
   text-decoration: none;
 }
-.evo_post .evo_post__full_text p:last-of-type {
+.evo_post .evo_post__full,
+.search_result .evo_post__full {
+  margin-top: 30px;
+}
+.evo_post .evo_post__full_text p:last-of-type,
+.search_result .evo_post__full_text p:last-of-type {
   display: inline;
 }
-.evo_post .evo_post_more_link {
+.evo_post .evo_post_more_link,
+.search_result .evo_post_more_link {
   display: inline;
   margin-left: 5px;
+}
+.search_result {
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.search_result .result_content {
+  margin-top: 15px;
+}
+.search_result .search_title a:hover {
+  text-decoration: underline;
+}
+.search_result .search_info.dimmed {
+  margin-top: 15px;
+  font-style: italic;
+}
+.search_result .search_info.dimmed img {
+  display: none;
+}
+.search_result .search_info.dimmed a,
+.search_result .search_info.dimmed span {
+  font-weight: 400;
+}
+.search_result:first-of-type {
+  margin-top: 2em !important;
 }
 form#user_checkchanges.bComment {
   border: none;
@@ -518,6 +581,7 @@ div.bSideItem h4 {
   margin: 0;
   padding-top: 20px;
   list-style-type: none;
+  padding-bottom: 30px;
 }
 .site_pagination li {
   display: inline-block;
@@ -551,12 +615,8 @@ footer {
   padding: 20px 0;
 }
 footer h4.panel-title {
-  color: #fff;
   text-transform: uppercase;
   font-size: 16px;
-}
-footer .panel-body {
-  font-size: 14px;
 }
 footer .panel-body ul,
 footer .panel-body li {
@@ -645,29 +705,30 @@ blockquote {
   padding: 20px;
   border-radius: 5px;
 }
-.evo_comment .evo_comment_avatar,
-.evo_comment .bCommentAvatar {
+.evo_comment .evo_comment_avatar img {
   float: left;
-  margin: 0px 15px 15px 0px;
+  margin: 0px 15px 15px 0px !important;
   border-radius: 0px !important;
 }
 .evo_comment .panel-heading a span.user,
-.evo_comment .panel-heading a.user {
+.evo_comment .panel-heading a.user,
+.evo_comment .panel-heading > span {
   font-weight: normal !important;
   font-size: 18px;
 }
 .evo_comment .panel-heading .text-muted.small {
   font-style: italic;
 }
+.evo_comment .comment_rating {
+  margin: 4px 0 20px;
+}
 .evo_comment > p {
   padding-left: 79px;
+  margin-bottom: 0px;
 }
 .evo_comment .action_buttons {
   display: block;
   padding-bottom: 15px;
-}
-.evo_comment .disp_comment_title {
-  float: left;
 }
 @media only screen and (max-width: 991px) {
   .evo_comment > p {
@@ -688,7 +749,9 @@ blockquote {
 }
 .evo_post .evo_form .help-inline span {
   float: right;
-  margin-top: -22px;
+}
+.evo_post .evo_form .control-buttons input {
+  margin-bottom: 5px;
 }
 #menu .ufld_icon_links {
   float: right;
@@ -702,10 +765,7 @@ blockquote {
   padding: 0px !important;
 }
 .slicknav_nav .ufld_icon_links {
-  margin-bottom: 14px;
-}
-#feedbacks h3 {
-  padding-top: 40px;
+  margin: 7px 0px;
 }
 .evo_intro_post .post_title h2,
 .evo_featured_post .post_title h2 {
@@ -715,4 +775,11 @@ blockquote {
 .evo_featured_post .post_title .btn-group {
   vertical-align: baseline;
   margin-left: 15px;
+}
+.evo_image_index div {
+  background: transparent !important;
+  border: none !important;
+}
+.evo_image_index div:hover {
+  background: transparent !important;
 }

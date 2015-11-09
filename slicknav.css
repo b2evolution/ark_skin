@@ -47,6 +47,7 @@
   clear: both; }
   .slicknav_nav ul {
     display: block; }
+  .slicknav_menu ul li:first-child { border-top: 1px solid #333; }
   .slicknav_nav li {
     display: block; }
   .slicknav_nav .slicknav_arrow {
