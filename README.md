@@ -1,20 +1,25 @@
-# Ark Skin for b2evolution CMS v6
+# Ark Skin for b2evolution CMS Blog v6
+<div style="text-align: center;">
+![ark-skin-logo](images/ark_logo_dark.png)
+Link to skin: <a href="http://skins.b2evolution.net/ark-skin" title="Ark skin">http://skins.b2evolution.net/ark-skin</a>.
 
-## Some tips:
+Developed by b2evo team in association with <a href="http://mainflowru.com/" title="www.mainflow.ru">mainflowru</a>.
 
-- Create a 720x570 pixels `skinshot.png` file for use within b2evolution to visually identify your skin.
-- Add some `skinshot_disp.jpg` images to demo the different "disps" of your skin(change the `_disp` part. See included `skinshot_posts.jpg` for example. 
-- You can also add additional images by numbering them, e-g: `skinshot_single_02.jpg`
-- When you publish your skin, update this readme.md file (it uses Markdown syntax), remove the instructions and include your skinshots like this:
+Current (stable) version: 1.0
+</div>
+---
+<a href="http://b2evolution.net/" title="www.b2evolution.net">B2evolution</a> team presents you the latest skin/theme made especially for <a href="http://b2evolution.net/man/about-different-collection-types" title="b2evolution Collections Explanation">Blog Collection</a>.
 
-### Front Page
+Main new features of the skin:
 
-![disp=front](skinshot_front.jpg)
+- Chose from one of the three sidebar layouts: left sidebar, right sidebar or no sidebar;
 
-### Posts Page
+- Ark has completely configurable back-office color settings for every element of the skin;
 
-![disp=posts](skinshot_posts.jpg)
+- There are two different post layouts: <strong>Regular</strong> and <strong>Thumbnail</strong>:
 
-### Single Post Page
+![post-layout](images/post-layouts.jpg)
 
-![disp=single](skinshot_single.jpg)
+- Responsive menu at it's finest! Ark allows you to decide from which point you want to break the regular menu layout to "Hamburger menu" by inserting the exact width (in pixels):
+
+![hamburger-menu](images/hamburger-menu.jpg)
