@@ -7,7 +7,7 @@ Current (stable) version: 1.0
 ---
 <a href="http://b2evolution.net/" title="www.b2evolution.net">B2evolution</a> team presents you the latest skin/theme made especially for <a href="http://b2evolution.net/man/about-different-collection-types" title="b2evolution Collections Explanation">Blog Collection</a>.
 
-Main new features of the skin:
+###Main new features of the skin:
 
 - Chose from one of the three sidebar layouts: left sidebar, right sidebar or no sidebar;
 
