@@ -101,8 +101,8 @@ class ark_Skin extends Skin
 					),
 					'site_tagline_color' => array(
 						'label' => T_('Site tagline color'),
-						'note' => T_('Default value is #333333'),
-						'defaultvalue' => '#333333',
+						'note' => T_('Default value is #FFF'),
+						'defaultvalue' => '#FFF',
 						'type' => 'color',
 					),
 					'site_text_color' => array(
@@ -341,26 +341,26 @@ class ark_Skin extends Skin
 					),
 					'footer_text_color' => array(
 						'label' => T_('Footer text color'),
-						'note' => T_('Default value is #7b7b7b'),
-						'defaultvalue' => '#7b7b7b',
+						'note' => T_('Default value is #888'),
+						'defaultvalue' => '#888',
 						'type' => 'color',
 					),
 					'footer_background_color' => array(
 						'label' => T_('Footer background color'),
-						'note' => T_('Default value is #222222'),
-						'defaultvalue' => '#222222',
+						'note' => T_('Default value is #333'),
+						'defaultvalue' => '#333',
 						'type' => 'color',
 					),
 					'footer_link_color' => array(
 						'label' => T_('Footer link color'),
-						'note' => T_('Default value is #7b7b7b'),
-						'defaultvalue' => '#7b7b7b',
+						'note' => T_('Default value is #bbb'),
+						'defaultvalue' => '#bbb',
 						'type' => 'color',
 					),
 					'footer_link_color_hover' => array(
 						'label' => T_('Footer link color (hover)'),
-						'note' => T_('Default value is #7b7b7b'),
-						'defaultvalue' => '#7b7b7b',
+						'note' => T_('Default value is #bbb'),
+						'defaultvalue' => '#bbb',
 						'type' => 'color',
 					),
 				'footer_layout_end' => array(
@@ -491,6 +491,8 @@ class ark_Skin extends Skin
 					case 'thumbnail':// When thumbnail layout is chosen, apply these styles
 					$custom_css = '.evo_post_images{ float: left; width: 200px;'." }\n"; 
 					$custom_css .= '.evo_post_images .evo_image_block { margin: 0px 15px 15px 0px;'." }\n";
+					$custom_css .= '.evo_post__full .evo_post_gallery { margin-bottom: 25px'." }\n";
+					$custom_css .= '@media only screen and (max-width: 767px) { .evo_post_images{ float: none; width: 100% } .evo_post_images .evo_image_block {margin: 15px 0px; } .evo_post__full .evo_post_gallery { margin-bottom: 0px}'." }\n";
 					break;
 				}
 		
@@ -534,7 +536,7 @@ class ark_Skin extends Skin
 				$custom_css .= '@media only screen and (max-width: '.$width."px) {
 					#menu {	display: none !important; }	
 					.slicknav_menu { display:block !important; width: 100%; z-index: 99999; position: fixed; }
-					.headpicture img.bg-image { top: 0px !important; height: 300px; }
+					.headpicture img.bg-image { top: 0px !important; }
 					#evo_toolbar { position: relative !important; margin-top: 42px !important; }
 					#skin_wrapper { margin-top: 0; }
 				}\n";	
