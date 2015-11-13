@@ -64,6 +64,8 @@ div[class^='col-'] {
   top: -150px;
   position: absolute;
   left: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 .sitewide_header {
   margin: 0!important;
