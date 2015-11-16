@@ -789,3 +789,6 @@ blockquote {
 .evo_image_index div:hover {
   background: transparent !important;
 }
+.close span {
+  vertical-align: middle;
+}

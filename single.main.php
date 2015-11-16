@@ -81,17 +81,30 @@ echo '</div>';
 		</div>
 </div>
 
-<div class="col-md-12">
-	<ul>
-		<?php
-			// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
-			// Display container and contents:
-			// Note: this container is designed to be a single <ul> list
-			skin_container( NT_('Page Top'), array(
-			) );
-			// ----------------------------- END OF "Menu" CONTAINER -----------------------------
-		?>
-	</ul>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="evo_container evo_container__page_top">
+				<ul>
+					<?php
+						// ------------------------- "Page Top" CONTAINER EMBEDDED HERE --------------------------
+						// Display container and contents:
+						skin_container( NT_('Page Top'), array(
+								// The following params will be used as defaults for widgets included in this container:
+								'block_start'         => '<div class="evo_widget $wi_class$">',
+								'block_end'           => '</div>',
+								'block_display_title' => false,
+								'list_start'          => '<ul>',
+								'list_end'            => '</ul>',
+								'item_start'          => '<li>',
+								'item_end'            => '</li>',
+							) );
+						// ----------------------------- END OF "Page Top" CONTAINER -----------------------------
+					?>
+				</ul>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="container">

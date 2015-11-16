@@ -159,8 +159,8 @@ echo '<div class="styled_content_block">';
 				'next_start'  => '<li class="next">',
 				'next_end'    => '</li>',
 				'block_end'   => '</ul>',
-				'prev_text'   => '&#8592;',
-				'next_text'   => '&#8594;',
+				'prev_text'   => '&#8592; $title$',
+				'next_text'   => '$title$ &#8594;',
 			) );
 		// ------------------------- END OF PREV/NEXT POST LINKS -------------------------
 	?>
