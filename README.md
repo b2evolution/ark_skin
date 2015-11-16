@@ -6,6 +6,11 @@ Developed by b2evo team in association with <a href="http://mainflowru.com/" tit
 Current (stable) version: 1.0
 
 ---
+<h3>Posts display</h4>
+![post-layout](images/skinshot_posts.jpg)
+<h3>Single post display</h4>
+![post-layout](images/skinshot_single.jpg)
+
 
 ###Main new features of the skin:
 
