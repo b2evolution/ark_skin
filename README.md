@@ -2,7 +2,7 @@
 <a href="http://b2evolution.net/" title="www.b2evolution.net">B2evolution</a> team presents you the latest skin/theme made especially for <a href="http://b2evolution.net/man/about-different-collection-types" title="b2evolution Collections Explanation">Blog Collection</a>.<br/><br/>
 <img src="images/ark_logo_dark.png" alt="Ark Skin Logo" title="Ark Skin Logo"/><br/>
 Link to skin: <a href="http://skins.b2evolution.net/ark-skin" title="Ark skin">http://skins.b2evolution.net/ark-skin</a>.<br/>
-Developed by b2evo team in association with <a href="http://mainflowru.com/" title="www.mainflow.ru">mainflowru</a>.<br/>
+Developed by b2evo team.<br/>
 Current (stable) version: 1.0
 
 ---
