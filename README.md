@@ -11,7 +11,7 @@ Current (stable) version: 1.0
 <h3>Single post display</h4>
 ![post-layout](images/skinshot_single.jpg)
 
-
+---
 ###Main new features of the skin:
 
 - Chose from one of the three sidebar layouts: left sidebar, right sidebar or no sidebar;
