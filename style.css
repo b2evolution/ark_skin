@@ -37,35 +37,18 @@ div[class^='col-'] {
   margin-top: 0;
 }
 .headpicture {
-  position: relative;
-  height: 300px!important;
-  overflow: hidden;
-  vertical-align: center;
-  text-align: center;
-  width: 100%;
-}
-.headpicture .subcentered {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   display: table;
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 300px;
-  z-index: 1000;
   width: 100%;
 }
-.headpicture .subcentered .centered {
+.headpicture .centered {
   display: table-cell;
   vertical-align: middle;
   text-align: center;
   margin: 0 auto;
-}
-.headpicture img.bg-image {
-  width: 100%;
-  top: -150px;
-  position: absolute;
-  left: 0;
-  min-width: 100%;
-  min-height: 100%;
 }
 .sitewide_header {
   margin: 0!important;
@@ -93,6 +76,7 @@ ul.pager li.previous a:hover {
   text-decoration: underline;
 }
 .top-menu {
+  margin-bottom: 30px;
   box-shadow: none;
   text-shadow: 0 0 0px #000;
 }
@@ -788,6 +772,9 @@ blockquote {
 }
 .evo_image_index div:hover {
   background: transparent !important;
+}
+.jumbotron h2 {
+  margin-top: 0;
 }
 .close span {
   vertical-align: middle;

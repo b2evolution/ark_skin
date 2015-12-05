@@ -33,23 +33,16 @@ skin_include( '_html_header.inc.php', array() );
 // If site headers are enabled, they will be included here:
 siteskin_include( '_site_body_header.inc.php' );
 // ------------------------------- END OF SITE HEADER --------------------------------
-
-global $media_path, $media_url;
-$bg_image = $Skin->get_setting( 'front_bg_image' );
-echo '<div class="headpicture">';
-echo '<div class="subcentered"><div class="centered">';
-
-skin_container( NT_('Header'), array(
-	) );
-						
-echo '</div></div>';
-if( ! empty( $bg_image ) && file_exists( $media_path.$bg_image ) )
-{ // If it exists in media folder
-	echo '<img src="'.$media_url.$bg_image.'" class="bg-image" />';
-}
-echo '</div>';
-
 ?>
+<div class="headpicture">
+	<div class="centered">
+		<?php
+			skin_container( NT_('Header'), array(
+			) );
+		?>				
+	</div>
+</div>
+
 <div class='top-menu'>
 	<div class="row">
 		<div class="col-md-12">
@@ -75,32 +68,6 @@ echo '</div>';
 					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
 				?>
 			</ul>
-		</div>
-	</div>
-</div>
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-			<div class="evo_container evo_container__page_top">
-				<ul>
-					<?php
-						// ------------------------- "Page Top" CONTAINER EMBEDDED HERE --------------------------
-						// Display container and contents:
-						skin_container( NT_('Page Top'), array(
-								// The following params will be used as defaults for widgets included in this container:
-								'block_start'         => '<div class="evo_widget $wi_class$">',
-								'block_end'           => '</div>',
-								'block_display_title' => false,
-								'list_start'          => '<ul>',
-								'list_end'            => '</ul>',
-								'item_start'          => '<li>',
-								'item_end'            => '</li>',
-							) );
-						// ----------------------------- END OF "Page Top" CONTAINER -----------------------------
-					?>
-				</ul>
-			</div>
 		</div>
 	</div>
 </div>

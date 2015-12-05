@@ -43,34 +43,17 @@ div[class^='col-'] {
 }
 
 .headpicture{
-	position:relative;
-	height:300px!important;
-	overflow:hidden;
-	vertical-align:center;
-	text-align:center;
-	width:100%;
-	.subcentered{
-		display:table;
-		position:absolute;
-		left:0;
-		top:0;
-		height:300px;
-		z-index:1000;
-		width:100%;
-		.centered{
-			display:table-cell;
-			vertical-align:middle;
-			text-align:center;
-			margin:0 auto;
-		}
-	}
-	img.bg-image{
-		width:100%;
-		top: -150px;
-		position:absolute;
-		left:0; 
-		min-width: 100%;
-		min-height: 100%;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	display: table;
+	width: 100%;
+	.centered {
+		display: table-cell;
+		vertical-align: middle;
+		text-align:center;
+		margin:0 auto;
 	}
 }
 
@@ -98,6 +81,7 @@ ul.pager{
 }
 
 .top-menu{
+	margin-bottom: 30px;
 	box-shadow:none;
 	text-shadow:0 0 0px #000;
 	ul{
@@ -874,6 +858,9 @@ blockquote {
 	&:hover {
 		background: transparent !important;
 	}
+}
+.jumbotron h2 {
+	margin-top: 0;
 }
 
 // Multiple info buttons close button align
