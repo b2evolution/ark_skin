@@ -859,8 +859,18 @@ blockquote {
 		background: transparent !important;
 	}
 }
-.jumbotron h2 {
-	margin-top: 0;
+.jumbotron {
+	.post_title {
+		margin-bottom: 10px;
+		h2 {
+			margin-top: 0;
+			display: table-cell;
+		}
+		> .btn-group {
+			display: table-cell;
+			padding-left: 20px;
+		}
+	}
 }
 
 // Multiple info buttons close button align

@@ -82,10 +82,23 @@ class ark_Skin extends Skin
 						'type' => 'select',
 					),						
 					'front_bg_image' => array(
-						'label' => T_('Front page background image'),
-						'defaultvalue' => '../skins/ark_skin/images/background-image.jpg',
+						'label' => T_('Header background image'),
+						'note' => T_('Leave blank if you want only color instead.'),
+						'defaultvalue' => 'images/bg-image.jpg',
 						'type' => 'text',
 						'size' => '50'
+					),
+					'header_height' => array(
+						'label' => T_('Header height (in px)'),
+						'note' => T_('Input numbers only. Default value is <strong>300</strong>.'),
+						'defaultvalue' => '300',
+						'type' => 'text',
+					),
+					'front_bg_color' => array(
+						'label' => T_('Header background color'),
+						'note' => T_('Use this if you don\'t want image in header section.'),
+						'defaultvalue' => '#333',
+						'type' => 'color',
 					),
 					'site_background_color' => array(
 						'label' => T_('Site background color'),
@@ -497,13 +510,21 @@ class ark_Skin extends Skin
 				}
 		
 			};
-
-		
-			// Site background color:
-			if( $color = $this->get_setting( 'site_background_color' ) )
-			{
-				$custom_css .= 'body, .evo_container .panel .panel-heading, .evo_container .panel .panel-body, .evo_container .panel, .styled_content_block .panel, #styled_content_block .panel { background-color: '.$color." }\n";
+			if( $front_bg_image = $this->get_setting( 'front_bg_image' ) )
+			{ // If image input
+				$custom_css .= ' .headpicture { background: url('.$front_bg_image.") no-repeat center center; }\n";
+			}
+			if( empty ($front_bg_image) ) {
+			// Site header color:
+				if( $front_bg_color = $this->get_setting( 'front_bg_color' ) )
+				{
+					$custom_css .= '.headpicture { background-color: '.$front_bg_color." }\n";
+				};
 			};
+			if( $header_height = $this->get_setting( 'header_height' ) )
+			{ // If image input
+				$custom_css .= ' .headpicture { height:'.$header_height."px }\n";
+			}
 			// Site title color:
 			if( $color = $this->get_setting( 'site_title_color' ) )
 			{
@@ -607,7 +628,7 @@ class ark_Skin extends Skin
 			// Comments border color:
 			if( $color = $this->get_setting( 'comments_border_color' ) )
 			{
-				$custom_css .= '.evo_comment { border: 10px solid '.$color." }\n";
+				$custom_css .= '.evo_comment { border: 1px solid '.$color." }\n";
 			};
 
 						

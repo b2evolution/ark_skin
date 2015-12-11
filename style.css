@@ -773,8 +773,16 @@ blockquote {
 .evo_image_index div:hover {
   background: transparent !important;
 }
-.jumbotron h2 {
+.jumbotron .post_title {
+  margin-bottom: 10px;
+}
+.jumbotron .post_title h2 {
   margin-top: 0;
+  display: table-cell;
+}
+.jumbotron .post_title > .btn-group {
+  display: table-cell;
+  padding-left: 20px;
 }
 .close span {
   vertical-align: middle;

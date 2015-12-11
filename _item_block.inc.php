@@ -56,7 +56,7 @@ echo '<div class="styled_content_block">';
 			$Item->title( array(
 					'before'    => $title_before,
 					'after'     => $title_after,
-					'link_type' => 'permalink'
+					//'link_type' => 'permalink'
 				) );
 		}
 	?>
@@ -144,12 +144,14 @@ echo '<div class="styled_content_block">';
 	?>
 
 	<?php
-		// List all tags attached to this post:
+		if( ! $Item->is_intro() )
+			{ // List all tags attached to this post:
 		$Item->tags( array(
 				'before'    => '<div class="small tags"><i class="fa fa-tags"></i> '.T_('Tags').': ',
 				'after'     => '</div>',
 				'separator' => '',
 			) );
+			}
 			
 	// ------------------- PREV/NEXT POST LINKS (SINGLE POST MODE) -------------------
 		item_prevnext_links( array(
