@@ -22,6 +22,4 @@ Current (stable) version: 1.0
 
 ![post-layout](images/post-layouts.jpg)
 
-- Responsive menu at it's finest! Ark allows you to decide from which point you want to break the regular menu layout to "Hamburger menu" by inserting the exact width (in pixels):
-
-![hamburger-menu](images/hamburger-menu.jpg)
+- Responsive menu at it's finest! Ark allows you to decide from which point you want to break the regular menu layout to "Hamburger menu" by inserting the exact width (in pixels)
