@@ -21,7 +21,7 @@ class ark_Skin extends Skin
 	/**
 	 * Do we want to use style.min.css instead of style.css ?
 	 */
-	var $use_min_css = true;  // true|false|'check' Set this to true for better optimization
+	var $use_min_css = 'check';  // true|false|'check' Set this to true for better optimization
 	// Note: we leave this on "check" in the bootstrap_blog_skin so it's easier for beginners to just delete the .min.css file
 	// But for best performance, you should set it to true.
 	
@@ -32,7 +32,7 @@ class ark_Skin extends Skin
 	 */
 	function get_default_name()
 	{
-		return 'Ark Blog';
+		return 'Ark Skin';
 	}
 
 
@@ -54,6 +54,33 @@ class ark_Skin extends Skin
 	function get_api_version()
 	{
 		return 6;
+	}
+	
+	
+	/**
+	 * Get supported collection kinds.
+	 *
+	 * This should be overloaded in skins.
+	 *
+	 * For each kind the answer could be:
+	 * - 'yes' : this skin does support that collection kind (the result will be was is expected)
+	 * - 'partial' : this skin is not a primary choice for this collection kind (but still produces an output that makes sense)
+	 * - 'maybe' : this skin has not been tested with this collection kind
+	 * - 'no' : this skin does not support that collection kind (the result would not be what is expected)
+	 * There may be more possible answers in the future...
+	 */
+	public function get_supported_coll_kinds()
+	{
+		$supported_kinds = array(
+				'main' => 'no',
+				'std' => 'yes',		// Blog
+				'photo' => 'no',
+				'forum' => 'no',
+				'manual' => 'no',
+				'group' => 'no',  // Tracker
+				// Any kind that is not listed should be considered as "maybe" supported
+			);
+		return $supported_kinds;
 	}
 	
 
@@ -80,43 +107,6 @@ class ark_Skin extends Skin
 								'right_sidebar' => T_('Right Sidebar'),
 							),
 						'type' => 'select',
-					),						
-					'front_bg_image' => array(
-						'label' => T_('Header background image'),
-						'note' => T_('Leave blank if you want only color instead.'),
-						'defaultvalue' => 'images/bg-image.jpg',
-						'type' => 'text',
-						'size' => '50'
-					),
-					'header_height' => array(
-						'label' => T_('Header height (in px)'),
-						'note' => T_('Input numbers only. Default value is <strong>300</strong>.'),
-						'defaultvalue' => '300',
-						'type' => 'text',
-					),
-					'front_bg_color' => array(
-						'label' => T_('Header background color'),
-						'note' => T_('Use this if you don\'t want image in header section.'),
-						'defaultvalue' => '#333',
-						'type' => 'color',
-					),
-					'site_background_color' => array(
-						'label' => T_('Site background color'),
-						'note' => T_('Default value is #FFFFFF'),
-						'defaultvalue' => '#FFFFFF',
-						'type' => 'color',
-					),
-					'site_title_color' => array(
-						'label' => T_('Site title color'),
-						'note' => T_('Default value is #FFFFFF'),
-						'defaultvalue' => '#FFFFFF',
-						'type' => 'color',
-					),
-					'site_tagline_color' => array(
-						'label' => T_('Site tagline color'),
-						'note' => T_('Default value is #FFF'),
-						'defaultvalue' => '#FFF',
-						'type' => 'color',
 					),
 					'site_text_color' => array(
 						'label' => T_('Site text color'),
@@ -141,10 +131,79 @@ class ark_Skin extends Skin
 					'layout' => 'end_fieldset',
 				),
 
+				
+				'header_settings_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('Header settings')
+				),
+					'front_bg_image' => array(
+						'label' => T_('Header background image'),
+						'note' => T_('Leave blank if you want only color instead.'),
+						'defaultvalue' => 'images/bg-image.jpg',
+						'type' => 'text',
+						'size' => '50'
+					),
+					'header_height' => array(
+						'label' => T_('Header height (in px)'),
+						'note' => T_('Input numbers only. Default value is <strong>300</strong>.'),
+						'defaultvalue' => '300',
+						'type' => 'text',
+					),
+					'front_bg_color' => array(
+						'label' => T_('Header background color'),
+						'note' => T_('Use this if you don\'t want image in header section.'),
+						'defaultvalue' => '#333',
+						'type' => 'color',
+					),
+					'site_background_color' => array(
+						'label' => T_('Header background color'),
+						'note' => T_('Use this if there is no background image set. Default value is #FFFFFF'),
+						'defaultvalue' => '#FFF',
+						'type' => 'color',
+					),
+					'header_content_pos' => array(
+						'label' => T_('Header content position'),
+						'note' => 'Align header content',
+						'defaultvalue' => 'center_pos',
+						'options' => array(
+								'center_pos' => T_('Center'),
+								'left_pos'  => T_('Left'),
+								'right_pos' => T_('Right'),
+							),
+						'type' => 'select',
+					),
+					'site_title_color' => array(
+						'label' => T_('Header title color'),
+						'note' => T_('Default value is #FFFFFF'),
+						'defaultvalue' => '#FFF',
+						'type' => 'color',
+					),
+					'site_tagline_color' => array(
+						'label' => T_('Header tagline color'),
+						'note' => T_('Default value is #FFF'),
+						'defaultvalue' => '#FFF',
+						'type' => 'color',
+					),
+					'header_content_color' => array(
+						'label' => T_('Header content color'),
+						'note' => T_('Default value is #FFF'),
+						'defaultvalue' => '#FFF',
+						'type' => 'color',
+					),
+					'header_links_color' => array(
+						'label' => T_('Header links color'),
+						'note' => T_('Default value is #FFF'),
+						'defaultvalue' => '#FFF',
+						'type' => 'color',
+					),
+				'header_settings_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
 					
 				'top_menu_settings_start' => array(
 					'layout' => 'begin_fieldset',
-					'label'  => T_('Top menu settings')
+					'label'  => T_('Navigation Menu Settings')
 				),
 					'top_menu_hamburger' => array(
 						'label' => T_('Top menu hamburger layout'),
@@ -177,7 +236,7 @@ class ark_Skin extends Skin
 						'defaultvalue' => '#FFFFFF',
 						'type' => 'color',
 					),
-					'top_menu_active_link_background_color' => array(
+					'top_menu_ac_link_bgcol' => array(
 						'label' => T_('Top menu active link background color'),
 						'note' => T_('Default value is #000'),
 						'defaultvalue' => '#000',
@@ -192,19 +251,19 @@ class ark_Skin extends Skin
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Site pagination settings')
 				),
-					'site_pagination_links_color' => array(
+					'pag_links_color' => array(
 						'label' => T_('Site pagination links color'),
 						'note' => T_('Default value is #FFFFFF'),
 						'defaultvalue' => '#FFFFFF',
 						'type' => 'color',
 					),
-					'site_pagination_links_background_color' => array(
+					'pag_links_bg_color' => array(
 						'label' => T_('Site pagination links background color'),
 						'note' => T_('Default value is #DDD'),
 						'defaultvalue' => '#DDD',
 						'type' => 'color',
 					),
-					'site_pagination_active_bg_color' => array(
+					'pag_active_bg_color' => array(
 						'label' => T_('Site pagination active link background color'),
 						'note' => T_(' <b>NOTE:</b> Unactive pagination links have this background color on hover!'),
 						'defaultvalue' => '#333333',
@@ -219,10 +278,9 @@ class ark_Skin extends Skin
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Posts layout')
 				),
-					'post_teaser_image' => array(
+					'post_layout' => array(
 						'label' => T_('Posts teaser image layout'),
-						'note' => 'Regular is default post teaser layout with one full width teaser image in the center.
-								   Thumbnail shows small teaser image in the left side of the post.',
+						'note' => T_(''),
 						'defaultvalue' => 'regular',
 						'options' => array(
 								'regular' => T_('Regular'),
@@ -247,49 +305,49 @@ class ark_Skin extends Skin
 				),
 				
 				
-				'post_preview_comment_start' => array(
+				'prevnext_but_start' => array(
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Post/Preview comment buttons layout')
 				),
 					// Post button
-					'post_button_border_color' => array(
+					'post_but_border_color' => array(
 						'label' => T_('Post button border color'),
 						'note' => T_('Default value is #269ABC'),
 						'defaultvalue' => '#269ABC',
 						'type' => 'color',
 					),
-					'post_button_background_color' => array(
+					'post_but_bg_color' => array(
 						'label' => T_('Post button background color'),
 						'note' => T_('Default value is #31B0D5'),
 						'defaultvalue' => '#31B0D5',
 						'type' => 'color',
 					),
-					'post_button_text_color' => array(
+					'post_but_text_color' => array(
 						'label' => T_('Post button text color'),
 						'note' => T_('Default value is #FFF'),
 						'defaultvalue' => '#FFF',
 						'type' => 'color',
 					),
 					// Preview button
-					'preview_button_border_color' => array(
+					'prev_but_bor_color' => array(
 						'label' => T_('Preview button border color'),
 						'note' => T_('Default value is #204D74'),
 						'defaultvalue' => '#204D74',
 						'type' => 'color',
 					),
-					'preview_button_background_color' => array(
+					'prev_but_bg_color' => array(
 						'label' => T_('Preview button background color'),
 						'note' => T_('Default value is #286090'),
 						'defaultvalue' => '#286090',
 						'type' => 'color',
 					),
-					'preview_button_text_color' => array(
+					'prev_but_tx_color' => array(
 						'label' => T_('Preview button text color'),
 						'note' => T_('Default value is #FFF'),
 						'defaultvalue' => '#FFF',
 						'type' => 'color',
 					),
-				'post_preview_comment_end' => array(
+				'prevnext_but_end' => array(
 					'layout' => 'end_fieldset',
 				),				
 				
@@ -346,6 +404,18 @@ class ark_Skin extends Skin
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Footer layout')
 				),
+					'b2evo_credits' => array(
+						'label' => T_('b2evolution credits'),
+						'note' => T_('Please help us promote b2evolution and leave b2evolution credits on your website.'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),		
+					'footer_links' => array(
+						'label' => T_('Footer User Links'),
+						'note' => T_('Check to display user links in the footer'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),
 					'footer_title_color' => array(
 						'label' => T_('Footer title color'),
 						'note' => T_('Default value is #FFF'),
@@ -448,6 +518,26 @@ class ark_Skin extends Skin
 				'custom_settings_end' => array(
 					'layout' => 'end_fieldset',
 				),
+				
+				'section_access_start' => array(
+					'layout' => 'begin_fieldset',
+					'label'  => T_('When access is denied or requires login...')
+				),
+					'access_login_containers' => array(
+						'label' => T_('Display on login screen'),
+						'note' => '',
+						'type' => 'checklist',
+						'options' => array(
+							array( 'header',   sprintf( T_('"%s" container'), NT_('Header') ),    1 ),
+							array( 'menu',     sprintf( T_('"%s" container'), NT_('Menu') ),      1 ),
+							array( 'sidebar',  sprintf( T_('"%s" container'), NT_('Sidebar') ),   0 ),
+							array( 'sidebar2', sprintf( T_('"%s" container'), NT_('Sidebar 2') ), 0 ),
+							array( 'footer',   sprintf( T_('"%s" container'), NT_('Footer') ),    1 ) ),
+						),
+				'section_access_end' => array(
+					'layout' => 'end_fieldset',
+				),
+				
 			), parent::get_param_definitions( $params ) );
 
 		return $r;
@@ -475,16 +565,6 @@ class ark_Skin extends Skin
 				'bootstrap_init_tooltips', // Inline JS to init Bootstrap tooltips (E.g. on comment form for allowed file extensions)
 				'disp_auto',               // Automatically include additional CSS and/or JS required by certain disps (replace with 'disp_off' to disable this)
 			) );
-			
-			//Include script and styles for hamburger responsive menu
-			require_js( $this->get_url().'jquery.slicknav.min.js' );
-			require_css( $this->get_url().'slicknav.css' );			
-			add_js_headline
-			("
-				jQuery(function(){
-					jQuery('#menu').slicknav();
-				});
-				");
 
 			// Skin specific initializations:			
 			// Add custom CSS:
@@ -535,15 +615,25 @@ class ark_Skin extends Skin
 			{
 				$custom_css .= 'body .headpicture .widget_core_coll_tagline { color: '.$color." }\n";
 			};
+			// Header content color:
+			if( $header_content_color = $this->get_setting( 'header_content_color' ) )
+			{
+				$custom_css .= 'body .headpicture { color: '.$header_content_color." }\n";
+			};	
+			// Header links color:
+			if( $header_links_color = $this->get_setting( 'header_links_color' ) )
+			{
+				$custom_css .= 'body .headpicture a, body .headpicture a:hover { color: '.$header_links_color." }\n";
+			};
 			// Site text color:
 			if( $color = $this->get_setting( 'site_text_color' ) )
 			{
-				$custom_css .= 'body, .widget .panel-heading h4, .evo_widget .panel-heading h4, .styled_content_block .panel-heading, .bCalendarRow .bCalendarHeaderCell { color: '.$color." }\n";
+				$custom_css .= 'body, .widget .panel-heading h4, .evo_widget .panel-heading h4, .styled_content_block .panel-heading, .bCalendarRow .bCalendarHeaderCell, h4.evo_comment_title { color: '.$color." }\n";
 			};
 			// Site link color:
 			if( $color = $this->get_setting( 'site_link_color' ) )
 			{
-				$custom_css .= 'body a, #bCalendarToday, .search_title a { color: '.$color." }\n";
+				$custom_css .= 'body a, #bCalendarToday, .search_title a, h4.evo_comment_title a { color: '.$color." }\n";
 				$custom_css .= '#bCalendarToday { border: 1px solid '.$color." }\n";
 			};
 			// Site link color hover:
@@ -555,37 +645,33 @@ class ark_Skin extends Skin
 			if( $width = $this->get_setting( 'top_menu_hamburger' ) )
 			{
 				$custom_css .= '@media only screen and (max-width: '.$width."px) {
-					#menu {	display: none !important; }	
-					.slicknav_menu { display:block !important; width: 100%; z-index: 99999; position: fixed; }
-					.headpicture img.bg-image { top: 0px !important; }
-					#evo_toolbar { position: relative !important; margin-top: 42px !important; }
-					#skin_wrapper { margin-top: 0; }
+				   .navbar-header {float: none}.navbar-left,.navbar-right {float: none !important}.navbar-toggle {display: block}.navbar-collapse {border-top: 1px solid transparent;box-shadow: inset 0 1px 0 rgba(255,255,255,0.1)}.navbar-fixed-top {top: 0;border-width: 0 0 1px;}.navbar-collapse.collapse {display: none!important}.navbar-nav {float: none!important;margin-top: 7.5px;overflow: hidden}.navbar-nav>li {float: none}.navbar-nav>li>a {padding-top: 10px;padding-bottom: 10px;}.collapse.in{display:block !important;}.evo_container__menu .header-search-toggle{display: none}.header-search-toggle{position: relative !important}.menu-social-toggle{display: none}.navbar-toggle-hamb{padding-right: 15px}.top-menu ul li a{display:block}.top-menu ul li{padding:0}
 				}\n";	
 			};
 			// Top menu hambuger color:
 			if( $color = $this->get_setting( 'top_menu_hamburger_color' ) )
 			{
-				$custom_css .= '.slicknav_menu .slicknav_icon .slicknav_icon-bar { background-color: '.$color." }\n";
+				$custom_css .= '.navbar-toggle-hamb span.icon-bar { background-color: '.$color." }\n";
 			};
 			// Top menu background color:
 			if( $color = $this->get_setting( 'top_menu_background_color' ) )
 			{
-				$custom_css .= '.top-menu, .slicknav_menu { background-color: '.$color." }\n";
+				$custom_css .= '.top-menu { background-color: '.$color." }\n";
 			};
 			// Top menu links color:
 			if( $color = $this->get_setting( 'top_menu_links_color' ) )
 			{
-				$custom_css .= '.top-menu ul li a, .slicknav_nav li a { color: '.$color." }\n";
+				$custom_css .= '.top-menu ul li a, .navbar-brand a { color: '.$color." }\n";
 			};
 			// Top menu links hover color:
 			if( $color = $this->get_setting( 'top_menu_links_hover_color' ) )
 			{
-				$custom_css .= '.top-menu ul li a:hover, .slicknav_menu ul li a:hover { color: '.$color." }\n";
+				$custom_css .= '.top-menu ul li a:hover, .navbar-brand a:hover { color: '.$color." }\n";
 			};			
 			// Top menu active link background color:
-			if( $color = $this->get_setting( 'top_menu_active_link_background_color' ) )
+			if( $color = $this->get_setting( 'top_menu_ac_link_bgcol' ) )
 			{
-				$custom_css .= '.top-menu ul li.active,.slicknav_nav li.active { background-color: '.$color." }\n";
+				$custom_css .= '.top-menu ul li.active, .navbar-brand a.active { background-color: '.$color." }\n";
 			};
 			
 			
@@ -613,10 +699,10 @@ class ark_Skin extends Skin
 			if( $color = $this->get_setting( 'post_bottom_border_color' ) )
 			{
 				if( $disp != 'single' ) {
-				$custom_css .= '.evo_post, .search_result { border-bottom: 5px solid '.$color." }\n";
+				$custom_css .= '.evo_post, .search_result { border-bottom: 1px dotted '.$color." }\n";
 				} else {
-					$custom_css .= '.pager { border-top: 5px solid '.$color." }\n";
-				}
+					$custom_css .= '.disp_single .pager, .disp_page .pager { border-top: 1px dotted '.$color." }\n";
+				} 
 			};
 			
 			
@@ -633,19 +719,23 @@ class ark_Skin extends Skin
 
 						
 			// Site Pagination links color:
-			if( $color = $this->get_setting( 'site_pagination_links_color' ) )
+			if( $color = $this->get_setting( 'pag_links_color' ) )
 			{
-				$custom_css .= '.site_pagination li span, .site_pagination li a { color: '.$color." }\n";
+				$custom_css .= '.site_pagination li span, .site_pagination li a, .site_pagination > a, .site_pagination > a:hover,
+								.pagination li span, .pagination li a, .pagination > a, .pagination > a:hover
+				{ color: '.$color." !important }\n";
 			};
 			// Site Pagination links color:
-			if( $color = $this->get_setting( 'site_pagination_links_background_color' ) )
+			if( $color = $this->get_setting( 'pag_links_bg_color' ) )
 			{
-				$custom_css .= '.site_pagination li a { background-color: '.$color." }\n";
+				$custom_css .= '.site_pagination li a, .pagination li a { background-color: '.$color." }\n";
 			};
 			// Site Pagination active link color:
-			if( $color = $this->get_setting( 'site_pagination_active_bg_color' ) )
+			if( $color = $this->get_setting( 'pag_active_bg_color' ) )
 			{
-				$custom_css .= '.site_pagination li span, .site_pagination li a:hover { background-color: '.$color." }\n";
+				$custom_css .= '.site_pagination li span, .site_pagination li a:hover, .site_pagination li.active a,
+								.pagination li span, .pagination li a:hover, .pagination li.active a
+				{ background-color: '.$color." !important }\n";
 			};
 
 
@@ -657,60 +747,66 @@ class ark_Skin extends Skin
 			// Footer text color:
 			if( $color = $this->get_setting( 'footer_text_color' ) )
 			{
-				$custom_css .= 'footer { color: '.$color." }\n";
+				$custom_css .= 'footer.footer { color: '.$color." }\n";
 			};
 			// Footer background color:
 			if( $color = $this->get_setting( 'footer_background_color' ) )
 			{
-				$custom_css .= 'footer { background-color: '.$color." }\n";
+				$custom_css .= 'footer.footer, .ufld_icon_links a span, .ufld_icon_links a span:hover { background-color: '.$color." }\n";
 			};
 			// Footer link color:
 			if( $color = $this->get_setting( 'footer_link_color' ) )
 			{
-				$custom_css .= 'footer a { color: '.$color." }\n";
+				$custom_css .= 'footer.footer a { color: '.$color." }\n";
 			};
 			// Footer link color (hover):
 			if( $color = $this->get_setting( 'footer_link_color_hover' ) )
 			{
-				$custom_css .= 'footer a:hover { color: '.$color." }\n";
+				$custom_css .= 'footer.footer a:hover { color: '.$color." }\n";
 			};
 
 
 			// Post button border color:
-			if( $color = $this->get_setting( 'post_button_border_color' ) )
+			if( $color = $this->get_setting( 'post_but_border_color' ) )
 			{
-				$custom_css .= '.styled_content_block .comment_form .control-buttons .submit { border: 1px solid '.$color." }\n";
+				$custom_css .= '.comment-form .control-buttons .submit, .evo_form__login .btn-success,
+				.disp_threads main .btn-info { border: 1px solid '.$color." }\n";
 			};
 			// Post button background color:
-			if( $color = $this->get_setting( 'post_button_background_color' ) )
+			if( $color = $this->get_setting( 'post_but_bg_color' ) )
 			{
-				$custom_css .= '.styled_content_block .comment_form .control-buttons .submit { background-color: '.$color." }\n";
+				$custom_css .= '.comment-form .control-buttons .submit, .evo_form__login .btn-success,
+				.disp_threads main .btn-info { background-color: '.$color." }\n";
 			};
 			// Post button text color:
-			if( $color = $this->get_setting( 'post_button_text_color' ) )
+			if( $color = $this->get_setting( 'post_but_text_color' ) )
 			{
-				$custom_css .= '.styled_content_block .comment_form .control-buttons .submit { color: '.$color." }\n";
+				$custom_css .= '.comment-form .control-buttons .submit, .evo_form__login .btn-success,
+				.disp_threads main .btn-info { color: '.$color." }\n";
 			};
 			// Preview button border color:
-			if( $color = $this->get_setting( 'preview_button_border_color' ) )
+			if( $color = $this->get_setting( 'prev_but_bor_color' ) )
 			{
-				$custom_css .= '.styled_content_block .comment_form .control-buttons .preview { border: 1px solid '.$color." }\n";
+				$custom_css .= '.comment-form .control-buttons .preview, .evo_form__login .btn-primary, .evo_form__register .btn-primary,
+				.disp_threads main .btn-primary, .disp_msgform main .btn-primary { border: 1px solid '.$color." }\n";
 			};
 			// Preview button background color:
-			if( $color = $this->get_setting( 'preview_button_background_color' ) )
+			if( $color = $this->get_setting( 'prev_but_bg_color' ) )
 			{
-				$custom_css .= '.styled_content_block .comment_form .control-buttons .preview { background-color: '.$color." }\n";
+				$custom_css .= '.comment-form .control-buttons .preview, .evo_form__login .btn-primary, .evo_form__register .btn-primary,
+				.disp_threads main .btn-primary, .disp_msgform main .btn-primary { background-color: '.$color." }\n";
 			};
 			// Preview button text color:
-			if( $color = $this->get_setting( 'preview_button_text_color' ) )
+			if( $color = $this->get_setting( 'prev_but_tx_color' ) )
 			{
-				$custom_css .= '.styled_content_block .comment_form .control-buttons .submit { color: '.$color." }\n";
+				$custom_css .= '.comment-form .control-buttons .preview, .evo_form__login .btn-primary, .evo_form__register .btn-primary,
+				.disp_threads main .btn-primary, .disp_msgform main .btn-primary { color: '.$color." }\n";
 			};			
 		
 		// Custom disps styles
-		if ( $disp == 'search' ) {
-				$custom_css .='.site_pagination li { margin-right: 4px'." }\n";
-		}
+		/*if ( $disp == 'search' ) {
+				$custom_css .='.site_pagination>a, .site_pagination li { margin-right: 4px'." }\n";
+		}*/
 		if ( $disp == 'page' ) {
 				$custom_css .='#feedbacks h3 { padding-top: 40px;'." }\n";
 		} else {
@@ -736,25 +832,29 @@ class ark_Skin extends Skin
 		switch( $name )
 		{
 			case 'Results':
-				// Results list:
+				// Results list (Used to view the lists of the users, messages, contacts and etc.):
 				return array(
 					'page_url' => '', // All generated links will refer to the current page
-					'before' => '<div class="results panel panel-default">',
+					'before' => '<div class="results">',
 					'content_start' => '<div id="$prefix$ajax_content">',
 					'header_start' => '',
-						'header_text' => '<div class="center"><ul class="pagination">'
+						'header_text' => '<div class="center"><ul class="site_pagination">'
 								.'$prev$$first$$list_prev$$list$$list_next$$last$$next$'
 							.'</ul></div>',
 						'header_text_single' => '',
 					'header_end' => '',
-					'head_title' => '<div class="panel-heading">$title$<span class="pull-right">$global_icons$</span></div>'."\n",
-					'filters_start' => '<div class="filters panel-body form-inline">',
-					'filters_end' => '</div>',
+					'head_title' => '<h2>$title$</h2><div class="fieldset_title"><div class="form-group">$global_icons$</div></div>'."\n",
+					'global_icons_class' => 'btn btn-sm',
+					'filters_start'        => '<div class="filters">',
+					'filters_end'          => '</div>',
+					'filter_button_class'  => 'btn-sm btn-info filter-submit',
+					'filter_button_before' => '<div class="form-group floatright filter-button-wrapper">',
+					'filter_button_after'  => '</div>',
 					'messages_start' => '<div class="messages form-inline">',
 					'messages_end' => '</div>',
 					'messages_separator' => '<br />',
 					'list_start' => '<div class="table_scroll">'."\n"
-					               .'<table class="table table-striped table-bordered table-hover table-condensed" cellspacing="0">'."\n",
+					               .'<table class="table table-condensed" cellspacing="0">'."\n",
 						'head_start' => "<thead>\n",
 							'line_start_head' => '<tr>',  // TODO: fusionner avec colhead_start_first; mettre a jour admin_UI_general; utiliser colspan="$headspan$"
 							'colhead_start' => '<th $class_attrib$>',
@@ -799,7 +899,7 @@ class ark_Skin extends Skin
 						'total_line_end' => "</tr>\n\n",
 					'list_end' => "</table></div>\n\n",
 					'footer_start' => '',
-					'footer_text' => '<div class="center"><ul class="pagination">'
+					'footer_text' => '<div class="center"><ul class="site_pagination">'
 							.'$prev$$first$$list_prev$$list$$list_next$$last$$next$'
 						.'</ul></div><div class="center">$page_size$</div>'
 					                  /* T_('Page $scroll_list$ out of $total_pages$   $prev$ | $next$<br />'. */
@@ -807,9 +907,11 @@ class ark_Skin extends Skin
 					                  /* .' <br />$first$  $list_prev$  $list$  $list_next$  $last$ :: $prev$ | $next$') */,
 					'footer_text_single' => '<div class="center">$page_size$</div>',
 					'footer_text_no_limit' => '', // Text if theres no LIMIT and therefor only one page anyway
-						'page_current_template' => '<span><b>$page_num$</b></span>',
+						'page_current_template' => '<span>$page_num$</span>',
 						'page_item_before' => '<li>',
 						'page_item_after' => '</li>',
+						'page_item_current_before' => '<li class="active">',
+						'page_item_current_after'  => '</li>',
 						'prev_text' => T_('Previous'),
 						'next_text' => T_('Next'),
 						'no_prev_text' => '',
@@ -874,29 +976,29 @@ class ark_Skin extends Skin
 
 			case 'compact_form':
 			case 'Form':
-				// Default Form settings:
+				// Default Form settings (Used for any form on front-office):
 				return array(
 					'layout'         => 'fieldset',
 					'formclass'      => 'form-horizontal',
-					'formstart'      => '',
-					'formend'        => '',
+					'formstart'      => '<div class="comment-form">',
+					'formend'        => '</div>',
 					'title_fmt'      => '<span style="float:right">$global_icons$</span><h2>$title$</h2>'."\n",
 					'no_title_fmt'   => '<span style="float:right">$global_icons$</span>'."\n",
-					'fieldset_begin' => '<div class="fieldset_wrapper $class$" id="fieldset_wrapper_$id$"><fieldset $fieldset_attribs$><div class="panel panel-default">'."\n"
+					'fieldset_begin' => '<div class="fieldset_wrapper $class$" id="submit_preview_buttons_wrapper"><fieldset $fieldset_attribs$><div>'."\n"
 															.'<legend class="panel-heading" $title_attribs$>$fieldset_title$</legend><div class="panel-body $class$">'."\n",
 					'fieldset_end'   => '</div></div></fieldset></div>'."\n",
 					'fieldstart'     => '<div class="form-group" $ID$>'."\n",
 					'fieldend'       => "</div>\n\n",
-					'labelclass'     => '',
+					'labelclass'     => 'control-label',
 					'labelstart'     => '',
 					'labelend'       => "\n",
-					'labelempty'     => '',
-					'inputstart'     => '',
-					'inputend'       => "\n",
-					'infostart'      => '',
-					'infoend'        => "\n",
-					'buttonsstart'   => '<div class="form-group"><div class="control-buttons">',
-					'buttonsend'     => "</div></div>\n\n",
+					'labelempty'     => '<label class="control-label"></label>',
+					'inputstart'     => '<div class="controls">',
+					'inputend'       => "</div>\n",
+					'infostart'      => '<div class="controls"><div class="form-control-static">',
+					'infoend'        => "</div></div>\n",
+					'buttonsstart'   => '<div class="control-buttons">',
+					'buttonsend'     => "</div>\n\n",
 					'customstart'    => '<div class="custom_content">',
 					'customend'      => "</div>\n",
 					'note_format'    => ' <span class="help-inline">%s</span>',
@@ -918,29 +1020,29 @@ class ark_Skin extends Skin
 					'radio_oneline_end'      => "</label>\n",
 				);
 
-			case 'linespan_form':
-				// Linespan form:
+			case 'fixed_form':
+				// Form with fixed label width (Used for form on disp=user):
 				return array(
-					'layout'         => 'linespan',
+					'layout'         => 'fieldset',
 					'formclass'      => 'form-horizontal',
 					'formstart'      => '',
 					'formend'        => '',
 					'title_fmt'      => '<span style="float:right">$global_icons$</span><h2>$title$</h2>'."\n",
 					'no_title_fmt'   => '<span style="float:right">$global_icons$</span>'."\n",
-					'fieldset_begin' => '<div class="fieldset_wrapper $class$" id="fieldset_wrapper_$id$"><fieldset $fieldset_attribs$><div class="panel panel-default">'."\n"
-															.'<legend class="panel-heading" $title_attribs$>$fieldset_title$</legend><div class="panel-body $class$">'."\n",
+					'fieldset_begin' => '<div class="fieldset_wrapper $class$" id="fieldset_wrapper_$id$"><fieldset $fieldset_attribs$><div class="">'."\n"
+															.'<legend class="panel-title" $title_attribs$>$fieldset_title$</legend><div class="$class$">'."\n",
 					'fieldset_end'   => '</div></div></fieldset></div>'."\n",
-					'fieldstart'     => '<div class="form-group" $ID$>'."\n",
+					'fieldstart'     => '<div class="form-group fixedform-group" $ID$>'."\n",
 					'fieldend'       => "</div>\n\n",
 					'labelclass'     => '',
 					'labelstart'     => '',
 					'labelend'       => "\n",
-					'labelempty'     => '',
-					'inputstart'     => '<div class="controls">',
+					'labelempty'     => '<label class="control-label fixedform-label"></label>',
+					'inputstart'     => '<div class="">',
 					'inputend'       => "</div>\n",
-					'infostart'      => '<div class="controls"><div class="form-control-static">',
+					'infostart'      => '<div class=""><div class="">',
 					'infoend'        => "</div></div>\n",
-					'buttonsstart'   => '<div class="form-group"><div class="control-buttons">',
+					'buttonsstart'   => '<div class="form-group"><div class="control-buttons fixedform-controls">',
 					'buttonsend'     => "</div></div>\n\n",
 					'customstart'    => '<div class="custom_content">',
 					'customend'      => "</div>\n",
@@ -948,17 +1050,13 @@ class ark_Skin extends Skin
 					// Additional params depending on field type:
 					// - checkbox
 					'inputclass_checkbox'    => '',
-					'inputstart_checkbox'    => '<div class="controls"><div class="checkbox"><label>',
+					'inputstart_checkbox'    => '<div class="controls fixedform-controls"><div class="checkbox"><label>',
 					'inputend_checkbox'      => "</label></div></div>\n",
 					'checkbox_newline_start' => '<div class="checkbox">',
 					'checkbox_newline_end'   => "</div>\n",
-					'checkbox_basic_start'   => '<div class="checkbox"><label>',
-					'checkbox_basic_end'     => "</label></div>\n",
 					// - radio
-					'fieldstart_radio'       => '',
-					'fieldend_radio'         => '',
-					'inputstart_radio'       => '<div class="controls">',
-					'inputend_radio'         => "</div>\n",
+					'fieldstart_radio'       => '<div class="form-group radio-group" $ID$>'."\n",
+					'fieldend_radio'         => "</div>\n\n",
 					'inputclass_radio'       => '',
 					'radio_label_format'     => '$radio_option_label$',
 					'radio_newline_start'    => '<div class="radio"><label>',
@@ -968,7 +1066,7 @@ class ark_Skin extends Skin
 				);
 
 			case 'user_navigation':
-				// The Prev/Next links of users
+				// The Prev/Next links of users (Used on disp=user to navigate between users):
 				return array(
 					'block_start'  => '<ul class="pager">',
 					'prev_start'   => '<li class="previous">',
@@ -983,7 +1081,7 @@ class ark_Skin extends Skin
 				);
 
 			case 'button_classes':
-				// Button classes
+				// Button classes (Used to initialize classes for action buttons like buttons to spam vote, or edit an intro post):
 				return array(
 					'button'       => 'btn btn-default btn-xs',
 					'button_red'   => 'btn-danger',
@@ -994,12 +1092,15 @@ class ark_Skin extends Skin
 
 			case 'tooltip_plugin':
 				// Plugin name for tooltips: 'bubbletip' or 'popover'
+				// We should use 'popover' tooltip plugin for bootstrap skins
+				// This tooltips appear on mouse over user logins or on plugin help icons
 				return 'popover';
 				break;
 
 			case 'plugin_template':
-				// Template for plugins
+				// Template for plugins:
 				return array(
+						// This template is used to build a plugin toolbar with action buttons above edit item/comment area:
 						'toolbar_before'       => '<div class="btn-toolbar $toolbar_class$" role="toolbar">',
 						'toolbar_after'        => '</div>',
 						'toolbar_title_before' => '<div class="btn-toolbar-title">',
@@ -1018,6 +1119,28 @@ class ark_Skin extends Skin
 				// Delegate to parent class:
 				return parent::get_template( $name );
 		}
+	}
+	
+	
+	/**
+	 * Check if we can display a widget container
+	 *
+	 * @param string Widget container key: 'header', 'menu', 'sidebar', 'sidebar2', 'footer'
+	 * @return boolean TRUE to display
+	 */
+	function is_visible_container( $container_key )
+	{
+		global $Blog;
+
+		if( $Blog->has_access() )
+		{	// If current user has an access to this collection then don't restrict containers:
+			return true;
+		}
+
+		// Get what containers are available for this skin when access is denied or requires login:
+		$access = $this->get_setting( 'access_login_containers' );
+
+		return ( ! empty( $access ) && ! empty( $access[ $container_key ] ) );
 	}
 }
 ?>
