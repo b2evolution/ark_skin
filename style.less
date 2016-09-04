@@ -8,20 +8,24 @@ div.widget_core_coll_item_list.evo_1pic__special ul li .item_first_image_placeho
 }
 // --------------------------------------------------------------------
 
-// ------------------- Media Index widget -------------------- 
+// --------- Universal item list widget & Recent posts widget ---------
+@import "../../rsc/less/_universal_item_list_widget.module.less";
+// --------------------------------------------------------------------
+
+// ------------------- Media Index widget --------------------
 @import "../../rsc/less/_coll_media_index_widget.module.less";
 // -----------------------------------------------------------
 
-// ----------- User Avatars (User List) widget ------------ 
+// ----------- User Avatars (User List) widget ------------
 @import "../../rsc/less/_user_avatars_widget.module.less";
+// --------------------------------------------------------
+
+// -----------------About Author widget -------------------
+@import "../../rsc/less/_about_author_widget.module.less";
 // --------------------------------------------------------
 
 // ------------- Organization Members widget -------------
 @import "../../rsc/less/_org_members_widget.module.less";
-	// Override constants used in the module:
-	@widget_core_org_members-color: #333;
-	@widget_core_org_members-user-link-color: #000;
-	@widget_core_org_members-user-link-hover-color: #23527c;
 // -------------------------------------------------------
 
 body{
@@ -951,11 +955,6 @@ blockquote {
 .evo_post_comment_notification p a{
 	white-space:normal;
 }
-@media only screen and (max-width: 991px){
-	.evo_comment > p {
-		padding-left: 0px;
-	}
-}
 
 // Comment form styles
 .evo_post .evo_form {
@@ -1040,4 +1039,69 @@ blockquote {
     font-weight: 400;
     line-height: 1.42857143;
     text-align: center;
+}
+
+.disp_comments .evo_comment_info {
+	padding: 0;
+}
+
+.disp_profile {
+	.fieldset_wrapper {	
+		margin-bottom: 15px;
+		
+		legend.panel-heading {
+			background-color: #f5f5f5;
+			border-top: 1px solid #ddd;
+			border-left: 1px solid #ddd;
+			border-right: 1px solid #ddd;
+		}
+		.panel-body.fieldset {
+			border: 1px solid #ddd;
+			border-radius: 0 0 4px 4px;
+			
+			.form-group {
+				
+				.control-label {
+					text-align: right;
+					float: left;
+					width: 25%;
+					padding-right: 15px;
+				}
+				.controls {
+					margin-left: 25%;
+				}
+			
+			}
+		
+		}
+		
+		.control-buttons {
+			margin-bottom: 10px;
+		}
+	}
+}
+
+
+@media only screen and (max-width: 991px){
+	.evo_comment > p {
+		padding-left: 0px;
+	}
+	
+	.disp_profile {
+		.fieldset_wrapper {
+			.panel-body.fieldset {
+				.form-group {
+					.control-label {
+						text-align: left;
+						float: left;
+						width: 100%;
+						padding-right: 0;
+					}
+					.controls {
+						margin-left: 0;
+					}
+				}
+			}
+		}
+	}
 }
