@@ -1045,20 +1045,22 @@ blockquote {
 	padding: 0;
 }
 
-.disp_profile {
+.disp_profile,
+.disp_subs,
+.disp_userprefs,
+.disp_pwdchange,
+.disp_avatar {
 	.fieldset_wrapper {	
 		margin-bottom: 15px;
+		border: 1px solid #ddd;
+		border-radius: 4px;
 		
 		legend.panel-heading {
 			background-color: #f5f5f5;
-			border-top: 1px solid #ddd;
-			border-left: 1px solid #ddd;
-			border-right: 1px solid #ddd;
+			border-radius: 4px 4px 0 0;
+			border-bottom: 1px solid #ddd;
 		}
 		.panel-body.fieldset {
-			border: 1px solid #ddd;
-			border-radius: 0 0 4px 4px;
-			
 			.form-group {
 				
 				.control-label {
@@ -1072,13 +1074,19 @@ blockquote {
 				}
 			
 			}
-		
 		}
 		
 		.control-buttons {
 			margin-bottom: 10px;
 		}
 	}
+}
+.disp_userprefs .fieldset_wrapper .panel-body.fieldset .form-group .control-label {
+	margin-bottom: -30px;
+}
+.disp_subs .field_inline .control-label {
+	width: 100% !important;
+	text-align: left !important;
 }
 
 
@@ -1087,7 +1095,11 @@ blockquote {
 		padding-left: 0px;
 	}
 	
-	.disp_profile {
+	.disp_profile,
+	.disp_subs,
+	.disp_userprefs,
+	.disp_pwdchange,
+	.disp_avatar {
 		.fieldset_wrapper {
 			.panel-body.fieldset {
 				.form-group {
@@ -1103,5 +1115,8 @@ blockquote {
 				}
 			}
 		}
+	}
+	.disp_userprefs .fieldset_wrapper .panel-body.fieldset .form-group .control-label {
+		margin-bottom: 0px;
 	}
 }

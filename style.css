@@ -1562,39 +1562,77 @@ blockquote {
 .disp_comments .evo_comment_info {
   padding: 0;
 }
-.disp_profile .fieldset_wrapper {
+.disp_profile .fieldset_wrapper,
+.disp_subs .fieldset_wrapper,
+.disp_userprefs .fieldset_wrapper,
+.disp_pwdchange .fieldset_wrapper,
+.disp_avatar .fieldset_wrapper {
   margin-bottom: 15px;
-}
-.disp_profile .fieldset_wrapper legend.panel-heading {
-  background-color: #f5f5f5;
-  border-top: 1px solid #ddd;
-  border-left: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-}
-.disp_profile .fieldset_wrapper .panel-body.fieldset {
   border: 1px solid #ddd;
-  border-radius: 0 0 4px 4px;
+  border-radius: 4px;
 }
-.disp_profile .fieldset_wrapper .panel-body.fieldset .form-group .control-label {
+.disp_profile .fieldset_wrapper legend.panel-heading,
+.disp_subs .fieldset_wrapper legend.panel-heading,
+.disp_userprefs .fieldset_wrapper legend.panel-heading,
+.disp_pwdchange .fieldset_wrapper legend.panel-heading,
+.disp_avatar .fieldset_wrapper legend.panel-heading {
+  background-color: #f5f5f5;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 1px solid #ddd;
+}
+.disp_profile .fieldset_wrapper .panel-body.fieldset .form-group .control-label,
+.disp_subs .fieldset_wrapper .panel-body.fieldset .form-group .control-label,
+.disp_userprefs .fieldset_wrapper .panel-body.fieldset .form-group .control-label,
+.disp_pwdchange .fieldset_wrapper .panel-body.fieldset .form-group .control-label,
+.disp_avatar .fieldset_wrapper .panel-body.fieldset .form-group .control-label {
   text-align: right;
   float: left;
   width: 25%;
   padding-right: 15px;
 }
-.disp_profile .fieldset_wrapper .panel-body.fieldset .form-group .controls {
+.disp_profile .fieldset_wrapper .panel-body.fieldset .form-group .controls,
+.disp_subs .fieldset_wrapper .panel-body.fieldset .form-group .controls,
+.disp_userprefs .fieldset_wrapper .panel-body.fieldset .form-group .controls,
+.disp_pwdchange .fieldset_wrapper .panel-body.fieldset .form-group .controls,
+.disp_avatar .fieldset_wrapper .panel-body.fieldset .form-group .controls {
   margin-left: 25%;
+}
+.disp_profile .fieldset_wrapper .control-buttons,
+.disp_subs .fieldset_wrapper .control-buttons,
+.disp_userprefs .fieldset_wrapper .control-buttons,
+.disp_pwdchange .fieldset_wrapper .control-buttons,
+.disp_avatar .fieldset_wrapper .control-buttons {
+  margin-bottom: 10px;
+}
+.disp_userprefs .fieldset_wrapper .panel-body.fieldset .form-group .control-label {
+  margin-bottom: -30px;
+}
+.disp_subs .field_inline .control-label {
+  width: 100% !important;
+  text-align: left !important;
 }
 @media only screen and (max-width: 991px) {
   .evo_comment > p {
     padding-left: 0px;
   }
-  .disp_profile .fieldset_wrapper .panel-body.fieldset .form-group .control-label {
+  .disp_profile .fieldset_wrapper .panel-body.fieldset .form-group .control-label,
+  .disp_subs .fieldset_wrapper .panel-body.fieldset .form-group .control-label,
+  .disp_userprefs .fieldset_wrapper .panel-body.fieldset .form-group .control-label,
+  .disp_pwdchange .fieldset_wrapper .panel-body.fieldset .form-group .control-label,
+  .disp_avatar .fieldset_wrapper .panel-body.fieldset .form-group .control-label {
     text-align: left;
     float: left;
     width: 100%;
     padding-right: 0;
   }
-  .disp_profile .fieldset_wrapper .panel-body.fieldset .form-group .controls {
+  .disp_profile .fieldset_wrapper .panel-body.fieldset .form-group .controls,
+  .disp_subs .fieldset_wrapper .panel-body.fieldset .form-group .controls,
+  .disp_userprefs .fieldset_wrapper .panel-body.fieldset .form-group .controls,
+  .disp_pwdchange .fieldset_wrapper .panel-body.fieldset .form-group .controls,
+  .disp_avatar .fieldset_wrapper .panel-body.fieldset .form-group .controls {
     margin-left: 0;
+  }
+  .disp_userprefs .fieldset_wrapper .panel-body.fieldset .form-group .control-label {
+    margin-bottom: 0px;
   }
 }
