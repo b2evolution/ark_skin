@@ -1414,6 +1414,18 @@ footer .footer_note__wrapper .widget_core_user_links .ufld_icon_links a span:hov
 .sidebar .panel {
   font-size: 90%;
 }
+.evo_container__sidebar .widget .panel-body,
+.evo_container__sidebar2 .widget .panel-body,
+.evo_container__sidebar .evo_widget .panel-body,
+.evo_container__sidebar2 .evo_widget .panel-body {
+  padding: 0 0 15px;
+}
+.evo_container__sidebar .widget .panel-body ul,
+.evo_container__sidebar2 .widget .panel-body ul,
+.evo_container__sidebar .evo_widget .panel-body ul,
+.evo_container__sidebar2 .evo_widget .panel-body ul {
+  margin-left: 25px;
+}
 .styled_content_block .panel-heading a:hover,
 #styled_content_block .panel-heading a:hover {
   background-color: transparent;

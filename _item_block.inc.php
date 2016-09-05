@@ -104,19 +104,19 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 				'text' => '#icon#',
 			) );
 
-		// We want to display the post time:
-		$Item->issue_time( array(
-				'before'      => ' '.T_('posted on '),
-				'after'       => ' ',
-				'time_format' => 'M j, Y',
-			) );
-
 		// Author
 		$Item->author( array(
 			'before'    => ' '.T_('by').' ',
 			'after'     => ' ',
 			'link_text' => $params['author_link_text'],
 		) );
+
+		// We want to display the post time:
+		$Item->issue_time( array(
+				'before'      => ' '.T_('on '),
+				'after'       => ' ',
+				'time_format' => 'M j, Y',
+			) );
 
 		// Categories
 		$Item->categories( array(
@@ -127,6 +127,33 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 			'include_external'=> true,
 			'link_categories' => true,
 		) );
+		
+	if( ! $Item->is_intro() ) // Do NOT apply comments and feedback on intro posts
+	{
+			// Link to comments, trackbacks, etc.:
+			$Item->feedback_link( array(
+							'type' => 'comments',
+							'link_before' => ' &bull; ',
+							'link_after' => '',
+							'link_text_zero' => '#',
+							'link_text_one' => '#',
+							'link_text_more' => '#',
+							'link_title' => '#',
+							// fp> WARNING: creates problem on home page: 'link_class' => 'btn btn-default btn-sm',
+							// But why do we even have a comment link on the home page ? (only when logged in)
+						) );
+
+			// Link to comments, trackbacks, etc.:
+			$Item->feedback_link( array(
+							'type' => 'trackbacks',
+							'link_before' => ' &bull; ',
+							'link_after' => '',
+							'link_text_zero' => '#',
+							'link_text_one' => '#',
+							'link_text_more' => '#',
+							'link_title' => '#',
+						) );
+	}
 
 		// Link for editing
 		$Item->edit_link( array(
@@ -190,47 +217,17 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 	}
 	?>
 
-		<?php
+		<?php		
+		if( ! $Item->is_intro() ) // Do NOT apply tags, comments and feedback on intro posts
+		{ // List all tags attached to this post:
 			echo '<footer>';
-		
-			if( ! $Item->is_intro() ) // Do NOT apply tags, comments and feedback on intro posts
-			{ // List all tags attached to this post:
-				$Item->tags( array(
-						'before'    => '<nav class="tags">',
-						'after'     => '</nav>',
-						'separator' => ' ',
-					) );
-		?>
-
-		<nav class="post_comments_link">
-		<?php
-			// Link to comments, trackbacks, etc.:
-			$Item->feedback_link( array(
-							'type' => 'comments',
-							'link_before' => '',
-							'link_after' => '',
-							'link_text_zero' => '#',
-							'link_text_one' => '#',
-							'link_text_more' => '#',
-							'link_title' => '#',
-							// fp> WARNING: creates problem on home page: 'link_class' => 'btn btn-default btn-sm',
-							// But why do we even have a comment link on the home page ? (only when logged in)
-						) );
-
-			// Link to comments, trackbacks, etc.:
-			$Item->feedback_link( array(
-							'type' => 'trackbacks',
-							'link_before' => ' &bull; ',
-							'link_after' => '',
-							'link_text_zero' => '#',
-							'link_text_one' => '#',
-							'link_text_more' => '#',
-							'link_title' => '#',
-						) );
-		?>
-		</nav>
-		
-	</footer>
+			$Item->tags( array(
+					'before'    => '<nav class="tags"><i class="fa fa-tags" aria-hidden="true"></i> ' . T_('Tags'). ': ',
+					'after'     => '</nav>',
+					'separator' => ' ',
+				) );
+		?>		
+		</footer>
 		<?php } ?>
 
 	
