@@ -94,10 +94,6 @@ div.widget_core_coll_related_post_list.evo_1pic__special ul li .item_first_image
   width: 80px;
   background: #f0f0f0;
   margin-right: 6px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  -ms-border-radius: 3px;
-  -o-border-radius: 3px;
   border-radius: 3px;
 }
 div.widget_core_coll_item_list.evo_1pic__special ul li .item_first_image_placeholder:before,
@@ -417,7 +413,6 @@ div.widget_core_coll_related_post_list.evo_withexcerpt.evo_noteaser div.item_exc
   line-height: 13px;
   white-space: nowrap;
   vertical-align: middle;
-  -ms-touch-action: manipulation;
   touch-action: manipulation;
   cursor: pointer;
   -webkit-user-select: none;
@@ -426,7 +421,7 @@ div.widget_core_coll_related_post_list.evo_withexcerpt.evo_noteaser div.item_exc
   user-select: none;
   background-image: none;
   border: 1px solid transparent;
-  color: #333;
+  color: #333333;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
@@ -570,7 +565,7 @@ div.widget_core_user_avatars.evo_layout_rwd img {
 }
 .widget_core_org_members {
   margin: 5em 0 30px;
-  color: #333;
+  color: #333333;
 }
 .widget_core_org_members div.widget_rwd_content {
   text-align: center;
@@ -591,7 +586,7 @@ div.widget_core_user_avatars.evo_layout_rwd img {
   font-size: 18px;
 }
 .widget_core_org_members a.user_link {
-  color: #000;
+  color: #000000;
 }
 .widget_core_org_members a.user_link:hover {
   color: #23527c;
@@ -666,11 +661,11 @@ div[class^='col-'] {
   margin-top: 0;
 }
 .headpicture {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   display: table;
+  width: 100%;
+}
+.headpicture .header_img {
   width: 100%;
 }
 .headpicture .headipic_section {
@@ -898,7 +893,6 @@ div.extended_search_form input.search_field,
 .disp_404 .compact_search_form input.search_field {
   width: 100% !important;
   border-radius: 6px !important;
-  -webkit-box-shadow: none;
   box-shadow: none;
   -webkit-transition: none;
   -o-transition: none;
@@ -941,7 +935,6 @@ textarea.message_text {
 .comment_form .panel {
   margin: 0;
   border: none;
-  -webkit-box-shadow: none;
   box-shadow: none;
 }
 .comment_form .panel .panel-body {
@@ -1022,6 +1015,7 @@ form.bComment input[type=file] {
 .evo_post .search_title a,
 .search_result .search_title a {
   text-decoration: none;
+  -webkit-transition: 0.2s ease;
   transition: 0.2s ease;
 }
 .evo_post .bTitle,
@@ -1324,6 +1318,7 @@ footer .footer_note__wrapper .widget_core_user_links .ufld_icon_links a {
 }
 footer .footer_note__wrapper .widget_core_user_links .ufld_icon_links a span {
   border: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
 }
 footer .footer_note__wrapper .widget_core_user_links .ufld_icon_links a span:hover {
@@ -1400,7 +1395,6 @@ footer .footer_note__wrapper .widget_core_user_links .ufld_icon_links a span:hov
 .sidebar .compact_search_form input.search_field {
   width: 100% !important;
   border-radius: 6px;
-  -webkit-box-shadow: none;
   box-shadow: none;
   -webkit-transition: none;
   -o-transition: none;

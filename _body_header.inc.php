@@ -20,6 +20,17 @@ siteskin_include( '_site_body_header.inc.php' );
 <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,800,700' rel='stylesheet' type='text/css'>
 
 <div class="headpicture">
+
+<?php
+if( $Skin->get_setting( 'header_img_type' ) == 'header_img' ) {
+	// Display an image from skin setting as image tag
+	global $Blog, $skins_url;
+	$bg_image = $Skin->get_setting( 'front_bg_image' );
+	//echo '<div id="bg_picture">';
+		echo '<img src="'.$skins_url.'ark_skin/'.$bg_image.'" class="img-responsive header_img" />';
+	//echo '</div>';
+} else { ?>
+
 	<div class="headipic_section <?php 
 									if($Skin->get_setting('header_content_pos')=='center_pos'){echo 'center';}
 									else if($Skin->get_setting('header_content_pos')=='left_pos'){echo 'left';}
@@ -32,11 +43,17 @@ siteskin_include( '_site_body_header.inc.php' );
 		?>				
 		</div>
 	</div>
+<?php } ?>
 </div>
 
 <nav class="top-menu">
 	<div class="row">
 		<!-- Brand and toggle get grouped for better mobile display -->
+
+<?php if( $Skin->get_setting( 'top_menu_position' ) == 'menu_inline' ) {
+		echo '<div class="container menu_inline_container">';
+} ?>
+
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle navbar-toggle-hamb collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
 				<span class="sr-only">Toggle navigation</span>
@@ -46,6 +63,7 @@ siteskin_include( '_site_body_header.inc.php' );
 			</button>
 			
 				<?php 
+				if( $Skin->get_setting( 'top_menu_brand' ) ) {
 				// ------------------------- "Menu" Collection title --------------------------
 					skin_widget( array(
 						// CODE for the widget:
@@ -56,10 +74,10 @@ siteskin_include( '_site_body_header.inc.php' );
 						'item_class'           => 'navbar-brand',
 					) );
 				// ------------------------- "Menu" Collection logo --------------------------
+				}
 				?>
-				
 		</div><!-- /.navbar-header -->
-
+		
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse" id="navbar-collapse-1">
 			<ul class="navbar-nav evo_container evo_container__menu" id="menu">				
@@ -85,5 +103,10 @@ siteskin_include( '_site_body_header.inc.php' );
 				?>
 			</ul>
 		</div><!-- .collapse -->
+		
+<?php if( $Skin->get_setting( 'top_menu_position' ) == 'menu_inline' ) {
+		echo '</div><!-- .container -->';
+} ?>
+		
 	</div><!-- .row -->
 </nav><!-- .top-menu -->
