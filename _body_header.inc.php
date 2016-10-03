@@ -21,29 +21,28 @@ siteskin_include( '_site_body_header.inc.php' );
 
 <div class="headpicture">
 
-<?php
-if( $Skin->get_setting( 'header_img_type' ) == 'header_img' ) {
-	// Display an image from skin setting as image tag
-	global $Blog, $skins_url;
-	$bg_image = $Skin->get_setting( 'front_bg_image' );
-	//echo '<div id="bg_picture">';
-		echo '<img src="'.$skins_url.'ark_skin/'.$bg_image.'" class="img-responsive header_img" />';
-	//echo '</div>';
-} else { ?>
-
 	<div class="headipic_section <?php 
-									if($Skin->get_setting('header_content_pos')=='center_pos'){echo 'center';}
-									else if($Skin->get_setting('header_content_pos')=='left_pos'){echo 'left';}
-									else{echo 'right';}
+									if( $Skin->get_setting( 'header_content_pos' ) == 'center_pos' ) {
+										echo 'center';
+									} elseif( $Skin->get_setting( 'header_content_pos' ) == 'left_pos' ){
+										echo 'left';
+									} elseif( $Skin->get_setting( 'header_content_pos' ) == 'right_pos' ){
+										echo 'right';
+									}
 									?>">
-		<div class="container">
 		<?php
+			if( $Skin->get_setting( 'header_content_pos' ) == 'column_pos' ) {
+				echo '<div class="container">';
+			}
 			skin_container( NT_('Header'), array(
 			) );
+			if( $Skin->get_setting( 'header_content_pos' ) == 'column_pos' ) {
+				echo '</div>';
+			}
 		?>				
-		</div>
+		
 	</div>
-<?php } ?>
+	
 </div>
 
 <nav class="top-menu">
@@ -63,6 +62,10 @@ if( $Skin->get_setting( 'header_img_type' ) == 'header_img' ) {
 			</button>
 			
 				<?php 
+				/**
+				 * Removed due to hardcoded link - matter of the way this option param is created
+				 *
+				 
 				if( $Skin->get_setting( 'top_menu_brand' ) ) {
 				// ------------------------- "Menu" Collection title --------------------------
 					skin_widget( array(
@@ -75,11 +78,12 @@ if( $Skin->get_setting( 'header_img_type' ) == 'header_img' ) {
 					) );
 				// ------------------------- "Menu" Collection logo --------------------------
 				}
+				*/
 				?>
 		</div><!-- /.navbar-header -->
 		
 		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="navbar-collapse-1">
+		<div class="collapse navbar-collapse<?php if( $Skin->get_setting( 'top_menu_position' ) == 'menu_center' ) { echo ' menu_center'; } ?>" id="navbar-collapse-1">
 			<ul class="navbar-nav evo_container evo_container__menu" id="menu">				
 				<?php
 					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------

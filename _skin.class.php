@@ -17,7 +17,7 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
  */
 class ark_Skin extends Skin
 {	
-	var $version = '1.1.0';
+	var $version = '1.0.0';
 	/**
 	 * Do we want to use style.min.css instead of style.css ?
 	 */
@@ -142,16 +142,6 @@ class ark_Skin extends Skin
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Header settings')
 				),
-					'header_img_type' => array(
-						'label' => T_('Header image type'),
-						'note' => T_('Choose header image type.') . ' (' . T_('Explanation in the update log.') . ')',
-						'defaultvalue' => 'header_bgimg',
-						'options' => array(
-								'header_bgimg' => T_('Background image'),
-								'header_img'  => T_('Image tag'),
-							),
-						'type' => 'select',
-					),
 					'front_bg_image' => array(
 						'label' => T_('Header background image'),
 						'note' => T_('Leave blank if you want background color instead.'),
@@ -159,15 +149,21 @@ class ark_Skin extends Skin
 						'type' => 'text',
 						'size' => '50'
 					),
+					'header_height_set' => array(
+						'label' => T_('Height customization'),
+						'note' => T_('Check this to enable header height customization option.'),
+						'defaultvalue' => 1,
+						'type' => 'checkbox',
+					),	
 					'header_height' => array(
-						'label' => T_('Header height (in px)'),
-						'note' => T_('Input numbers only. NOTE: Does not work if "Header image type" is set to "Image tag".') . T_('Default value is') . ' 300.',
+						'label' => T_('Header height'),
+						'note' => 'px. ' . T_('Input numbers only.') . ' ' . T_('Default value is') . ' 300.',
 						'defaultvalue' => '300',
-						'type' => 'text',
+						'type' => 'integer',
 					),
 					'headpicture_bg_col' => array(
 						'label' => T_('Header background color'),
-						'note' => T_("Use this if you don't want image in header section."),
+						'note' => T_("Set the background color of the header section."),
 						'defaultvalue' => '#333',
 						'type' => 'color',
 					),
@@ -179,6 +175,7 @@ class ark_Skin extends Skin
 								'center_pos' => T_('Center'),
 								'left_pos'  => T_('Left'),
 								'right_pos' => T_('Right'),
+								'column_pos' => T_('With content column'),
 							),
 						'type' => 'select',
 					),
@@ -215,27 +212,33 @@ class ark_Skin extends Skin
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Navigation Menu Settings')
 				),
+					/**
+					 * Removed due to hardcoded link - matter of the way this option param is created
+					 *
+
 					'top_menu_brand' => array(
 						'label' => T_('Top menu collection title'),
 						'note' => T_('Check to display collection title as the first item in the top menu.'),
 						'defaultvalue' => 1,
 						'type' => 'checkbox',
 					),
+					*/
 					'top_menu_position' => array(
 						'label' => T_('Top menu content position'),
-						'note' => T_('Set top menu content alignment position.'),
-						'defaultvalue' => 'menu_left',
+						'note' => ' (' . T_('Set top menu content alignment position') . ')',
+						'type' => 'radio',
 						'options' => array(
-								'menu_left'  => T_('Left'),
-								'menu_inline' => T_('In line with main content'),
+								array( 'menu_left', T_('Left') ),
+								array( 'menu_inline', T_('With content column') ),
+								array( 'menu_center', T_('Center') ),
 							),
-						'type' => 'select',
+						'defaultvalue' => 'menu_left',
 					),
 					'top_menu_hamburger' => array(
 						'label' => T_('Top menu hamburger layout'),
-						'note' => T_('Set the exact screen width in pixels (NUMBERS ONLY) to break menu layout to hamburger menu. For example if you write <b>815</b>, you will get hamburger menu until screen size reaches 816th pixel width.'),
+						'note' => 'px. ' . T_('Set the exact screen width in pixels (NUMBERS ONLY) to break menu layout to hamburger menu. For example if you write 815, you will get hamburger menu until screen size reaches 816th pixel width.'),
 						'defaultvalue' => '815',
-						'type' => 'text',
+						'type' => 'integer',
 						'size' => '7'
 					),
 					'top_menu_hamburger_color' => array(
@@ -437,7 +440,7 @@ class ark_Skin extends Skin
 						'note' => T_('Please help us promote b2evolution and leave b2evolution credits on your website.'),
 						'defaultvalue' => 1,
 						'type' => 'checkbox',
-					),		
+					),
 					'footer_links' => array(
 						'label' => T_('Footer User Links'),
 						'note' => T_('Check to display user links in the footer'),
@@ -620,21 +623,16 @@ class ark_Skin extends Skin
 			};
 			if( $front_bg_image = $this->get_setting( 'front_bg_image' ) )
 			{ // If image input
-				if( $this->get_setting( 'header_img_type' ) == 'header_bgimg' ) {
-					$custom_css .= ' .headpicture { background: url('.$front_bg_image.") no-repeat center center;background-size: cover; }\n";
-				}
+				$custom_css .= ' .headpicture { background: url('.$front_bg_image.") no-repeat center center;background-size: cover; }\n";
 			}
-			if( empty ($front_bg_image) ) {
-			// Site header color:
-				if( $color = $this->get_setting( 'headpicture_bg_col' ) )
-				{
-					$custom_css .= '.headpicture { background-color: '.$color." }\n";
-				};
+			if( $color = $this->get_setting( 'headpicture_bg_col' ) )
+			{ // Site header color:
+				$custom_css .= '.headpicture { background-color: '.$color." }\n";
 			};
 			if( $header_height = $this->get_setting( 'header_height' ) )
 			{ // If image input
-				if( $this->get_setting( 'header_img_type' ) == 'header_bgimg' ) {
-					$custom_css .= ' .headpicture { height:'.$header_height."px }\n";
+				if( $this->get_setting( 'header_height_set' ) ) {
+					$custom_css .= '.headpicture { min-height:'.$header_height."px }\n";
 				}
 			}
 			// Site title color:
@@ -682,7 +680,7 @@ class ark_Skin extends Skin
 			if( $width = $this->get_setting( 'top_menu_hamburger' ) )
 			{
 				$custom_css .= '@media only screen and (max-width: '.$width."px) {
-				   .navbar-header {float: none}.navbar-left,.navbar-right {float: none !important}.navbar-toggle {display: block}.navbar-collapse {border-top: 1px solid transparent;/*box-shadow: inset 0 1px 0 rgba(255,255,255,0.1)*/}.navbar-fixed-top {top: 0;border-width: 0 0 1px;}.navbar-collapse.collapse {display: none!important}.navbar-nav {float: none!important;margin-top: 7.5px;overflow: hidden}.navbar-nav>li {float: none}.navbar-nav>li>a {padding-top: 10px;padding-bottom: 10px;}.collapse.in{display:block !important;}.evo_container__menu .header-search-toggle{display: none}.header-search-toggle{position: relative !important}.menu-social-toggle{display: none}.navbar-toggle-hamb{padding-right: 15px}.top-menu ul li a{display:block}.top-menu ul li{padding:0}.menu_inline_container{width:100%;}.menu_inline_container .navbar-collapse{padding: 0}
+				   .navbar-header {float: none}.navbar-left,.navbar-right {float: none !important}.navbar-toggle {display: block}.navbar-collapse {border-top: 1px solid transparent;/*box-shadow: inset 0 1px 0 rgba(255,255,255,0.1)*/}.navbar-fixed-top {top: 0;border-width: 0 0 1px;}.navbar-collapse.collapse {display: none!important}.navbar-nav {float: none!important;margin-top: 7.5px;overflow: hidden}.navbar-nav>li {float: none}.navbar-nav>li>a {padding-top: 10px;padding-bottom: 10px;}.collapse.in{display:block !important;}.evo_container__menu .header-search-toggle{display: none}.header-search-toggle{position: relative !important}.menu-social-toggle{display: none}.navbar-toggle-hamb{padding-right: 15px}.top-menu ul li a{display:block}.top-menu ul li{padding:0}.menu_inline_container{width:100%;}.top-menu .menu_center > ul{display:block}
 				}\n";	
 			};
 			// Top menu hambuger color:

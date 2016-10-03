@@ -665,7 +665,10 @@ div[class^='col-'] {
   display: table;
   width: 100%;
 }
-.headpicture .header_img {
+.headpicture .header_img img {
+  display: block;
+  max-width: 100%;
+  height: auto;
   width: 100%;
 }
 .headpicture .headipic_section {
@@ -727,17 +730,13 @@ ul.pager li.previous a:hover {
 .top-menu ul a.selected {
   font-weight: 400;
 }
-.top-menu .navbar-brand {
-  padding: 0;
-  margin-left: 15px;
+.top-menu .menu_center {
+  text-align: center;
 }
-.top-menu .navbar-brand h3 {
-  padding: 11px 0px;
-  margin: 0;
-}
-.top-menu .navbar-brand h3 a {
-  padding: 15px;
-  font-size: 17px;
+.top-menu .menu_center > ul {
+  float: none;
+  display: inline-block;
+  margin-bottom: -6px;
 }
 h1 {
   font-family: Raleway, sans-serif;
