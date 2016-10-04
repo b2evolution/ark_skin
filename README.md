@@ -25,7 +25,6 @@ Current (stable) version: 1.0.0
 ### Update Log
 
 #### v1.1.0-alpha
-- Collection title in top menu is now customizable
-- Top menu content can now be positioned left of the viewport or in-line with the main content
+- Top menu content can now be positioned left of the viewport, in-line with the main content or in the center of the menu container
 - Additional skin customization options
 - 2 header image types: 1) Background image - requires height to be set and fills up entire header section with background image; 2) Image tag - does not require height, adds image through <img> tag and scales image to viewport. NOTE: "Image tag" type disables "Header" container.

@@ -61,11 +61,7 @@ siteskin_include( '_site_body_header.inc.php' );
 				<span class="icon-bar"></span>
 			</button>
 			
-				<?php 
-				/**
-				 * Removed due to hardcoded link - matter of the way this option param is created
-				 *
-				 
+				<?php				 
 				if( $Skin->get_setting( 'top_menu_brand' ) ) {
 				// ------------------------- "Menu" Collection title --------------------------
 					skin_widget( array(
@@ -78,7 +74,6 @@ siteskin_include( '_site_body_header.inc.php' );
 					) );
 				// ------------------------- "Menu" Collection logo --------------------------
 				}
-				*/
 				?>
 		</div><!-- /.navbar-header -->
 		

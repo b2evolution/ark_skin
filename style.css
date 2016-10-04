@@ -730,6 +730,20 @@ ul.pager li.previous a:hover {
 .top-menu ul a.selected {
   font-weight: 400;
 }
+.top-menu .navbar-brand {
+  padding: 0;
+  margin-left: 15px;
+}
+.top-menu .navbar-brand h3 {
+  padding: 11px 0px;
+  margin: 0;
+}
+.top-menu .navbar-brand h3 a {
+  padding: 15px;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
 .top-menu .menu_center {
   text-align: center;
 }

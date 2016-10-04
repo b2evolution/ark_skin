@@ -17,7 +17,7 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
  */
 class ark_Skin extends Skin
 {	
-	var $version = '1.0.0';
+	var $version = '1.1.0';
 	/**
 	 * Do we want to use style.min.css instead of style.css ?
 	 */
@@ -212,17 +212,18 @@ class ark_Skin extends Skin
 					'layout' => 'begin_fieldset',
 					'label'  => T_('Navigation Menu Settings')
 				),
-					/**
-					 * Removed due to hardcoded link - matter of the way this option param is created
-					 *
-
 					'top_menu_brand' => array(
 						'label' => T_('Top menu collection title'),
 						'note' => T_('Check to display collection title as the first item in the top menu.'),
 						'defaultvalue' => 1,
 						'type' => 'checkbox',
 					),
-					*/
+					'top_menu_brand_col' => array(
+						'label' => T_('Top menu collection title color'),
+						'note' => T_('Select color of the collection title in the top menu.') . T_('Default value is') . ' #FFF.',
+						'defaultvalue' => '#FFF',
+						'type' => 'color',
+					),
 					'top_menu_position' => array(
 						'label' => T_('Top menu content position'),
 						'note' => ' (' . T_('Set top menu content alignment position') . ')',
@@ -707,6 +708,11 @@ class ark_Skin extends Skin
 			if( $color = $this->get_setting( 'top_menu_ac_link_bgcol' ) )
 			{
 				$custom_css .= '.top-menu ul li.active, .navbar-brand a.active { background-color: '.$color." }\n";
+			};	
+			// Top menu brand color:
+			if( $color = $this->get_setting( 'top_menu_brand_col' ) )
+			{
+				$custom_css .= '.top-menu .navbar-brand h3 a { color: '.$color." }\n";
 			};
 			
 			
