@@ -149,17 +149,12 @@ class ark_Skin extends Skin
 						'type' => 'text',
 						'size' => '50'
 					),
-					'header_height_set' => array(
-						'label' => T_('Height customization'),
-						'note' => T_('Check this to enable header height customization option.'),
-						'defaultvalue' => 1,
-						'type' => 'checkbox',
-					),	
 					'header_height' => array(
 						'label' => T_('Header height'),
 						'note' => 'px. ' . T_('Input numbers only.') . ' ' . T_('Default value is') . ' 300.',
 						'defaultvalue' => '300',
 						'type' => 'integer',
+						'allow_empty' => true,
 					),
 					'headpicture_bg_col' => array(
 						'label' => T_('Header background color'),
@@ -630,11 +625,9 @@ class ark_Skin extends Skin
 			{ // Site header color:
 				$custom_css .= '.headpicture { background-color: '.$color." }\n";
 			};
-			if( $header_height = $this->get_setting( 'header_height' ) )
+			if( !empty( $header_height = $this->get_setting( 'header_height' ) ) )
 			{ // If image input
-				if( $this->get_setting( 'header_height_set' ) ) {
-					$custom_css .= '.headpicture { min-height:'.$header_height."px }\n";
-				}
+				$custom_css .= '.headpicture { min-height:'.$header_height."px }\n";
 			}
 			// Site title color:
 			if( $color = $this->get_setting( 'site_title_color' ) )
