@@ -53,7 +53,7 @@ siteskin_include( '_site_body_header.inc.php' );
 		echo '<div class="container menu_inline_container">';
 } ?>
 
-		<div class="navbar-header<?php if( $Skin->get_setting( 'header_content_pos' ) == 'center_pos' ) { echo ' navbar-header-center'; } ?>">
+		<div class="navbar-header<?php if( $Skin->get_setting( 'top_menu_position' ) == 'menu_center' ) { echo ' navbar-header-center'; } ?>">
 			<button type="button" class="navbar-toggle navbar-toggle-hamb collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
 				<span class="sr-only">Toggle navigation</span>
 				<span class="icon-bar"></span>
