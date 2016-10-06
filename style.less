@@ -77,21 +77,29 @@ div[class^='col-'] {
 	background-size: cover;
 	display: table;
 	width: 100%;
-	max-height: 600px;
-	
-	.header_img img {
-		display: block;
-		max-width: 100%;
-		height: auto;
-		width: 100%;
-	}
+	max-height: 500px;
+	overflow: hidden;
 	
 	.headipic_section {
 		display: table-cell;
 		vertical-align: middle;
 		margin:0 auto;
-		padding-left: 15px;
-		padding-right: 15px;
+		
+		.evo_widget {
+			padding: 0 15px;
+		}
+	}
+	
+	.header_img {
+		padding: 0 !important;
+		max-height: 500px;
+		overflow: hidden;
+		img {
+			display: block;
+			max-width: 100%;
+			height: auto;
+			width: 100%;
+		}
 	}
 }
 
