@@ -1509,6 +1509,14 @@ blockquote {
 .disp_page #submit_preview_buttons_wrapper legend.panel-heading {
   padding: 15px 0;
 }
+.disp_single .evo_container__item_single > div,
+.disp_page .evo_container__item_single > div {
+  margin-bottom: 10px;
+}
+.disp_single .widget_core_item_small_print img,
+.disp_page .widget_core_item_small_print img {
+  border-radius: 50%;
+}
 .disp_single .evo_content_block .panel-body,
 .disp_page .evo_content_block .panel-body {
   padding: 0 !important;
