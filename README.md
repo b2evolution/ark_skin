@@ -27,4 +27,6 @@ Current (stable) version: 1.0.0
 #### v1.1.0-alpha
 - Top menu content can now be positioned left of the viewport, in-line with the main content or in the center of the menu container
 - Additional skin customization options
-- 2 header image types: 1) Background image - requires height to be set and fills up entire header section with background image; 2) Image tag - does not require height, adds image through <img> tag and scales image to viewport. NOTE: "Image tag" type disables "Header" container.
+- Added new class <code>header_img</code> for image widget in header container. Adding this class to image widget makes header image responsive and scalable to the viewport
+- Fixed hardcoded tags in disp=single
+- Various visual improvements

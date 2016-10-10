@@ -187,6 +187,7 @@ echo '<div class="evo_content_block">'; // Beginning of post display
 			// Template params for "Item Tags" widget
 			'widget_item_tags_before'    => '<div class="tags"><i class="fa fa-tags" aria-hidden="true"></i> ' . T_('Tags'). ': ',
 			'widget_item_tags_after'     => '</div>',
+			'widget_item_tags_separator' => '',
 			// Params for skin file "_item_content.inc.php"
 			'widget_item_content_params' => $params,
 			// Template params for "Item Attachments" widget:
