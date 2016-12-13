@@ -24,6 +24,9 @@ Current (stable) version: 1.0.0
 
 ### Update Log
 
+#### v1.1.1
+- Comment status badge position fix
+
 #### v1.1.0-alpha
 - Top menu content can now be positioned left of the viewport, in-line with the main content or in the center of the menu container
 - Additional skin customization options
