@@ -1500,7 +1500,7 @@ blockquote {
   padding: 0;
 }
 .evo_comment .pull-left,
-.evo_comment .pull-right {
+.evo_comment .panel-title {
   float: none !important;
 }
 .disp_single #submit_preview_buttons_wrapper .panel-body,
