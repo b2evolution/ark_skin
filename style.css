@@ -1275,17 +1275,13 @@ div.bSideItem h4 {
   list-style-type: none;
   padding-bottom: 30px;
 }
-.site_pagination li,
-.pagination li {
-  display: inline-block;
-  margin-bottom: 16px;
-  margin-right: 5px;
-}
 .site_pagination li a,
 .pagination li a,
 .site_pagination li span,
 .pagination li span {
   padding: 8px 18px;
+  margin-bottom: 16px;
+  margin-right: 5px;
 }
 .site_pagination a,
 .pagination a {
@@ -1678,5 +1674,13 @@ blockquote {
   }
   .disp_userprefs .fieldset_wrapper .panel-body.fieldset .form-group .control-label {
     margin-bottom: 0px;
+  }
+  .site_pagination li a,
+  .pagination li a,
+  .site_pagination li span,
+  .pagination li span {
+    padding: 5px 13px;
+    margin-bottom: 3px;
+    margin-right: 3px;
   }
 }
