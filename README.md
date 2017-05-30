@@ -7,7 +7,7 @@ Current (stable) version: 1.0.0
 
 ---
 
-###Main skin features:
+### Main skin features:
 
 - Chose from one of the three sidebar layouts: left sidebar, right sidebar or no sidebar;
 
@@ -17,10 +17,10 @@ Current (stable) version: 1.0.0
 
 ---
 
-<h3>Posts display</h4>
-![post-layout](skinshot_posts.jpg)
-<h3>Single post display</h4>
-![post-layout](skinshot_single.jpg)
+#### Posts display
+![Posts Display](skinshot_posts.jpg)
+#### Single post display
+![Single Post Display](skinshot_single.jpg)
 
 ### Update Log
 
