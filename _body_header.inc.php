@@ -19,6 +19,9 @@ siteskin_include( '_site_body_header.inc.php' );
 <!-- Ralaway font include -->
 <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,800,700' rel='stylesheet' type='text/css'>
 
+<div class="container-fluid">
+<div class="row">
+
 <div class="headpicture">
 
 	<div class="headipic_section <?php 
@@ -45,7 +48,7 @@ siteskin_include( '_site_body_header.inc.php' );
 	
 </div>
 
-<nav class="top-menu">
+<nav class="top-menu container-fluid">
 	<div class="row">
 		<!-- Brand and toggle get grouped for better mobile display -->
 
@@ -109,3 +112,6 @@ siteskin_include( '_site_body_header.inc.php' );
 		
 	</div><!-- .row -->
 </nav><!-- .top-menu -->
+
+</div>
+</div>

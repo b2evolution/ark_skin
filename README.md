@@ -24,6 +24,14 @@ Current (stable) version: 1.0.0
 
 ### Update Log
 
+#### v1.2.1
+- HTML layout fixes
+- Removed LESS modules for widgets
+- Pagination layout fix
+- Other visual fixes
+
+### Update Log
+
 #### v1.1.1
 - Comment status badge position fix
 - Pagination layout fix

@@ -1,5 +1,4 @@
-// --------- Universal item list widget & Recent posts widget --------- 
-@import "../../rsc/less/_universal_item_list_widget.module.less";
+// --------- Universal item list widget & Recent posts widget ---------
 div.widget_core_coll_item_list.evo_1pic__special.evo_noexcerpt.evo_noteaser div.item_title a, div.widget_core_coll_featured_posts.evo_1pic__special.evo_noexcerpt.evo_noteaser div.item_title a, div.widget_core_coll_post_list.evo_1pic__special.evo_noexcerpt.evo_noteaser div.item_title a, div.widget_core_coll_page_list.evo_1pic__special.evo_noexcerpt.evo_noteaser div.item_title a, div.widget_core_coll_related_post_list.evo_1pic__special.evo_noexcerpt.evo_noteaser div.item_title a {
 	font-size: 16px;
 }
@@ -8,32 +7,17 @@ div.widget_core_coll_item_list.evo_1pic__special ul li .item_first_image_placeho
 }
 // --------------------------------------------------------------------
 
-// --------- Universal item list widget & Recent posts widget ---------
-@import "../../rsc/less/_universal_item_list_widget.module.less";
-// --------------------------------------------------------------------
-
-// ------------------- Media Index widget --------------------
-@import "../../rsc/less/_coll_media_index_widget.module.less";
-// -----------------------------------------------------------
-
-// ----------- User Avatars (User List) widget ------------
-@import "../../rsc/less/_user_avatars_widget.module.less";
-// --------------------------------------------------------
-
-// -----------------About Author widget -------------------
-@import "../../rsc/less/_about_author_widget.module.less";
-// --------------------------------------------------------
-
-// ------------- Organization Members widget -------------
-@import "../../rsc/less/_org_members_widget.module.less";
-// -------------------------------------------------------
-
-body{
+#skin_wrapper {
 	font-family: "Open Sans",sans-serif;
 	font-size:16px;
     line-height: 24px;
     letter-spacing: 0.15px;
 }
+.panel,
+a[rel~=nofollow]:not([class~=btn]):hover {
+	background-color: transparent;
+}
+
 // Fonts
 @font-face {
 	font-family: 'Raleway', sans-serif;
@@ -344,7 +328,7 @@ div.compact_search_form {
 	}
 }
 div.extended_search_form,
-.disp_404 .compact_search_form {
+.compact_search_form {
 	text-align: center;
 	margin: 0 auto 2em auto;
 	.search_options {
@@ -687,13 +671,13 @@ div.bSideItem {
 	margin-top: 0;
 }
 
-.evo_panel__login, .evo_panel__register, .evo_form__login_links {
+.evo_panel__login, .evo_panel__register, .evo_form__login_links, .evo_panel__lostpass {
 	max-width: 360px;	
 	.panel-body {
 		padding: 0;
 	}
 }
-.evo_form__login_links, .evo_panel__login {
+.evo_form__login_links, .evo_panel__login, .evo_panel__lostpass {
 	margin: 0 auto;
 	display: block;
 }
@@ -718,13 +702,15 @@ div.bSideItem {
 	padding-bottom: 30px;
 	li {
 		a, span {
-			padding: 8px 18px;
+			border: none !important;
+			border-radius: 2px !important;
+			padding: 8px 13px;
 			margin-bottom: 16px;
 			margin-right: 5px;
 		}
 	}
 	a {
-		padding: 8px 18px;
+		padding: 8px 13px;
 		border: none !important;
 		border-radius: 2px !important;
 		&:hover {
@@ -733,6 +719,16 @@ div.bSideItem {
 	}
 	li.listnav_first>a, li.listnav_last>a{
 		border-radius: 2px;
+	}
+}
+.disp_useritems,
+.disp_usercomments {
+	.site_pagination,
+	.pagination {
+		li {
+			display: inline;
+			float: left;
+		}
 	}
 }
 
@@ -1177,9 +1173,15 @@ blockquote {
 	}
 	.site_pagination, .pagination {
 		li a, li span {
-			padding: 5px 13px;
+			padding: 5px 8px;
 			margin-bottom: 3px;
 			margin-right: 3px;
 		}
 	}
+}
+
+
+.evo_item_meta_comments .panel-meta .panel-body {
+	border-radius: 4px;
+	padding: 15px !important;
 }

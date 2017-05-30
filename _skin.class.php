@@ -17,7 +17,7 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
  */
 class ark_Skin extends Skin
 {	
-	var $version = '1.1.1';
+	var $version = '1.2.1';
 	/**
 	 * Do we want to use style.min.css instead of style.css ?
 	 */
@@ -619,7 +619,7 @@ class ark_Skin extends Skin
 			};
 			if( $front_bg_image = $this->get_setting( 'front_bg_image' ) )
 			{ // If image input
-				$custom_css .= ' .headpicture { background: url('.$front_bg_image.") no-repeat center center;background-size: cover; }\n";
+				$custom_css .= '.headpicture { background: url('.$front_bg_image.") no-repeat center center;background-size: cover; }\n";
 			}
 			if( $color = $this->get_setting( 'headpicture_bg_col' ) )
 			{ // Site header color:
@@ -632,22 +632,22 @@ class ark_Skin extends Skin
 			// Site title color:
 			if( $color = $this->get_setting( 'site_title_color' ) )
 			{
-				$custom_css .= 'body .headpicture .widget_core_coll_title h3 a { color: '.$color." }\n";
+				$custom_css .= '#skin_wrapper .headpicture .widget_core_coll_title h3 a { color: '.$color." }\n";
 			};	
 			// Site tagline color:
 			if( $color = $this->get_setting( 'site_tagline_color' ) )
 			{
-				$custom_css .= 'body .headpicture .widget_core_coll_tagline { color: '.$color." }\n";
+				$custom_css .= '#skin_wrapper .headpicture .widget_core_coll_tagline { color: '.$color." }\n";
 			};
 			// Header content color:
 			if( $header_content_color = $this->get_setting( 'header_content_color' ) )
 			{
-				$custom_css .= 'body .headpicture { color: '.$header_content_color." }\n";
+				$custom_css .= '#skin_wrapper .headpicture { color: '.$header_content_color." }\n";
 			};	
 			// Header links color:
 			if( $header_links_color = $this->get_setting( 'header_links_color' ) )
 			{
-				$custom_css .= 'body .headpicture a, body .headpicture a:hover { color: '.$header_links_color." }\n";
+				$custom_css .= '#skin_wrapper .headpicture a, #skin_wrapper .headpicture a:hover { color: '.$header_links_color." }\n";
 			};
 			// Site background color:
 			if( $color = $this->get_setting( 'site_background_color' ) )
@@ -657,18 +657,18 @@ class ark_Skin extends Skin
 			// Site text color:
 			if( $color = $this->get_setting( 'site_text_color' ) )
 			{
-				$custom_css .= 'body, .widget .panel-heading h4, .evo_widget .panel-heading h4, .styled_content_block .panel-heading, .bCalendarRow .bCalendarHeaderCell, h4.evo_comment_title { color: '.$color." }\n";
+				$custom_css .= '#skin_wrapper, .widget .panel-heading h4, .evo_widget .panel-heading h4, .styled_content_block .panel-heading, .bCalendarRow .bCalendarHeaderCell, h4.evo_comment_title { color: '.$color." }\n";
 			};
 			// Site link color:
 			if( $color = $this->get_setting( 'site_link_color' ) )
 			{
-				$custom_css .= 'body a, #bCalendarToday, .search_title a, h4.evo_comment_title a { color: '.$color." }\n";
+				$custom_css .= 'a, #bCalendarToday, .search_title a, h4.evo_comment_title a { color: '.$color." }\n";
 				$custom_css .= '#bCalendarToday { border: 1px solid '.$color." }\n";
 			};
 			// Site link color hover:
 			if( $color = $this->get_setting( 'site_link_color_hover' ) )
 			{
-				$custom_css .= 'body a:hover, .search_title a:hover { color: '.$color." }\n";
+				$custom_css .= 'a:hover, .search_title a:hover { color: '.$color." }\n";
 			};
 			// Top menu hamburger layout:
 			if( $width = $this->get_setting( 'top_menu_hamburger' ) )

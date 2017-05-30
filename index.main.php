@@ -288,6 +288,7 @@ skin_include( '_body_header.inc.php' );
 <!-- =================================== START OF FOOTER =================================== -->
 <footer class="footer">
 	<div class='container'>
+	<div class="row">
 		<?php
 			// Display container and contents:
 			skin_container( NT_("Footer"), array(
@@ -351,6 +352,7 @@ skin_include( '_body_header.inc.php' );
 			}
 			?>
 		</div>
+	</div>
 	</div>
 </footer>
 
