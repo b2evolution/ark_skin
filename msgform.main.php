@@ -1,17 +1,24 @@
 <?php
 /**
- * This file is the template that displays "login required" for non logged-in users.
+ * This is the template that displays the message user form
  *
- * For a quick explanation of b2evo 2.0 skins, please start here:
- * {@link http://b2evolution.net/man/skin-development-primer}
+ * This file is not meant to be called directly.
+ * It is meant to be called by an include in the main.page.php template.
+ * To display a feedback, you should call a stub AND pass the right parameters
+ * For example: /blogs/index.php?disp=msgform&recipient_id=n
+ * Note: don't code this URL by hand, use the template functions to generate it!
+ *
+ * b2evolution - {@link http://b2evolution.net/}
+ * Released under GNU GPL License - {@link http://b2evolution.net/about/gnu-gpl-license}
+ * @copyright (c)2003-2016 by Francois Planque - {@link http://fplanque.com/}
  *
  * @package evoskins
- * @subpackage bootstrap_blog
+ * @subpackage bootstrap_blog_skin
  */
 if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.' );
 
 
-global $app_version, $disp, $Blog;
+global $app_version, $disp, $Collection, $Blog;
 
 if( evo_version_compare( $app_version, '6.4' ) < 0 )
 { // Older skins (versions 2.x and above) should work on newer b2evo versions, but newer skins may not work on older b2evo versions.
@@ -22,9 +29,8 @@ if( evo_version_compare( $app_version, '6.4' ) < 0 )
 // Do inits depending on current $disp:
 skin_init( $disp );
 
-
 // -------------------------- HTML HEADER INCLUDED HERE --------------------------
-skin_include( '_html_header.inc.php', array() );
+skin_include( '_html_header.inc.php' );
 // -------------------------------- END OF HEADER --------------------------------
 
 
@@ -33,7 +39,6 @@ skin_include( '_html_header.inc.php', array() );
 siteskin_include( '_site_body_header.inc.php' );
 // ------------------------------- END OF SITE HEADER --------------------------------
 ?>
-
 
 <div class="container-fluid">
 <div class="row">
@@ -150,39 +155,139 @@ if( $Skin->show_container_when_access_denied( 'Menu' ) )
 
 <!-- =================================== START OF MAIN AREA =================================== -->
 	<div class="row">
-		<div class="col-md-12">
+		<div class="<?php echo ( $Skin->get_setting( 'layout' ) == 'single_column' ? 'col-md-12' : 'col-md-8' ); ?>"<?php
+				echo ( $Skin->get_setting( 'layout' ) == 'left_sidebar' ? ' style="float:right;"' : '' ); ?>>
+				
+		<main><!-- This is were a link like "Jump to main content" would land -->
+
+		<?php
+			// ------------------------- MESSAGES GENERATED FROM ACTIONS -------------------------
+			messages( array(
+					'block_start' => '<div class="action_messages">',
+					'block_end'   => '</div>',
+				) );
+			// --------------------------------- END OF MESSAGES ---------------------------------
+		?>
+
+		<?php
+			// ------------------------ TITLE FOR THE CURRENT REQUEST ------------------------
+			request_title( array(
+					'title_before'      => '<h2 class="page_title">',
+					'title_after'       => '</h2>',
+					'title_none'        => '',
+					'glue'              => ' - ',
+				) );
+			// ----------------------------- END OF REQUEST TITLE ----------------------------
+		?>
 
 		<?php
 			// -------------- MAIN CONTENT TEMPLATE INCLUDED HERE (Based on $disp) --------------
-			skin_include( '$disp$', array(
-					// Form params for the forms below: login, register, lostpassword, activateinfo and msgform
-					'skin_form_before'      => '<div class="panel panel-default skin-form">'
-																				.'<div class="panel-heading">'
-																					.'<h3 class="panel-title">$form_title$</h3>'
-																				.'</div>'
-																				.'<div class="panel-body">',
-					'skin_form_after'       => '</div></div>',
-					// Login
-					'display_form_messages' => true,
-					'form_title_login'      => T_('Log in to your account').'$form_links$',
-					'form_title_lostpass'   => get_request_title().'$form_links$',
-					'lostpass_page_class'   => 'evo_panel__lostpass',
-					'login_form_inskin'     => false,
-					'login_page_class'      => 'evo_panel__login',
-					'login_page_before'     => '<div class="$form_class$">',
-					'login_page_after'      => '</div>',
-					'display_reg_link'      => true,
-					'abort_link_position'   => 'form_title',
-					'abort_link_text'       => '<button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>',
-				) );
+			skin_include( '$disp$' );
 			// Note: you can customize any of the sub templates included here by
 			// copying the matching php file into your skin directory.
 			// ------------------------- END OF MAIN CONTENT TEMPLATE ---------------------------
 		?>
 
-		</div>
-	</div>
+		</main>
 
+	</div><!-- .col -->
+
+	<?php
+	if( $Skin->get_setting( 'layout' ) != 'single_column' )
+	{
+	?>
+		<?php
+		if( $Skin->show_container_when_access_denied( 'sidebar' ) )
+		{ // Display 'Sidebar' widget container
+		?>
+	<div class="col-md-4 sidebar"<?php echo ( $Skin->get_setting( 'layout' ) == 'left_sidebar' ? ' style="float:left;"' : '' ); ?>>
+		<!-- =================================== START OF SIDEBAR =================================== -->
+		<div class="evo_container evo_container__sidebar">
+		<?php
+			// ------------------------- "Sidebar" CONTAINER EMBEDDED HERE --------------------------
+			// Display container contents:
+			skin_container( NT_('Sidebar'), array(
+					// The following (optional) params will be used as defaults for widgets included in this container:
+					// This will enclose each widget in a block:
+					'block_start' => '<div class="panel panel-default evo_widget $wi_class$">',
+					'block_end' => '</div>',
+					// This will enclose the title of each widget:
+					'block_title_start' => '<div class="panel-heading"><h4 class="panel-title">',
+					'block_title_end' => '</h4></div>',
+					// This will enclose the body of each widget:
+					'block_body_start' => '<div class="panel-body">',
+					'block_body_end' => '</div>',
+					// If a widget displays a list, this will enclose that list:
+					'list_start' => '<ul>',
+					'list_end' => '</ul>',
+					// This will enclose each item in a list:
+					'item_start' => '<li>',
+					'item_end' => '</li>',
+					// This will enclose sub-lists in a list:
+					'group_start' => '<ul>',
+					'group_end' => '</ul>',
+					// This will enclose (foot)notes:
+					'notes_start' => '<div class="notes">',
+					'notes_end' => '</div>',
+					// Widget 'Search form':
+					'search_class'         => 'compact_search_form',
+					'search_input_before'  => '<div class="input-group">',
+					'search_input_after'   => '',
+					'search_submit_before' => '<span class="input-group-btn">',
+					'search_submit_after'  => '</span></div>',
+				) );
+			// ----------------------------- END OF "Sidebar" CONTAINER -----------------------------
+		?>
+		</div>
+		<?php } ?>
+
+		<?php
+		if( $Skin->show_container_when_access_denied( 'sidebar2' ) )
+		{ // Display 'Sidebar 2' widget container
+		?>
+		<div class="evo_container evo_container__sidebar2">
+		<?php
+			// ------------------------- "Sidebar" CONTAINER EMBEDDED HERE --------------------------
+			// Display container contents:
+			skin_container( NT_('Sidebar 2'), array(
+					// The following (optional) params will be used as defaults for widgets included in this container:
+					// This will enclose each widget in a block:
+					'block_start' => '<div class="panel panel-default evo_widget $wi_class$">',
+					'block_end' => '</div>',
+					// This will enclose the title of each widget:
+					'block_title_start' => '<div class="panel-heading"><h4 class="panel-title">',
+					'block_title_end' => '</h4></div>',
+					// This will enclose the body of each widget:
+					'block_body_start' => '<div class="panel-body">',
+					'block_body_end' => '</div>',
+					// If a widget displays a list, this will enclose that list:
+					'list_start' => '<ul>',
+					'list_end' => '</ul>',
+					// This will enclose each item in a list:
+					'item_start' => '<li>',
+					'item_end' => '</li>',
+					// This will enclose sub-lists in a list:
+					'group_start' => '<ul>',
+					'group_end' => '</ul>',
+					// This will enclose (foot)notes:
+					'notes_start' => '<div class="notes">',
+					'notes_end' => '</div>',
+					// Widget 'Search form':
+					'search_class'         => 'compact_search_form',
+					'search_input_before'  => '<div class="input-group">',
+					'search_input_after'   => '',
+					'search_submit_before' => '<span class="input-group-btn">',
+					'search_submit_after'  => '</span></div>',
+				) );
+			// ----------------------------- END OF "Sidebar" CONTAINER -----------------------------
+		?>
+		</div>
+		<?php } ?>
+
+	</div><!-- .col -->
+	<?php } ?>
+
+</div><!-- .row -->
 </div>
 
 <?php
@@ -262,6 +367,7 @@ if( $Skin->show_container_when_access_denied( 'footer' ) )
 </footer>
 
 <?php } ?>
+
 
 <?php
 // ---------------------------- SITE FOOTER INCLUDED HERE ----------------------------
