@@ -23,6 +23,11 @@ Developed by b2evo team.<br/>
 
 ### Update Log
 
+#### v1.3.1-stable
+- _skin.class.php issue fix
+
+### Update Log
+
 #### v1.3.0 
 - pagination fix for disp=single (comments) and disp=search
 - fixed disps access_denied and access_requires_login
