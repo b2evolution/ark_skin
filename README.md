@@ -25,8 +25,7 @@ Developed by b2evo team.<br/>
 
 #### v1.3.1-stable
 - _skin.class.php issue fix
-
-### Update Log
+- package.json uploaded
 
 #### v1.3.0 
 - pagination fix for disp=single (comments) and disp=search
