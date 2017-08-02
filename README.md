@@ -38,8 +38,6 @@ Developed by b2evo team.<br/>
 - Pagination layout fix
 - Other visual fixes
 
-### Update Log
-
 #### v1.1.1
 - Comment status badge position fix
 - Pagination layout fix
