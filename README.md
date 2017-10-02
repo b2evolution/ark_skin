@@ -23,6 +23,10 @@ Developed by b2evo team.<br/>
 
 ### Update Log
 
+#### v1.3.1-stable
+- _skin.class.php issue fix
+- package.json uploaded
+
 #### v1.3.0 
 - pagination fix for disp=single (comments) and disp=search
 - fixed disps access_denied and access_requires_login
@@ -33,8 +37,6 @@ Developed by b2evo team.<br/>
 - Removed LESS modules for widgets
 - Pagination layout fix
 - Other visual fixes
-
-### Update Log
 
 #### v1.1.1
 - Comment status badge position fix
