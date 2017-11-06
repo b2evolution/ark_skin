@@ -32,16 +32,16 @@ siteskin_include( '_site_body_header.inc.php' );
 									}
 									?>">
 		<?php
-			if( $Skin->get_setting( 'header_content_pos' ) == 'column_pos' ) {
-				echo '<div class="container">';
-			}
-			skin_container( NT_('Header'), array(
-			) );
-			if( $Skin->get_setting( 'header_content_pos' ) == 'column_pos' ) {
-				echo '</div>';
-			}
-		?>				
-		
+			widget_container( 'header', array(
+					// The following params will be used as defaults for widgets included in this container:
+					'container_display_if_empty' => false, // If no widget, don't display container at all
+					'container_start' => '<div class="evo_container $wico_class$'.( $Skin->get_setting( 'header_content_pos' ) == 'column_pos' ? ' container' : '' ).'">',
+					'container_end'   => '</div>',
+					'block_start'     => '<div class="evo_widget $wi_class$">',
+					'block_end'       => '</div>',
+				) );
+		?>
+
 	</div>
 	
 </div>
@@ -79,14 +79,15 @@ siteskin_include( '_site_body_header.inc.php' );
 		</div><!-- /.navbar-header -->
 		
 		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse<?php if( $Skin->get_setting( 'top_menu_position' ) == 'menu_center' ) { echo ' menu_center'; } ?>" id="navbar-collapse-1">
-			<ul class="navbar-nav evo_container evo_container__menu" id="menu">				
 				<?php
 					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
 					// Display container and contents:
 					// Note: this container is designed to be a single <ul> list
-					skin_container( NT_('Menu'), array(
+					widget_container( 'menu', array(
 							// The following params will be used as defaults for widgets included in this container:
+							'container_display_if_empty' => false, // If no widget, don't display container at all
+							'container_start'     => '<div class="collapse navbar-collapse'.( $Skin->get_setting( 'top_menu_position' ) == 'menu_center' ? ' menu_center' : '' ).'" id="navbar-collapse-1"><ul class="navbar-nav evo_container $wico_class$" id="menu">',
+							'container_end'       => '</ul></div>',
 							'block_start'         => '',
 							'block_end'           => '',
 							'block_display_title' => false,
@@ -101,8 +102,6 @@ siteskin_include( '_site_body_header.inc.php' );
 						) );
 					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
 				?>
-			</ul>
-		</div><!-- .collapse -->
 		
 <?php if( $Skin->get_setting( 'top_menu_position' ) == 'menu_inline' ) {
 		echo '</div><!-- .container -->';

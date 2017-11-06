@@ -60,16 +60,16 @@ if( $Skin->show_container_when_access_denied( 'Header' ) )
 										}
 										?>">
 			<?php
-				if( $Skin->get_setting( 'header_content_pos' ) == 'column_pos' ) {
-					echo '<div class="container">';
-				}
-				skin_container( NT_('Header'), array(
-				) );
-				if( $Skin->get_setting( 'header_content_pos' ) == 'column_pos' ) {
-					echo '</div>';
-				}
-			?>				
-			
+				widget_container( 'header', array(
+						// The following params will be used as defaults for widgets included in this container:
+						'container_display_if_empty' => false, // If no widget, don't display container at all
+						'container_start' => '<div class="evo_container $wico_class$'.( $Skin->get_setting( 'header_content_pos' ) == 'column_pos' ? ' container' : '' ).'">',
+						'container_end'   => '</div>',
+						'block_start'     => '<div class="evo_widget $wi_class$">',
+						'block_end'       => '</div>',
+					) );
+			?>
+
 		</div>
 		
 	</div>
@@ -114,14 +114,15 @@ if( $Skin->show_container_when_access_denied( 'Menu' ) )
 		</div><!-- /.navbar-header -->
 		
 		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse<?php if( $Skin->get_setting( 'top_menu_position' ) == 'menu_center' ) { echo ' menu_center'; } ?>" id="navbar-collapse-1">
-			<ul class="navbar-nav evo_container evo_container__menu" id="menu">				
 				<?php
 					// ------------------------- "Menu" CONTAINER EMBEDDED HERE --------------------------
 					// Display container and contents:
 					// Note: this container is designed to be a single <ul> list
-					skin_container( NT_('Menu'), array(
+					widget_container( 'menu', array(
 							// The following params will be used as defaults for widgets included in this container:
+							'container_display_if_empty' => false, // If no widget, don't display container at all
+							'container_start'     => '<div class="collapse navbar-collapse'.( $Skin->get_setting( 'top_menu_position' ) == 'menu_center' ? ' menu_center' : '' ).'" id="navbar-collapse-1"><ul class="navbar-nav evo_container $wico_class$" id="menu">',
+							'container_end'       => '</ul></div>',
 							'block_start'         => '',
 							'block_end'           => '',
 							'block_display_title' => false,
@@ -136,8 +137,6 @@ if( $Skin->show_container_when_access_denied( 'Menu' ) )
 						) );
 					// ----------------------------- END OF "Menu" CONTAINER -----------------------------
 				?>
-			</ul>
-		</div><!-- .collapse -->
 		
 <?php if( $Skin->get_setting( 'top_menu_position' ) == 'menu_inline' ) {
 		echo '</div><!-- .container -->';
@@ -196,18 +195,16 @@ if( $Skin->show_container_when_access_denied( 'Menu' ) )
 	if( $Skin->get_setting( 'layout' ) != 'single_column' )
 	{
 	?>
+	<div class="col-md-4 sidebar"<?php echo ( $Skin->get_setting( 'layout' ) == 'left_sidebar' ? ' style="float:left;"' : '' ); ?>>
 		<?php
 		if( $Skin->show_container_when_access_denied( 'sidebar' ) )
-		{ // Display 'Sidebar' widget container
-		?>
-	<div class="col-md-4 sidebar"<?php echo ( $Skin->get_setting( 'layout' ) == 'left_sidebar' ? ' style="float:left;"' : '' ); ?>>
-		<!-- =================================== START OF SIDEBAR =================================== -->
-		<div class="evo_container evo_container__sidebar">
-		<?php
+		{	// Display 'Sidebar' widget container:
 			// ------------------------- "Sidebar" CONTAINER EMBEDDED HERE --------------------------
-			// Display container contents:
-			skin_container( NT_('Sidebar'), array(
+			widget_container( 'sidebar', array(
 					// The following (optional) params will be used as defaults for widgets included in this container:
+					'container_display_if_empty' => false, // If no widget, don't display container at all
+					'container_start' => '<div class="evo_container $wico_class$">',
+					'container_end'   => '</div>',
 					// This will enclose each widget in a block:
 					'block_start' => '<div class="panel panel-default evo_widget $wi_class$">',
 					'block_end' => '</div>',
@@ -237,20 +234,17 @@ if( $Skin->show_container_when_access_denied( 'Menu' ) )
 					'search_submit_after'  => '</span></div>',
 				) );
 			// ----------------------------- END OF "Sidebar" CONTAINER -----------------------------
-		?>
-		</div>
-		<?php } ?>
+		} ?>
 
 		<?php
 		if( $Skin->show_container_when_access_denied( 'sidebar2' ) )
-		{ // Display 'Sidebar 2' widget container
-		?>
-		<div class="evo_container evo_container__sidebar2">
-		<?php
-			// ------------------------- "Sidebar" CONTAINER EMBEDDED HERE --------------------------
-			// Display container contents:
-			skin_container( NT_('Sidebar 2'), array(
+		{	// Display 'Sidebar 2' widget container:
+			// ------------------------- "Sidebar 2" CONTAINER EMBEDDED HERE --------------------------
+			widget_container( 'sidebar_2', array(
 					// The following (optional) params will be used as defaults for widgets included in this container:
+					'container_display_if_empty' => false, // If no widget, don't display container at all
+					'container_start' => '<div class="evo_container $wico_class$">',
+					'container_end'   => '</div>',
 					// This will enclose each widget in a block:
 					'block_start' => '<div class="panel panel-default evo_widget $wi_class$">',
 					'block_end' => '</div>',
@@ -279,10 +273,8 @@ if( $Skin->show_container_when_access_denied( 'Menu' ) )
 					'search_submit_before' => '<span class="input-group-btn">',
 					'search_submit_after'  => '</span></div>',
 				) );
-			// ----------------------------- END OF "Sidebar" CONTAINER -----------------------------
-		?>
-		</div>
-		<?php } ?>
+			// ----------------------------- END OF "Sidebar 2" CONTAINER -----------------------------
+		} ?>
 
 	</div><!-- .col -->
 	<?php } ?>
@@ -300,17 +292,19 @@ if( $Skin->show_container_when_access_denied( 'footer' ) )
 	<div class='container'>
 	<div class="row">
 		<?php
-			// Display container and contents:
-			skin_container( NT_("Footer"), array(
+			widget_container( 'footer', array(
 					// The following params will be used as defaults for widgets included in this container:
-					'block_start' => '<div class="widget $wi_class$">',
+					'container_display_if_empty' => false, // If no widget, don't display container at all
+					'container_start' => '<div class="evo_container $wico_class$">',
+					'container_end'   => '</div>',
+					'block_start' => '<div class="evo_widget $wi_class$">',
 					'block_end' => '</div>',
 					'block_title_start' => '<div class="panel-heading"><h4 class="panel-title">',
 					'block_title_end' => '</h4></div>',
 					'block_body_start' => '<div class="panel-body">',
 					'block_body_end' => '</div>',
 				) );
-			// Note: Double quotes have been used around "Footer" only for test purposes.
+			// ----------------------------- END OF "Footer" CONTAINER -----------------------------
 		?>
 		<div class="footer_note__wrapper clear">
 			<p class="footer_note">
