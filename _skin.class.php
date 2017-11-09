@@ -17,7 +17,7 @@ if( !defined('EVO_MAIN_INIT') ) die( 'Please, do not access this page directly.'
  */
 class ark_Skin extends Skin
 {	
-	var $version = '1.3.1';
+	var $version = '7.3.1';
 	/**
 	 * Do we want to use style.min.css instead of style.css ?
 	 */
